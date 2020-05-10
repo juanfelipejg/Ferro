@@ -10,6 +10,7 @@ using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Models;
 using Ferroviario.Web.Helpers;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ferroviario.Web.Controllers
 {
@@ -75,7 +76,7 @@ namespace Ferroviario.Web.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -114,7 +115,7 @@ namespace Ferroviario.Web.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

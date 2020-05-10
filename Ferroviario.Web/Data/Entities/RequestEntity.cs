@@ -28,5 +28,7 @@ namespace Ferroviario.Web.Data.Entities
         public string State { get; set; }
 
         public string Comment { get; set; }
+
+        public UserEntity User { get; set; }
     }
 }

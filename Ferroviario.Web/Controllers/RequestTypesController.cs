@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Ferroviario.Web.Data;
 using Ferroviario.Web.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ferroviario.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RequestTypesController : Controller
     {
         private readonly DataContext _context;

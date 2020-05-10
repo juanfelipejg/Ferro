@@ -32,5 +32,7 @@ namespace Ferroviario.Web.Data.Entities
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
         public TimeSpan Duration => FinalHour - InitialHour;
+
+        public List<ShiftEntity> Users { get; set; }
     }
 }

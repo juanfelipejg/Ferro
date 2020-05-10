@@ -9,9 +9,11 @@ using Ferroviario.Web.Data;
 using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Models;
 using Ferroviario.Web.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ferroviario.Web.Controllers
 {
+    
     public class ServicesController : Controller
     {
         private readonly DataContext _context;
@@ -45,7 +47,7 @@ namespace Ferroviario.Web.Controllers
 
             return View(serviceEntity);
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -64,6 +66,7 @@ namespace Ferroviario.Web.Controllers
             return View(serviceEntity);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -112,6 +115,7 @@ namespace Ferroviario.Web.Controllers
             return View(serviceEntity);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +148,7 @@ namespace Ferroviario.Web.Controllers
             return _context.Services.Any(e => e.Id == id);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddDetail(int? id)
         {
             if (id == null)
@@ -182,6 +187,7 @@ namespace Ferroviario.Web.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditDetail(int? id)
         {
             if (id == null)

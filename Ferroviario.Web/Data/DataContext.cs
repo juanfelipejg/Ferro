@@ -1,9 +1,10 @@
 ﻿using Ferroviario.Web.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ferroviario.Web.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<UserEntity>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -18,6 +19,8 @@ namespace Ferroviario.Web.Data
         public DbSet<ServiceDetailEntity> ServiceDetails { get; set; }
 
         public DbSet<ServiceEntity> Services { get; set; }
+
+        public DbSet<ServiceEntity> Shifts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -35,6 +38,9 @@ namespace Ferroviario.Web.Data
             .HasOne(a => a.ServiceDetail)
             .WithOne(a => a.Service)
             .HasForeignKey<ServiceDetailEntity>(c => c.Id);
+
+            builder.Entity<ShiftEntity>()
+            .HasKey(x => new { x.Id, x.UserId, x.ServiceId });
 
 
         }
