@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29721.120
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Common", "Ferroviario.Common\Ferroviario.Common.csproj", "{9D6870A0-FF39-49C5-A957-51480B58E6EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ferroviario.Common", "Ferroviario.Common\Ferroviario.Common.csproj", "{9D6870A0-FF39-49C5-A957-51480B58E6EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Web", "Ferroviario.Web\Ferroviario.Web.csproj", "{5C2E974C-C602-4263-8523-1E21BFCCF2EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ferroviario.Web", "Ferroviario.Web\Ferroviario.Web.csproj", "{5C2E974C-C602-4263-8523-1E21BFCCF2EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Prism", "Ferroviario.Prism\Ferroviario.Prism\Ferroviario.Prism.csproj", "{46B2B3C5-76C3-4138-92AE-4542F65FD7B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ferroviario.Prism", "Ferroviario.Prism\Ferroviario.Prism\Ferroviario.Prism.csproj", "{46B2B3C5-76C3-4138-92AE-4542F65FD7B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Prism.Android", "Ferroviario.Prism\Ferroviario.Prism.Android\Ferroviario.Prism.Android.csproj", "{B7F40037-4491-44AD-89D7-2C643D277E2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Prism.iOS", "Ferroviario.Prism\Ferroviario.Prism.iOS\Ferroviario.Prism.iOS.csproj", "{F8D96662-A46A-4D97-8846-20458DD53864}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Cross.Android", "Ferroviario.Cross.Android\Ferroviario.Cross.Android.csproj", "{011F6823-19C9-426D-9401-7BA88550E366}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Cross.iOS", "Ferroviario.Cross.iOS\Ferroviario.Cross.iOS.csproj", "{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}"
 EndProject
@@ -161,42 +159,6 @@ Global
 		{F8D96662-A46A-4D97-8846-20458DD53864}.Release|iPhone.Build.0 = Release|iPhone
 		{F8D96662-A46A-4D97-8846-20458DD53864}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{F8D96662-A46A-4D97-8846-20458DD53864}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|Any CPU.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|iPhone.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Ad-Hoc|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|Any CPU.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|Any CPU.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|iPhone.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|iPhone.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|iPhone.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.AppStore|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|iPhone.Deploy.0 = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|Any CPU.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|iPhone.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|iPhone.Deploy.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{011F6823-19C9-426D-9401-7BA88550E366}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 		{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}.Ad-Hoc|Any CPU.ActiveCfg = Release|iPhone
 		{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}.Ad-Hoc|Any CPU.Build.0 = Release|iPhone
 		{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}.Ad-Hoc|iPhone.ActiveCfg = Release|iPhone
