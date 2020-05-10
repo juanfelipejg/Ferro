@@ -1,0 +1,86 @@
+﻿@model Ferroviario.Web.Data.Entities.ServiceEntity
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<h2>Details</h2>
+
+<div>
+    <h4>Service</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.InitialHour)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.InitialHour)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.InitialStation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.InitialStation)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FinalHour)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FinalHour)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FinalStation)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FinalStation)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id"  class="btn btn-warning">Edit</a>
+            <a asp-action="AddDetail" asp-route-id="@Model.Id" class="btn btn-primary">Add Detail</a>
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover table-responsive table-striped" id="MyTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ServiceDetail.Description)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => model.ServiceDetail.Description)
+                                </td>
+                                <td>
+                                    <a asp-action="EditDescription" asp-route-id="@Model.Id" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
