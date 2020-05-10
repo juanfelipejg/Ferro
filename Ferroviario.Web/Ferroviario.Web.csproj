@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200510162153_AddFieldService.cs" />
+    <Compile Remove="Migrations\20200510162153_AddFieldService.Designer.cs" />
+    <Compile Remove="Migrations\20200510162250_AddServiceField.cs" />
+    <Compile Remove="Migrations\20200510162250_AddServiceField.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />

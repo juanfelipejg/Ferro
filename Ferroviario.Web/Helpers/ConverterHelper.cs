@@ -46,5 +46,26 @@ namespace Ferroviario.Web.Helpers
                 Comment = requestEntity.Comment
             };
         }
+
+        public async Task<ServiceDetailEntity> ToServiceDetailEntityAsync(ServiceDetailViewModel model, bool isNew)
+        {
+            return new ServiceDetailEntity
+            {
+                Id = isNew ? 0 : model.Id,
+                Description = model.Description,
+                Service = await _context.Services.FindAsync(model.ServiceId)
+            };
+        }
+
+        public ServiceDetailViewModel ToServiceDetailViewModel(ServiceDetailEntity serviceDetailEntity)
+        {
+            return new ServiceDetailViewModel
+            {
+                Id = serviceDetailEntity.Id,
+                Description = serviceDetailEntity.Description,
+                Service = serviceDetailEntity.Service,
+                ServiceId = serviceDetailEntity.Id
+            };
+        }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ferroviario.Web.Migrations
 {
-    public partial class Creation : Migration
+    public partial class CreationDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,43 +22,6 @@ namespace Ferroviario.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ServiceDetails",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ServiceDetails", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Requests",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    InitialDate = table.Column<DateTime>(nullable: false),
-                    FinishDate = table.Column<DateTime>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    Comment = table.Column<string>(nullable: true),
-                    RequestTypeEntityId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Requests", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Requests_RequestTypes_RequestTypeEntityId",
-                        column: x => x.RequestTypeEntityId,
-                        principalTable: "RequestTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
@@ -68,18 +31,35 @@ namespace Ferroviario.Web.Migrations
                     InitialHour = table.Column<TimeSpan>(nullable: false),
                     InitialStation = table.Column<string>(nullable: false),
                     FinalHour = table.Column<TimeSpan>(nullable: false),
-                    FinalStation = table.Column<string>(nullable: false),
-                    ServiceDetailId = table.Column<int>(nullable: true)
+                    FinalStation = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Requests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TypeId = table.Column<int>(nullable: false),
+                    InitialDate = table.Column<DateTime>(nullable: false),
+                    FinishDate = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    State = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Requests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Services_ServiceDetails_ServiceDetailId",
-                        column: x => x.ServiceDetailId,
-                        principalTable: "ServiceDetails",
+                        name: "FK_Requests_RequestTypes_TypeId",
+                        column: x => x.TypeId,
+                        principalTable: "RequestTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,6 +89,24 @@ namespace Ferroviario.Web.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ServiceDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ServiceDetails_Services_Id",
+                        column: x => x.Id,
+                        principalTable: "Services",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Changes_FirstServiceId",
                 table: "Changes",
@@ -120,9 +118,9 @@ namespace Ferroviario.Web.Migrations
                 column: "SecondServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Requests_RequestTypeEntityId",
+                name: "IX_Requests_TypeId",
                 table: "Requests",
-                column: "RequestTypeEntityId");
+                column: "TypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RequestTypes_Type",
@@ -135,11 +133,6 @@ namespace Ferroviario.Web.Migrations
                 table: "Services",
                 column: "Name",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Services_ServiceDetailId",
-                table: "Services",
-                column: "ServiceDetailId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -151,13 +144,13 @@ namespace Ferroviario.Web.Migrations
                 name: "Requests");
 
             migrationBuilder.DropTable(
-                name: "Services");
+                name: "ServiceDetails");
 
             migrationBuilder.DropTable(
                 name: "RequestTypes");
 
             migrationBuilder.DropTable(
-                name: "ServiceDetails");
+                name: "Services");
         }
     }
 }

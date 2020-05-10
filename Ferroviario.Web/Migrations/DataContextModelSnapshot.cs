@@ -84,9 +84,7 @@ namespace Ferroviario.Web.Migrations
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.ServiceDetailEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -115,14 +113,10 @@ namespace Ferroviario.Web.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int?>("ServiceDetailId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
-
-                    b.HasIndex("ServiceDetailId");
 
                     b.ToTable("Services");
                 });
@@ -146,11 +140,12 @@ namespace Ferroviario.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ferroviario.Web.Data.Entities.ServiceEntity", b =>
+            modelBuilder.Entity("Ferroviario.Web.Data.Entities.ServiceDetailEntity", b =>
                 {
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceDetailEntity", "ServiceDetail")
-                        .WithMany()
-                        .HasForeignKey("ServiceDetailId");
+                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "Service")
+                        .WithOne("ServiceDetail")
+                        .HasForeignKey("Ferroviario.Web.Data.Entities.ServiceDetailEntity", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

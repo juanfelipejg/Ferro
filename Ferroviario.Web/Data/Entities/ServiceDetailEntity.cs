@@ -12,7 +12,9 @@ namespace Ferroviario.Web.Data.Entities
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Description { get; set; }
-        
+
+        public ServiceEntity Service { get; set; }
+
 
     }
 }

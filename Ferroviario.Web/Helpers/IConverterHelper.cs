@@ -12,5 +12,9 @@ namespace Ferroviario.Web.Helpers
         Task<RequestEntity> ToRequestEntityAsync(RequestViewModel model, bool isNew);
 
         RequestViewModel ToRequestViewModel(RequestEntity requestEntity);
+
+        Task<ServiceDetailEntity> ToServiceDetailEntityAsync(ServiceDetailViewModel model, bool isNew);
+
+        ServiceDetailViewModel ToServiceDetailViewModel(ServiceDetailEntity serviceDetailEntity);
     }
 }

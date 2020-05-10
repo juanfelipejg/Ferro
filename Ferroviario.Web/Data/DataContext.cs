@@ -31,6 +31,11 @@ namespace Ferroviario.Web.Data
            .HasIndex(t => t.Name)
            .IsUnique();
 
+            builder.Entity<ServiceEntity>()
+            .HasOne(a => a.ServiceDetail)
+            .WithOne(a => a.Service)
+            .HasForeignKey<ServiceDetailEntity>(c => c.Id);
+
 
         }
 

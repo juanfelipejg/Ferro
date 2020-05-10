@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ferroviario.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200510000005_Creation")]
-    partial class Creation
+    [Migration("20200510164151_CreationDB")]
+    partial class CreationDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,13 +56,13 @@ namespace Ferroviario.Web.Migrations
 
                     b.Property<DateTime>("InitialDate");
 
-                    b.Property<int?>("RequestTypeEntityId");
-
                     b.Property<string>("State");
+
+                    b.Property<int>("TypeId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RequestTypeEntityId");
+                    b.HasIndex("TypeId");
 
                     b.ToTable("Requests");
                 });
@@ -86,9 +86,7 @@ namespace Ferroviario.Web.Migrations
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.ServiceDetailEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -117,14 +115,10 @@ namespace Ferroviario.Web.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int?>("ServiceDetailId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
-
-                    b.HasIndex("ServiceDetailId");
 
                     b.ToTable("Services");
                 });
@@ -142,16 +136,18 @@ namespace Ferroviario.Web.Migrations
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.RequestEntity", b =>
                 {
-                    b.HasOne("Ferroviario.Web.Data.Entities.RequestTypeEntity")
+                    b.HasOne("Ferroviario.Web.Data.Entities.RequestTypeEntity", "Type")
                         .WithMany("Requests")
-                        .HasForeignKey("RequestTypeEntityId");
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Ferroviario.Web.Data.Entities.ServiceEntity", b =>
+            modelBuilder.Entity("Ferroviario.Web.Data.Entities.ServiceDetailEntity", b =>
                 {
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceDetailEntity", "ServiceDetail")
-                        .WithMany()
-                        .HasForeignKey("ServiceDetailId");
+                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "Service")
+                        .WithOne("ServiceDetail")
+                        .HasForeignKey("Ferroviario.Web.Data.Entities.ServiceDetailEntity", "Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
