@@ -1,4 +1,5 @@
-﻿using Ferroviario.Web.Data;
+﻿using Ferroviario.Common.Models;
+using Ferroviario.Web.Data;
 using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Models;
 using System;
@@ -29,6 +30,88 @@ namespace Ferroviario.Web.Helpers
                 Description = model.Description,
                 State = model.State,
                 Comment = model.Comment
+            };
+        }
+
+        public RequestResponse ToRequestResponse(RequestEntity requestEntity)
+        {
+            return new RequestResponse
+            {
+                Id = requestEntity.Id,
+                Type = ToRequestTypeResponse(requestEntity.Type),
+                InitialDate = requestEntity.InitialDate,
+                FinishDate = requestEntity.FinishDate,
+                Description = requestEntity.Description,
+                State = requestEntity.State,
+                Comment = requestEntity.Comment,
+                User = ToUserResponse(requestEntity.User)
+            };
+        }
+
+        public List<RequestResponse> ToRequestResponse(List<RequestEntity> requestEntities)
+        {
+            List<RequestResponse> list = new List<RequestResponse>();
+            foreach (RequestEntity requestEntity in requestEntities)
+            {
+                list.Add(ToRequestResponse(requestEntity));
+            }
+
+            return list;
+
+        }
+
+        public ServiceResponse ToServiceResponse(ServiceEntity serviceEntity)
+        {
+            return new ServiceResponse
+            {
+                Id = serviceEntity.Id,
+                Name = serviceEntity.Name,
+                InitialHour = serviceEntity.InitialHour,
+                InitialStation = serviceEntity.InitialStation,
+                FinalHour = serviceEntity.FinalHour,
+                FinalStation = serviceEntity.FinalStation,
+                ServiceDetail = ToServiceDetailResponse(serviceEntity.ServiceDetail)
+            };
+        }
+
+        public List<ServiceResponse> ToServiceResponse(List<ServiceEntity> serviceEntities)
+        {
+            List<ServiceResponse> list = new List<ServiceResponse>();
+            foreach (ServiceEntity serviceEntity in serviceEntities)
+            {
+                list.Add(ToServiceResponse(serviceEntity));
+            }
+
+            return list;
+        }
+
+
+
+        private RequestTypeResponse ToRequestTypeResponse(RequestTypeEntity requestTypeEntity)
+        {
+            if (requestTypeEntity == null)
+            {
+                return null;
+            }
+
+            return new RequestTypeResponse
+            {
+                Id = requestTypeEntity.Id,
+                Type = requestTypeEntity.Type,
+            };
+        }
+
+        private ServiceDetailResponse ToServiceDetailResponse(ServiceDetailEntity serviceDetailEntity)
+        {
+            if (serviceDetailEntity == null)
+            {
+                return null;
+            }
+
+            return new ServiceDetailResponse
+            {
+                Id = serviceDetailEntity.Id,
+                Description = serviceDetailEntity.Description,
             };
         }
 
@@ -67,5 +150,27 @@ namespace Ferroviario.Web.Helpers
                 ServiceId = serviceDetailEntity.Id
             };
         }
+
+        public UserResponse ToUserResponse(UserEntity user)
+        {
+            if (user == null)
+            {
+                return null;
+            }
+
+            return new UserResponse
+            {
+                Address = user.Address,
+                Document = user.Document,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                Id = user.Id,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                PicturePath = user.PicturePath,
+                UserType = user.UserType
+            };
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Ferroviario.Web.Data.Entities;
+﻿using Ferroviario.Common.Models;
+using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,16 @@ namespace Ferroviario.Web.Helpers
         Task<ServiceDetailEntity> ToServiceDetailEntityAsync(ServiceDetailViewModel model, bool isNew);
 
         ServiceDetailViewModel ToServiceDetailViewModel(ServiceDetailEntity serviceDetailEntity);
+
+        RequestResponse ToRequestResponse(RequestEntity requestEntity);
+
+        List<RequestResponse> ToRequestResponse(List<RequestEntity> requestEntities);
+
+        ServiceResponse ToServiceResponse(ServiceEntity serviceEntity);
+
+        List<ServiceResponse> ToServiceResponse(List<ServiceEntity> serviceEntities);
+
+        UserResponse ToUserResponse(UserEntity user);
+
     }
 }
