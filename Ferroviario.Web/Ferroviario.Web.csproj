@@ -9,6 +9,20 @@
     <Compile Remove="Migrations\20200510162153_AddFieldService.Designer.cs" />
     <Compile Remove="Migrations\20200510162250_AddServiceField.cs" />
     <Compile Remove="Migrations\20200510162250_AddServiceField.Designer.cs" />
+    <Compile Remove="Migrations\20200511050702_ModifyChanges.cs" />
+    <Compile Remove="Migrations\20200511050702_ModifyChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200512024600_ModifyChanges.cs" />
+    <Compile Remove="Migrations\20200512024600_ModifyChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200512025710_ModifyChanges.cs" />
+    <Compile Remove="Migrations\20200512025710_ModifyChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200512032605_ModifyChanges.cs" />
+    <Compile Remove="Migrations\20200512032605_ModifyChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200512033331_ModifyChanges2.cs" />
+    <Compile Remove="Migrations\20200512033331_ModifyChanges2.Designer.cs" />
+    <Compile Remove="Migrations\20200512042450_ModifyShifts.cs" />
+    <Compile Remove="Migrations\20200512042450_ModifyShifts.Designer.cs" />
+    <Compile Remove="Migrations\20200512042945_Test.cs" />
+    <Compile Remove="Migrations\20200512042945_Test.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +33,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ferroviario.Common\Ferroviario.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Shifts\Details.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

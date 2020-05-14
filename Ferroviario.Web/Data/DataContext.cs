@@ -9,7 +9,6 @@ namespace Ferroviario.Web.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-
         public DbSet<ChangeEntity> Changes { get; set; }
 
         public DbSet<RequestEntity> Requests { get; set; }
@@ -20,7 +19,7 @@ namespace Ferroviario.Web.Data
 
         public DbSet<ServiceEntity> Services { get; set; }
 
-        public DbSet<ServiceEntity> Shifts { get; set; }
+        public DbSet<ShiftEntity> Shifts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,11 +38,24 @@ namespace Ferroviario.Web.Data
             .WithOne(a => a.Service)
             .HasForeignKey<ServiceDetailEntity>(c => c.Id);
 
-            builder.Entity<ShiftEntity>()
-            .HasKey(x => new { x.Id, x.UserId, x.ServiceId });
+            builder.Entity<UserEntity>()
+              .HasMany(u => u.Shifts)
+              .WithOne(s => s.User);
 
+            builder.Entity<ServiceEntity>()
+             .HasMany(u => u.Shifts)
+             .WithOne(s => s.Service);
 
+            /*builder.Entity<UserEntity>()
+              .HasMany(c => c.ChangesSent)
+              .WithOne(c => c.FirstDriver);
+
+            builder.Entity<UserEntity>()
+              .HasMany(c => c.ChangesReceive)
+              .WithOne(c => c.SecondDriver);*/
         }
+
+        public DbSet<Ferroviario.Web.Data.Entities.ShiftEntity> ShiftEntity { get; set; }
 
     }
 }

@@ -1,38 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Ferroviario.Web.Data;
+using Ferroviario.Web.Data.Entities;
+using Ferroviario.Web.Helpers;
+using Ferroviario.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Ferroviario.Web.Data;
-using Ferroviario.Web.Data.Entities;
-using Ferroviario.Web.Models;
-using Ferroviario.Web.Helpers;
-using System.Runtime.InteropServices;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Ferroviario.Web.Controllers
 {
-    public class RequestsController : Controller
+    public class ShiftsController : Controller
     {
         private readonly DataContext _context;
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
 
-        public RequestsController(DataContext context, ICombosHelper combosHelper, IConverterHelper converterHelper)
+        public ShiftsController(DataContext context, ICombosHelper combosHelper, IConverterHelper converterHelper)
         {
             _context = context;
             _combosHelper = combosHelper;
             _converterHelper = converterHelper;
         }
 
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Requests.
-                Include(r=>r.Type).
-                ToListAsync());
+            return View(await _context.ShiftEntity.
+                Include(s => s.User).
+                Include(s => s.Service).ToListAsync());
         }
+
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -41,38 +39,41 @@ namespace Ferroviario.Web.Controllers
                 return NotFound();
             }
 
-            var requestEntity = await _context.Requests
+            ServiceEntity serviceEntity = await _context.Services
+                .Include(s => s.ServiceDetail)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (requestEntity == null)
+            if (serviceEntity == null)
             {
                 return NotFound();
             }
 
-            return View(requestEntity);
+            return View(serviceEntity);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            RequestViewModel model = new RequestViewModel
+            ShiftViewModel model = new ShiftViewModel
             {
-                Types = _combosHelper.GetComboTypes()
+                Drivers = _combosHelper.GetComboDrivers(),
+                Services = _combosHelper.GetComboServices()
             };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(RequestViewModel model)
+        public async Task<IActionResult> Create(ShiftViewModel model)
         {
             if (ModelState.IsValid)
             {
-                RequestEntity requestEntity = await _converterHelper.ToRequestEntityAsync(model, true);
-                _context.Add(requestEntity);
+                ShiftEntity shiftEntity = await _converterHelper.ToShiftEntityAsync(model, true);
+                _context.Add(shiftEntity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            model.Types = _combosHelper.GetComboTypes();
+            model.Drivers = _combosHelper.GetComboDrivers();
+            model.Services = _combosHelper.GetComboServices();
             return View(model);
         }
 
@@ -84,20 +85,22 @@ namespace Ferroviario.Web.Controllers
                 return NotFound();
             }
 
-            RequestEntity requestEntity = await _context.Requests.Include(r=>r.Type).FirstOrDefaultAsync(r=>r.Id == id);
-            if (requestEntity == null)
+            ShiftEntity shiftEntity = await _context.Shifts.Include(s => s.User)
+                .Include(s => s.Service)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (shiftEntity == null)
             {
                 return NotFound();
             }
 
-            RequestViewModel model = _converterHelper.ToRequestViewModel(requestEntity);
+            ShiftViewModel model = _converterHelper.ToShiftViewModel(shiftEntity);
             return View(model);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, RequestViewModel model)
+        public async Task<IActionResult> Edit(int id, ShiftViewModel model)
         {
             if (id != model.Id)
             {
@@ -106,17 +109,14 @@ namespace Ferroviario.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                    RequestEntity requestEntity = await _converterHelper.ToRequestEntityAsync(model, false);
-                    _context.Update(requestEntity);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                
+                ShiftEntity shiftEntity = await _converterHelper.ToShiftEntityAsync(model, false);
+                _context.Update(shiftEntity);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(model);
         }
 
-
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Ferroviario.Web.Controllers
                 return NotFound();
             }
 
-            var requestEntity = await _context.Requests
+            ShiftEntity shiftEntity = await _context.ShiftEntity
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (requestEntity == null)
+            if (shiftEntity == null)
             {
                 return NotFound();
             }
 
-            return View(requestEntity);
+            return View(shiftEntity);
         }
 
-        
+        // POST: Shifts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var requestEntity = await _context.Requests.FindAsync(id);
-            _context.Requests.Remove(requestEntity);
+            ShiftEntity shiftEntity = await _context.ShiftEntity.FindAsync(id);
+            _context.ShiftEntity.Remove(shiftEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RequestEntityExists(int id)
+        private bool ShiftEntityExists(int id)
         {
-            return _context.Requests.Any(e => e.Id == id);
+            return _context.ShiftEntity.Any(e => e.Id == id);
         }
     }
 }

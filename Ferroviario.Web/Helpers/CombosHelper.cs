@@ -1,9 +1,8 @@
-﻿using Ferroviario.Web.Data;
+﻿using Ferroviario.Common.Enums;
+using Ferroviario.Web.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ferroviario.Web.Helpers
 {
@@ -15,6 +14,46 @@ namespace Ferroviario.Web.Helpers
         {
             _context = context;
         }
+
+        public IEnumerable<SelectListItem> GetComboDrivers()
+        {
+            List<SelectListItem> list = _context.Users.Where(u=>u.UserType == UserType.User).
+                Select(t => new SelectListItem
+            {
+                Text = t.FullName,
+                Value = $"{t.Id}"
+            })
+            .OrderBy(t => t.Text)
+            .ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "[Select a driver]",
+                Value = "0"
+            });
+
+            return list;
+        }
+
+        public IEnumerable<SelectListItem> GetComboServices()
+        {
+            List<SelectListItem> list = _context.Services.Select(t => new SelectListItem
+            {
+                Text = t.Name,
+                Value = $"{t.Id}"
+            })
+            .OrderBy(t => t.Text)
+            .ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "[Select a service]",
+                Value = "0"
+            });
+
+            return list;
+        }
+
         public IEnumerable<SelectListItem> GetComboTypes()
         {
             List<SelectListItem> list = _context.RequestTypes.Select(t => new SelectListItem
@@ -34,7 +73,7 @@ namespace Ferroviario.Web.Helpers
             return list;
         }
 
-        
+
     }
-    
+
 }

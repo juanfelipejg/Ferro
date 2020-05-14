@@ -18,6 +18,10 @@ namespace Ferroviario.Web.Helpers
 
         ServiceDetailViewModel ToServiceDetailViewModel(ServiceDetailEntity serviceDetailEntity);
 
+        Task<ShiftEntity> ToShiftEntityAsync(ShiftViewModel model, bool isNew);
+
+        ShiftViewModel ToShiftViewModel(ShiftEntity shiftEntity);
+
         RequestResponse ToRequestResponse(RequestEntity requestEntity);
 
         List<RequestResponse> ToRequestResponse(List<RequestEntity> requestEntities);

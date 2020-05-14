@@ -34,11 +34,20 @@ namespace Ferroviario.Web.Data.Entities
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
 
+        [Display(Name = "Full Name")]
         public string FullName => $"{FirstName} {LastName}";
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
         public List<ShiftEntity> Services { get; set; }
+
+        public ICollection<ShiftEntity> Shifts { get; set; }
+
+        //public ICollection<ChangeEntity> ChangesSent { get; set; }
+
+        //public ICollection<ChangeEntity> ChangesReceive { get; set; }
+
+        // public ICollection<ChangeEntity> Changes { get; set; }
 
     }
 }

@@ -9,5 +9,9 @@ namespace Ferroviario.Web.Helpers
     public interface ICombosHelper
     {
         IEnumerable<SelectListItem> GetComboTypes();
+
+        IEnumerable<SelectListItem> GetComboDrivers();
+
+        IEnumerable<SelectListItem> GetComboServices();
     }
 }

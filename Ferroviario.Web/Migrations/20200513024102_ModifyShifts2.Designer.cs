@@ -4,14 +4,16 @@ using Ferroviario.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ferroviario.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200513024102_ModifyShifts2")]
+    partial class ModifyShifts2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +130,7 @@ namespace Ferroviario.Web.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Services");
+                    b.ToTable("ServiceEntity");
                 });
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.ShiftEntity", b =>
@@ -139,12 +141,11 @@ namespace Ferroviario.Web.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("ServiceId");
+                    b.Property<int?>("ServiceId");
 
                     b.Property<string>("UserEntityId");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -380,8 +381,7 @@ namespace Ferroviario.Web.Migrations
                 {
                     b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "Service")
                         .WithMany("Shifts")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ServiceId");
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity")
                         .WithMany("Services")
@@ -389,8 +389,7 @@ namespace Ferroviario.Web.Migrations
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "User")
                         .WithMany("Shifts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

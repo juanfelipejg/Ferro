@@ -33,6 +33,47 @@ namespace Ferroviario.Web.Helpers
             };
         }
 
+        public RequestViewModel ToRequestViewModel(RequestEntity requestEntity)
+        {
+            return new RequestViewModel
+            {
+                Id = requestEntity.Id,
+                TypeId = requestEntity.Type.Id,
+                Type =requestEntity.Type,
+                Types = _combosHelper.GetComboTypes(),
+                InitialDate = requestEntity.InitialDate,
+                FinishDate = requestEntity.FinishDate,
+                Description = requestEntity.Description,
+                State = requestEntity.State,
+                Comment = requestEntity.Comment
+            };
+        }
+
+        public async Task<ShiftEntity> ToShiftEntityAsync(ShiftViewModel model, bool isNew)
+        {
+            return new ShiftEntity
+            {
+                Id = isNew ? 0 : model.Id,
+                User = await _context.Users.FindAsync(model.User),
+                Service = await _context.Services.FindAsync(model.Service),
+                Date = model.Date
+            };
+
+        }
+
+        public ShiftViewModel ToShiftViewModel(ShiftEntity shiftEntity)
+        {
+            return new ShiftViewModel
+            {
+                Id = shiftEntity.Id,
+                User = shiftEntity.User.Id,
+                Service = shiftEntity.Service.Id,
+                Date = shiftEntity.Date,
+                Drivers = _combosHelper.GetComboDrivers(),
+                Services = _combosHelper.GetComboServices()
+            };
+        }
+
         public RequestResponse ToRequestResponse(RequestEntity requestEntity)
         {
             return new RequestResponse
@@ -85,8 +126,6 @@ namespace Ferroviario.Web.Helpers
             return list;
         }
 
-
-
         private RequestTypeResponse ToRequestTypeResponse(RequestTypeEntity requestTypeEntity)
         {
             if (requestTypeEntity == null)
@@ -112,21 +151,6 @@ namespace Ferroviario.Web.Helpers
             {
                 Id = serviceDetailEntity.Id,
                 Description = serviceDetailEntity.Description,
-            };
-        }
-
-        public RequestViewModel ToRequestViewModel(RequestEntity requestEntity)
-        {
-            return new RequestViewModel
-            {
-                Id = requestEntity.Id,
-                Type = requestEntity.Type.Id,
-                Types = _combosHelper.GetComboTypes(),
-                InitialDate = requestEntity.InitialDate,
-                FinishDate = requestEntity.FinishDate,
-                Description = requestEntity.Description,
-                State = requestEntity.State,
-                Comment = requestEntity.Comment
             };
         }
 
@@ -171,6 +195,7 @@ namespace Ferroviario.Web.Helpers
                 UserType = user.UserType
             };
         }
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ferroviario.Web.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Ferroviario.Web.Data.Entities
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [MinLength(3, ErrorMessage = "The {0} field can not have less than {1} characters.")]
+        [Display(Name = "Code Service")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
@@ -33,6 +35,7 @@ namespace Ferroviario.Web.Data.Entities
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
         public TimeSpan Duration => FinalHour - InitialHour;
 
-        public List<ShiftEntity> Users { get; set; }
+        public ICollection<ShiftEntity> Shifts { get; set; }
+
     }
 }

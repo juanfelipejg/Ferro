@@ -13,7 +13,7 @@ namespace Ferroviario.Web.Models
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "Request Types")]
         [Range(1, int.MaxValue, ErrorMessage = "You must select a request type.")]
-        public int Type { get; set; }
+        public int TypeId { get; set; }
 
         public IEnumerable<SelectListItem> Types { get; set; }
     }

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Ferroviario.Web.Data.Entities.ShiftEntity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<br />
+
+<h2>Shifts</h2>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderBy(g => g.Date))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateLocal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.Name)
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="glyphicon glyphicon-align-justify"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
