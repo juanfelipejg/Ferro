@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Ferroviario.Prism.Views.RequestsPage"
+             Title="{Binding Title}">
+
+    <StackLayout Padding="5">
+        <CollectionView ItemsSource="{Binding Requests}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0"
+                                     VerticalOptions="Center">
+                            <Label Text="{Binding Type.Type}" 
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   LineBreakMode="TailTruncation" />
+                            <Label Text="{Binding InitialDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                   LineBreakMode="TailTruncation"
+                                   FontAttributes="Italic" 
+                                   VerticalOptions="End" />
+                            <Label Text="{Binding FinishDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                   LineBreakMode="TailTruncation"
+                                   FontAttributes="Italic" 
+                                   VerticalOptions="End" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1"
+                                     VerticalOptions="Start">
+                            <Label Text="{Binding State}" 
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   LineBreakMode="TailTruncation" />
+                            <Label Text="{Binding Comment}" 
+                                   FontSize="Medium"
+                                   LineBreakMode="TailTruncation" />
+
+                        </StackLayout>
+                        <Image Grid.Column="2" 
+                               Source="ic_more_vert"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+
+</ContentPage>

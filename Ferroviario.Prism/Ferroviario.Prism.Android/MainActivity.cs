@@ -17,6 +17,7 @@ namespace Ferroviario.Prism.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             LoadApplication(new App(new AndroidInitializer()));
         }
     }
@@ -25,7 +26,7 @@ namespace Ferroviario.Prism.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Register any platform specific implementations
+            
         }
     }
 }

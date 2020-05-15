@@ -38,31 +38,38 @@
                             <th></th>
                         </tr>
                     </thead>
-                            <tbody>
-                                    @foreach (var item in Model)
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.InitialHour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.InitialStation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FinalHour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FinalStation)
+                                </td>
+                                <td>
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.InitialHour)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.InitialStation)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.FinalHour)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.FinalStation)
-                                            </td>
-                                            <td>
-                                                <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a> |
-                                                <a asp-action="Details" asp-route-id="@item.Id"><i class="glyphicon glyphicon-align-justify"></i></a> 
-                                                <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                                     }
+                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="glyphicon glyphicon-align-justify"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

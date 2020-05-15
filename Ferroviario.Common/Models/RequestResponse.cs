@@ -12,7 +12,11 @@ namespace Ferroviario.Common.Models
 
         public DateTime InitialDate { get; set; }
 
+        public DateTime InitialDateLocal => InitialDate.ToLocalTime();
+
         public DateTime FinishDate { get; set; }
+
+        public DateTime FinishDateLocal => FinishDate.ToLocalTime();
 
         public string Description { get; set; }
 

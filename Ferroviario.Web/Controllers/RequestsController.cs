@@ -83,7 +83,6 @@ namespace Ferroviario.Web.Controllers
             {
                 return NotFound();
             }
-
             RequestEntity requestEntity = await _context.Requests.Include(r=>r.Type).FirstOrDefaultAsync(r=>r.Id == id);
             if (requestEntity == null)
             {
@@ -91,6 +90,7 @@ namespace Ferroviario.Web.Controllers
             }
 
             RequestViewModel model = _converterHelper.ToRequestViewModel(requestEntity);
+
             return View(model);
         }
 
@@ -106,11 +106,10 @@ namespace Ferroviario.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                    RequestEntity requestEntity = await _converterHelper.ToRequestEntityAsync(model, false);
+                RequestEntity requestEntity = await _converterHelper.ToRequestEntityAsync(model, false);
                     _context.Update(requestEntity);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                
+                    return RedirectToAction(nameof(Index));                
             }
             return View(model);
         }

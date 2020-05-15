@@ -1,20 +1,17 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Ferroviario.Prism.ViewModels;
-using Ferroviario.Prism.Views;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Ferroviario.Common.Services;
+using Ferroviario.Prism.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ferroviario.Prism
 {
     public partial class App
     {
-        /* 
-         * The Xamarin Forms XAML Previewer in Visual Studio uses System.Activator.CreateInstance.
-         * This imposes a limitation in which the App class must have a default constructor. 
-         * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
-         */
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
@@ -22,14 +19,15 @@ namespace Ferroviario.Prism
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/RequestsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<RequestsPage, RequestsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsPageViewModel>();
         }
     }
 }

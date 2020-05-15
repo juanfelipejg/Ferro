@@ -22,6 +22,10 @@ namespace Ferroviario.Web.Helpers
 
         ShiftViewModel ToShiftViewModel(ShiftEntity shiftEntity);
 
+        List<ShiftResponse> ToShiftResponse(List<ShiftEntity> shiftEntities);
+
+        ShiftResponse ToShiftResponse(ShiftEntity shiftEntity);
+
         RequestResponse ToRequestResponse(RequestEntity requestEntity);
 
         List<RequestResponse> ToRequestResponse(List<RequestEntity> requestEntities);

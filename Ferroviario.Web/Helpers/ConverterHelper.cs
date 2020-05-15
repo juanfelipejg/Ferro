@@ -38,8 +38,7 @@ namespace Ferroviario.Web.Helpers
             return new RequestViewModel
             {
                 Id = requestEntity.Id,
-                TypeId = requestEntity.Type.Id,
-                Type =requestEntity.Type,
+                Type = requestEntity.Type.Id,
                 Types = _combosHelper.GetComboTypes(),
                 InitialDate = requestEntity.InitialDate,
                 FinishDate = requestEntity.FinishDate,
@@ -73,6 +72,30 @@ namespace Ferroviario.Web.Helpers
                 Services = _combosHelper.GetComboServices()
             };
         }
+
+        public List<ShiftResponse> ToShiftResponse(List<ShiftEntity> shiftEntities)
+        {
+            List<ShiftResponse> list = new List<ShiftResponse>();
+            foreach (ShiftEntity shiftEntity in shiftEntities)
+            {
+                list.Add(ToShiftResponse(shiftEntity));
+            }
+
+            return list;
+
+        }
+
+        public ShiftResponse ToShiftResponse(ShiftEntity shiftEntity)
+        {
+            return new ShiftResponse
+            {
+                Id = shiftEntity.Id,
+                User = ToUserResponse(shiftEntity.User),
+                Service = ToServiceResponse(shiftEntity.Service),
+                Date = shiftEntity.Date
+            };
+        }
+        
 
         public RequestResponse ToRequestResponse(RequestEntity requestEntity)
         {
