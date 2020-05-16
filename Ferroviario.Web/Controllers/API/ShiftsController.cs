@@ -27,6 +27,7 @@ namespace Ferroviario.Web.Controllers.API
         {
             List<ShiftEntity> shifts = await _context.Shifts.
             Include(s => s.Service).
+            ThenInclude(s=>s.ServiceDetail).
             Include(s=> s.User).
             ToListAsync();
             return Ok(_converterHelper.ToShiftResponse(shifts));

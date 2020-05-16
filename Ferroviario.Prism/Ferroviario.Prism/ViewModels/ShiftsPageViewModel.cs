@@ -12,17 +12,20 @@ namespace Ferroviario.Prism.ViewModels
 {
     public class ShiftsPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private List<ShiftResponse> _shifts;
+        private List<ShiftItemViewModel> _shifts;
+        
         public ShiftsPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
             _apiService = apiService;
             Title = "My Shifts";
             LoadShiftsAsync();
 
         }
 
-        public List<ShiftResponse> Shifts
+        public List<ShiftItemViewModel> Shifts
         {
             get => _shifts;
             set => SetProperty(ref _shifts, value);
@@ -45,7 +48,15 @@ namespace Ferroviario.Prism.ViewModels
                 return;
             }
 
-            Shifts = (List<ShiftResponse>)response.Result;
+            List<ShiftResponse> list = (List<ShiftResponse>)response.Result;
+            Shifts = list.Select(t => new ShiftItemViewModel(_navigationService)
+            {
+                Id = t.Id,
+                User = t.User,
+                Service = t.Service,
+                Date = t.Date,                
+            }).ToList();
+
         }
     }
 }

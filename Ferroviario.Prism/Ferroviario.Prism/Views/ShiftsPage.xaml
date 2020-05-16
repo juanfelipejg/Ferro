@@ -68,59 +68,59 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0"
-                   HorizontalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   Text="Date"/>
+            <Label Grid.Column="1"
+                   HorizontalTextAlignment="Start"
                    FontAttributes="Bold"
                    FontSize="Medium"
                    Text="Start"/>
-            <Label Grid.Column="1"
-                   HorizontalTextAlignment="Center"
+            <Label Grid.Column="2"
+                   HorizontalTextAlignment="Start"
                    FontAttributes="Bold"
                    FontSize="Medium"
                    Text="End"/>
-            <Label Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Medium"
-                   Text="Detail"/>
         </Grid>
 
-        <ListView ItemsSource="{Binding Shifts}">
-            <ListView.Header>
-                        <Label FontAttributes="Bold" 
-                               FontSize="Large"
-                               Text="{Binding DateLocal}"/>
-            </ListView.Header> 
-            
+        <ListView ItemsSource="{Binding Shifts}">            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
+                        <Grid>                            
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectShiftCommand}"/>
+                            </Grid.GestureRecognizers>
+
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="2*" />
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0"
+
+                            <Label Text="{Binding DateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                   FontAttributes="Bold"                                    
+                                   VerticalOptions="Center"/>
+                            
+                            <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
                                 <Label Text="{Binding Service.InitialStation}"
                                    FontAttributes="Bold"                                    
                                    VerticalOptions="Center"/>
-                                <Label Text="{Binding Service.InitialHour}"                                                                       
+                                <Label Text="{Binding Service.InitialHour, StringFormat='{0:hh\\:mm}'}"                                                                       
                                    VerticalOptions="Center"/>
                             </StackLayout>
 
-                            <StackLayout Grid.Column="1"
+                            <StackLayout Grid.Column="2"
                                      VerticalOptions="Center">
                                 <Label Text="{Binding Service.FinalStation}"
                                    FontAttributes="Bold"                                    
                                    VerticalOptions="Center"/>
-                                <Label Text="{Binding Service.FinalHour}"                                                                      
+                                <Label Text="{Binding Service.FinalHour, StringFormat='{0:hh\\:mm}'}"                                                                      
                                    VerticalOptions="Center"/>
                             </StackLayout>
-                            
-                            <Image Grid.Column="2" 
-                               Source="ic_more_vert"
-                               VerticalOptions="Center"/>                            
+                          
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
