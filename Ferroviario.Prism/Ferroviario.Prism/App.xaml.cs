@@ -19,15 +19,18 @@ namespace Ferroviario.Prism
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/RequestsPage");
+            await NavigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/RequestsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<RequestsPage, RequestsPageViewModel>();
+            containerRegistry.RegisterForNavigation<RequestsPage, RequestsPageViewModel>();            
+            containerRegistry.RegisterForNavigation<FerroviarioMasterDetailPage, FerroviarioMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<UsersPage, UsersPageViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShiftDetailPage, ShiftDetailPageViewModel>();
         }
     }
 }

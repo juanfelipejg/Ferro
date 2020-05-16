@@ -12,7 +12,7 @@ namespace Ferroviario.Web.Data.Entities
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
-        public DateTime Date => DateTime.Today.AddDays(1).ToUniversalTime();
+        public DateTime Date { get; set; }
 
         public DateTime DateLocal => Date.ToLocalTime();
 

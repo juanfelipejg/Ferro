@@ -6,6 +6,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace Ferroviario.Prism.ViewModels
 {
@@ -18,6 +19,7 @@ namespace Ferroviario.Prism.ViewModels
             _apiService = apiService;
             Title = "My Shifts";
             LoadShiftsAsync();
+
         }
 
         public List<ShiftResponse> Shifts
@@ -26,11 +28,10 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _shifts, value);
         }
 
-
         private async void LoadShiftsAsync()
         {
             string url = App.Current.Resources["UrlAPI"].ToString();
-            Response response = await _apiService.GetListAsync<RequestResponse>(
+            Response response = await _apiService.GetListAsync<ShiftResponse>(
                 url,
                 "/api",
                 "/Shifts");
@@ -48,4 +49,3 @@ namespace Ferroviario.Prism.ViewModels
         }
     }
 }
-
