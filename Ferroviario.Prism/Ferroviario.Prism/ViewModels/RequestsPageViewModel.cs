@@ -1,5 +1,6 @@
 ﻿using Ferroviario.Common.Models;
 using Ferroviario.Common.Services;
+using Ferroviario.Prism.Helpers;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -16,7 +17,7 @@ namespace Ferroviario.Prism.ViewModels
         public RequestsPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _apiService = apiService;
-            Title = "My Requests";
+            Title = Languages.MyRequests;
             LoadRequestsAsync();
         }
 

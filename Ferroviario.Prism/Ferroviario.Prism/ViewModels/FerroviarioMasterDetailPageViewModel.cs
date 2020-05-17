@@ -1,4 +1,5 @@
 ﻿using Ferroviario.Common.Models;
+using Ferroviario.Prism.Helpers;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -29,19 +30,19 @@ namespace Ferroviario.Prism.ViewModels
                 {
                     Icon = "request",
                     PageName = "RequestsPage",
-                    Title = "My Requests"
+                    Title = Languages.MyRequests
                 },
                 new Menu
                 {
                     Icon = "shift",
                     PageName = "ShiftsPage",
-                    Title = "My Shifts"
+                    Title = Languages.MyShifts
                 },
                 new Menu
                 {
                     Icon = "user",
                     PageName = "UsersPage",
-                    Title = "Modify User"
+                    Title = Languages.User
                 }
             };
 

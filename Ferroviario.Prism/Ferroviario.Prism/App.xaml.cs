@@ -20,7 +20,7 @@ namespace Ferroviario.Prism
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/RequestsPage");
+            await NavigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/ShiftsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

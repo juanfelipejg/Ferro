@@ -1,5 +1,6 @@
 ﻿using Ferroviario.Common.Helpers;
 using Ferroviario.Common.Models;
+using Ferroviario.Prism.Helpers;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -20,7 +21,7 @@ namespace Ferroviario.Prism.ViewModels
         public ShiftDetailPageViewModel(INavigationService navigationService, ITransformHelper transformHelper) : base(navigationService)
         {
             _transformHelper = transformHelper;
-            Title = "Shift Detail";
+            Title = Languages.ShiftDetail;
         }
 
         public Service Service
@@ -29,12 +30,6 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _service, value);
         }
 
-
-        /*public ShiftResponse Shift
-        {
-            get => _shift;
-            set => SetProperty(ref _shift, value);
-        }*/
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {

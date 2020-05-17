@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Ferroviario.Prism.Helpers;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -11,7 +12,7 @@ namespace Ferroviario.Prism.ViewModels
     {
         public UsersPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "My account";
+            Title = Languages.User;
         }
     }
 
