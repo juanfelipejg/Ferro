@@ -5,6 +5,7 @@
              xmlns:i18n="clr-namespace:Ferroviario.Prism.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Ferroviario.Prism.Views.RequestsPage"
+             BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
 
     <StackLayout Padding="5">

@@ -7,11 +7,11 @@
 
 
         <MasterDetailPage.Master>
-            <ContentPage Title="Menu">
+        <ContentPage Title="Menu" BackgroundColor="{StaticResource ColorPrimary}">
                 <StackLayout Padding="20">
                     <Image HeightRequest="150"
                        Source="ic_train"/>
-                    <ListView BackgroundColor="Transparent"
+                <ListView BackgroundColor="{StaticResource ColorPrimary}"
                 	      ItemsSource="{Binding Menus}"
                 	      HasUnevenRows="True"
                 	      SeparatorVisibility="None">
@@ -31,11 +31,11 @@
                                            Margin="5"
                                     	   Source="{Binding Icon}"
                                     	   WidthRequest="32"/>
-                                        <Label Grid.Column="1"
-                                           FontAttributes="Bold"
-                                   	       VerticalOptions="Center"
-                                   	       TextColor="Black"
-                                   	       Text="{Binding Title}"/>
+                                        <Label Grid.Column="1"                                           
+                                   	       VerticalOptions="Center"                                   	       
+                                   	       Text="{Binding Title}"
+                                           TextColor="White"
+                                           FontSize="Medium"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
