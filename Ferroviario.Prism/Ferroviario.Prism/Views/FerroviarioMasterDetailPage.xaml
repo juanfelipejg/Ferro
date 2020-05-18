@@ -6,13 +6,13 @@
                   x:Class="Ferroviario.Prism.Views.FerroviarioMasterDetailPage">
 
 
-        <MasterDetailPage.Master>
-        <ContentPage Title="Menu" BackgroundColor="{StaticResource ColorPrimary}">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="{StaticResource ColorBackgroud}">
                 <StackLayout Padding="20">
                     <Image HeightRequest="150"
                        Source="ic_train"/>
-                <ListView BackgroundColor="{StaticResource ColorPrimary}"
-                	      ItemsSource="{Binding Menus}"
+                <ListView BackgroundColor="{StaticResource ColorBackgroud}"
+                          ItemsSource="{Binding Menus}"
                 	      HasUnevenRows="True"
                 	      SeparatorVisibility="None">
                         <ListView.ItemTemplate>
@@ -30,11 +30,12 @@
                                     	   HeightRequest="32"
                                            Margin="5"
                                     	   Source="{Binding Icon}"
+                                           BackgroundColor="{StaticResource ColorPrimary}"
                                     	   WidthRequest="32"/>
                                         <Label Grid.Column="1"                                           
                                    	       VerticalOptions="Center"                                   	       
                                    	       Text="{Binding Title}"
-                                           TextColor="White"
+                                           TextColor="{StaticResource ColorPrimary}"
                                            FontSize="Medium"/>
                                     </Grid>
                                 </ViewCell>

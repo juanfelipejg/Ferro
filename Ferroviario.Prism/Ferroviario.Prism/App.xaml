@@ -11,7 +11,7 @@
             <x:String x:Key="UrlAPI">https://ferroviarioweb1.azurewebsites.net/</x:String>
 
             <!-- Colors -->
-            <Color x:Key="ColorBackgroud">#F2F2F2</Color>
+            <Color x:Key="ColorBackgroud">#FFFFFF</Color>
             <Color x:Key="ColorPrimary">#6E8C03</Color>
             <Color x:Key="ColorSecondary">#90FF69</Color>
             <Color x:Key="ColorDanger">#0D0D0D</Color>
