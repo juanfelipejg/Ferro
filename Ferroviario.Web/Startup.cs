@@ -36,6 +36,12 @@ namespace Ferroviario.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/NotAuthorized";
+                options.AccessDeniedPath = "/Account/NotAuthorized";
+            });
+
             services.AddIdentity<UserEntity, IdentityRole>(cfg =>
             {
                 cfg.User.RequireUniqueEmail = true;
@@ -54,6 +60,7 @@ namespace Ferroviario.Web
 
             
             services.AddTransient<SeedDb>();
+            services.AddScoped<IImageHelper, ImageHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddScoped<IConverterHelper, ConverterHelper>();
@@ -73,6 +80,7 @@ namespace Ferroviario.Web
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();

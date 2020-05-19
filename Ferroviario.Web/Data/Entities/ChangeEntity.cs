@@ -12,17 +12,17 @@ namespace Ferroviario.Web.Data.Entities
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
-        public DateTime Date { get; set; }
+        public DateTime Date => DateTime.Today.AddDays(1).ToUniversalTime();
 
         public DateTime DateLocal => Date.ToLocalTime();
 
         public UserEntity FirstDriver { get; set; }
 
-        public ServiceEntity FirstDriverService { get; set; }
+        public ShiftEntity FirstDriverService { get; set; }
 
         public UserEntity SecondDriver { get; set; }
 
-        public ServiceEntity SecondDriverService { get; set; }
+        public ShiftEntity SecondDriverService { get; set; }
 
     }
 }
