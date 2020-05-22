@@ -15,7 +15,7 @@ namespace Ferroviario.Web.Data.Entities
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd }", ApplyFormatInEditMode = false)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime InitialDate { get; set; }
 
         [DataType(DataType.DateTime)]
@@ -25,7 +25,7 @@ namespace Ferroviario.Web.Data.Entities
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd }", ApplyFormatInEditMode = false)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime FinishDate { get; set; }
 
         [DataType(DataType.DateTime)]

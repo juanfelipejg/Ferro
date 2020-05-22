@@ -18,21 +18,25 @@ namespace Ferroviario.Web.Data.Entities
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
+        [Display(Name = "Initial Hour")]
         public TimeSpan InitialHour { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Initial Station")]
         public string InitialStation { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
+        [Display(Name = "Final Hour")]
         public TimeSpan FinalHour { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
+        [Display(Name = "Final Station")]
         public string FinalStation { get; set; }
 
         public ServiceDetailEntity ServiceDetail { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh\\:mm}")]        
         public TimeSpan Duration => FinalHour - InitialHour;
 
         public ICollection<ShiftEntity> Shifts { get; set; }

@@ -10,10 +10,8 @@ namespace Ferroviario.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public UserEntity User { get; set; }
 
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public ServiceEntity Service { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]

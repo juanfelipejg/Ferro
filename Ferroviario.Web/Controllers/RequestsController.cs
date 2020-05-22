@@ -19,18 +19,24 @@ namespace Ferroviario.Web.Controllers
         private readonly DataContext _context;
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
+        private readonly IUserHelper _userHelper;
 
-        public RequestsController(DataContext context, ICombosHelper combosHelper, IConverterHelper converterHelper)
+        public RequestsController(DataContext context, ICombosHelper combosHelper, IConverterHelper converterHelper,
+            IUserHelper userHelper)
         {
             _context = context;
             _combosHelper = combosHelper;
             _converterHelper = converterHelper;
+            _userHelper = userHelper;
         }
 
         public async Task<IActionResult> Index()
         {
+            UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
             return View(await _context.Requests.
                 Include(r=>r.Type).
+                Include(r=>r.User).
+                Where(r=>r.User == user).
                 ToListAsync());
         }
 
@@ -52,12 +58,15 @@ namespace Ferroviario.Web.Controllers
         }
 
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
             RequestViewModel model = new RequestViewModel
             {
-                Types = _combosHelper.GetComboTypes()
+                Types = _combosHelper.GetComboTypes(),
+                UserId = user.Id
             };
+
             return View(model);
         }
 

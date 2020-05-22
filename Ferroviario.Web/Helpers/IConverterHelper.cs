@@ -20,6 +20,8 @@ namespace Ferroviario.Web.Helpers
 
         Task<ShiftEntity> ToShiftEntityAsync(ShiftViewModel model, bool isNew);
 
+        Task<ShiftEntity> ToShiftEntityAsync(ShiftModel model, bool isNew);
+
         ShiftViewModel ToShiftViewModel(ShiftEntity shiftEntity);
 
         List<ShiftResponse> ToShiftResponse(List<ShiftEntity> shiftEntities);
@@ -35,6 +37,12 @@ namespace Ferroviario.Web.Helpers
         List<ServiceResponse> ToServiceResponse(List<ServiceEntity> serviceEntities);
 
         UserResponse ToUserResponse(UserEntity user);
+
+        Task<ChangeEntity> ToChangeEntityAsync(ChangeViewModel model, bool isNew);
+
+        ChangeViewModel ToChangeViewModel(ChangeEntity changeEntity);
+
+
 
     }
 }

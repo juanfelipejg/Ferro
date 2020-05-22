@@ -37,38 +37,69 @@ namespace Ferroviario.Web.Data
 
         private async Task CheckShiftAsync()
         {
-            DateTime Date = DateTime.Today.AddDays(1).ToUniversalTime();
+            DateTime DateToday = DateTime.Today.ToUniversalTime();
+            DateTime DateTomorrow = DateTime.Today.AddDays(1).ToUniversalTime();
             if (!_context.Shifts.Any())
             {
                 _context.Shifts.Add(new ShiftEntity
                 {
-                    User = _context.Users.FirstOrDefault(u=>u.Document =="2020"),
-                    Service = _context.Services.FirstOrDefault(s=>s.Id == 1),
-                    Date = Date
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2020"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 1),
+                    Date = DateToday
                 });
                 _context.Shifts.Add(new ShiftEntity
                 {
                     User = _context.Users.FirstOrDefault(u => u.Document == "2030"),
                     Service = _context.Services.FirstOrDefault(s => s.Id == 2),
-                    Date = Date
+                    Date = DateToday
                 });
                 _context.Shifts.Add(new ShiftEntity
                 {
                     User = _context.Users.FirstOrDefault(u => u.Document == "2040"),
                     Service = _context.Services.FirstOrDefault(s => s.Id == 3),
-                    Date = Date
+                    Date = DateToday
                 });
                 _context.Shifts.Add(new ShiftEntity
                 {
                     User = _context.Users.FirstOrDefault(u => u.Document == "2050"),
                     Service = _context.Services.FirstOrDefault(s => s.Id == 4),
-                    Date = Date
+                    Date = DateToday
                 });
                 _context.Shifts.Add(new ShiftEntity
                 {
                     User = _context.Users.FirstOrDefault(u => u.Document == "2060"),
                     Service = _context.Services.FirstOrDefault(s => s.Id == 5),
-                    Date = Date
+                    Date = DateToday
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
+                    User = _context.Users.FirstOrDefault(u=>u.Document =="2020"),
+                    Service = _context.Services.FirstOrDefault(s=>s.Id == 1),
+                    Date = DateTomorrow
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2030"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 2),
+                    Date = DateTomorrow
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2040"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 3),
+                    Date = DateTomorrow
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2050"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 4),
+                    Date = DateTomorrow
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2060"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 5),
+                    Date = DateTomorrow
                 });
 
                 await _context.SaveChangesAsync();
@@ -139,10 +170,11 @@ namespace Ferroviario.Web.Data
                 _context.Requests.Add(new RequestEntity
                 {
                     Type = _context.RequestTypes.FirstOrDefault(t => t.Type == "Holidays"),
-                    State = "Aprobado",
                     InitialDate = initialDate,
                     FinishDate = finalDate,
                     Description = "I request holidays, because I have a trip",
+                    State = "Aprobado",
+                    User = _context.Users.FirstOrDefault(u=>u.Email == "juanfelipejg@hotmail.com")
                 });
                 await _context.SaveChangesAsync();
             }
@@ -169,9 +201,9 @@ namespace Ferroviario.Web.Data
                 _context.Services.Add(new ServiceEntity
                 {
                     Name = "930LV",
-                    InitialHour = new TimeSpan(8, 30, 0),
+                    InitialHour = new TimeSpan(12, 30, 0),
                     InitialStation = "Niquia",
-                    FinalHour = new TimeSpan(12, 30, 0),
+                    FinalHour = new TimeSpan(17, 30, 0),
                     FinalStation = "La Estrella",
                     ServiceDetail = (new ServiceDetailEntity
                     {
@@ -183,9 +215,9 @@ namespace Ferroviario.Web.Data
                 _context.Services.Add(new ServiceEntity
                 {
                     Name = "931LV",
-                    InitialHour = new TimeSpan(10, 30, 0),
+                    InitialHour = new TimeSpan(17, 30, 0),
                     InitialStation = "Niquia",
-                    FinalHour = new TimeSpan(14, 30, 0),
+                    FinalHour = new TimeSpan(22, 30, 0),
                     FinalStation = "Niquia",
                     ServiceDetail = (new ServiceDetailEntity
                     {
@@ -197,9 +229,9 @@ namespace Ferroviario.Web.Data
                 _context.Services.Add(new ServiceEntity
                 {
                     Name = "932LV",
-                    InitialHour = new TimeSpan(15, 30, 0),
+                    InitialHour = new TimeSpan(3, 30, 0),
                     InitialStation = "San Antonio",
-                    FinalHour = new TimeSpan(20, 30, 0),
+                    FinalHour = new TimeSpan(8, 30, 0),
                     FinalStation = "La Estrella",
                     ServiceDetail = (new ServiceDetailEntity
                     {
@@ -211,9 +243,9 @@ namespace Ferroviario.Web.Data
                 _context.Services.Add(new ServiceEntity
                 {
                     Name = "933LV",
-                    InitialHour = new TimeSpan(5, 30, 0),
+                    InitialHour = new TimeSpan(6, 30, 0),
                     InitialStation = "San Antonio",
-                    FinalHour = new TimeSpan(9, 30, 0),
+                    FinalHour = new TimeSpan(11, 30, 0),
                     FinalStation = "San Antonio",
                     ServiceDetail = (new ServiceDetailEntity
                     {

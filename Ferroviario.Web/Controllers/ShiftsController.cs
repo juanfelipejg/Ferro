@@ -15,20 +15,24 @@ namespace Ferroviario.Web.Controllers
         private readonly DataContext _context;
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
+        private readonly IUserHelper _userHelper;
 
-        public ShiftsController(DataContext context, ICombosHelper combosHelper, IConverterHelper converterHelper)
+        public ShiftsController(DataContext context, ICombosHelper combosHelper, IConverterHelper converterHelper, IUserHelper userHelper)
         {
             _context = context;
             _combosHelper = combosHelper;
             _converterHelper = converterHelper;
+            _userHelper = userHelper;
         }
 
 
         public async Task<IActionResult> Index()
         {
+            UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
             return View(await _context.ShiftEntity.
                 Include(s => s.User).
-                Include(s => s.Service).ToListAsync());
+                Include(s => s.Service).
+                Where(s=>s.User == user).ToListAsync());
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ferroviario.Web.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Ferroviario.Web.Models
 {
-    public class ChangeViewModel
+    public class ChangeViewModel : ChangeEntity
     {
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        [Display(Name = "First Driver")]
-        public int FirstDriverId { get; set; }
+        public string FirstDriverId { get; set; }
 
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        [Display(Name = "Second Driver")]
-        public int SecondDriverId { get; set; }
+        public int FirstDriverServiceId { get; set; }
 
+        public string SecondDriverId { get; set; }
+
+        public int SecondDriverServiceId { get; set; }        
 
     }
 }

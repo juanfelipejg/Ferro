@@ -1,0 +1,117 @@
+﻿@model Ferroviario.Web.Models.ChangeViewModel
+
+@{
+    ViewData["Title"] = "CreateChange";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Change</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                Driver
+                            </th>
+                            <th>
+                                New Service
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstDriverService.Service.InitialHour)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstDriverService.Service.InitialStation)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstDriverService.Service.FinalHour)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstDriverService.Service.FinalStation)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.SecondDriver.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstDriverService.Service.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstDriverService.Service.InitialHour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstDriverService.Service.InitialStation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstDriverService.Service.FinalHour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstDriverService.Service.FinalStation)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstDriver.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SecondDriverService.Service.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SecondDriverService.Service.InitialHour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SecondDriverService.Service.InitialStation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SecondDriverService.Service.FinalHour)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SecondDriverService.Service.FinalStation)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateChange">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="FirstDriverId" />
+
+            <input type="hidden" asp-for="FirstDriverServiceId" />
+
+            <input type="hidden" asp-for="SecondDriverId" />
+
+            <input type="hidden" asp-for="SecondDriverServiceId" />
+
+            <input type="hidden" asp-for="State" />
+
+            <div class="form-group">
+                <input type="submit" value="Send Change" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+

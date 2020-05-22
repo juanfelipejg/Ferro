@@ -25,11 +25,12 @@ namespace Ferroviario.Web.Helpers
             {
                 Id = isNew ? 0 : model.Id,
                 Type = await _context.RequestTypes.FindAsync(model.Type),
-                InitialDate = model.InitialDate,
-                FinishDate = model.FinishDate,
+                InitialDate = model.InitialDate.ToUniversalTime(),
+                FinishDate = model.FinishDate.ToUniversalTime(),
                 Description = model.Description,
-                State = model.State,
-                Comment = model.Comment
+                State = "Pending",
+                Comment = model.Comment,
+                User = await _context.Users.FindAsync(model.UserId),
             };
         }
 
@@ -48,6 +49,23 @@ namespace Ferroviario.Web.Helpers
             };
         }
 
+        public ChangeViewModel ToChangeViewModel(ChangeEntity changeEntity)
+        {
+            return new ChangeViewModel
+            {
+                Id = changeEntity.Id,                
+                FirstDriver = changeEntity.FirstDriver,
+                FirstDriverId = changeEntity.FirstDriver.Id,
+                FirstDriverService = changeEntity.FirstDriverService,
+                FirstDriverServiceId = changeEntity.FirstDriverService.Id,
+                SecondDriver = changeEntity.SecondDriver,
+                SecondDriverId = changeEntity.SecondDriver.Id,
+                SecondDriverService = changeEntity.SecondDriverService,
+                SecondDriverServiceId= changeEntity.SecondDriverService.Id,
+            };
+
+        }
+
         public async Task<ShiftEntity> ToShiftEntityAsync(ShiftViewModel model, bool isNew)
         {
             return new ShiftEntity
@@ -59,6 +77,8 @@ namespace Ferroviario.Web.Helpers
             };
 
         }
+
+
 
         public ShiftViewModel ToShiftViewModel(ShiftEntity shiftEntity)
         {
@@ -216,6 +236,32 @@ namespace Ferroviario.Web.Helpers
                 PhoneNumber = user.PhoneNumber,
                 PicturePath = user.PicturePath,
                 UserType = user.UserType
+            };
+        }
+
+        public async Task<ChangeEntity> ToChangeEntityAsync(ChangeViewModel model, bool isNew)
+        {
+
+            return new ChangeEntity
+            {
+                Id = model.Id,
+                FirstDriver = await _context.Users.FindAsync(model.FirstDriverId),
+                FirstDriverService = await _context.Shifts.FindAsync(model.FirstDriverServiceId),
+                SecondDriver = await _context.Users.FindAsync(model.SecondDriverId),
+                SecondDriverService = await _context.Shifts.FindAsync(model.SecondDriverServiceId),
+                State = "Pending"              
+            };
+
+        }
+
+        public async Task<ShiftEntity> ToShiftEntityAsync(ShiftModel model, bool isNew)
+        {
+            return new ShiftEntity
+            {
+                Id = model.Id,
+                User = await _context.Users.FindAsync(model.UserId),
+                Service = await _context.Services.FindAsync(model.ServiceId),
+                Date = model.Date
             };
         }
 

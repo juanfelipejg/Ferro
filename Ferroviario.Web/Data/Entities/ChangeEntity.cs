@@ -14,15 +14,23 @@ namespace Ferroviario.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime Date => DateTime.Today.AddDays(1).ToUniversalTime();
 
+        [Display(Name = "Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime DateLocal => Date.ToLocalTime();
 
+        [Display(Name = "Sender Driver")]
         public UserEntity FirstDriver { get; set; }
 
+        [Display(Name = "Service")]
         public ShiftEntity FirstDriverService { get; set; }
 
+        [Display(Name = "Receiver Driver")]
         public UserEntity SecondDriver { get; set; }
 
+        [Display(Name = "Service")]
         public ShiftEntity SecondDriverService { get; set; }
+
+        public string State { get; set; }
 
     }
 }
