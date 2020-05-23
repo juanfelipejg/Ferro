@@ -150,4 +150,34 @@
   <data name="ShiftDetail" xml:space="preserve">
     <value>Detail of shift</value>
   </data>
+<data name="UserAlreadyExists" xml:space="preserve">
+    <value>User already exists.</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="ConfirmEmailSubject" xml:space="preserve">
+    <value>To allow the user, please click on this link:</value>
+  </data>
+  <data name="ConfirmEmailMessage" xml:space="preserve">
+    <value>A Confirmation email was sent. Please confirm your account and log into the App.</value>
+  </data>
+  <data name="UserDoesntExists" xml:space="preserve">
+    <value>User doesn't exists.</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value> Recover Password</value>
+  </data>
+  <data name="RecoverPasswordSubject" xml:space="preserve">
+    <value>To reset the password click in this link:</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>An email with instructions to change the password was sent.</value>
+  </data>
+  <data name="IncorrectCurrentPassword" xml:space="preserve">
+    <value>Incorrect current password.</value>
+  </data>
+  <data name="PasswordChangedSuccess" xml:space="preserve">
+    <value>The password was changed successfully!</value>
+  </data>
 </root>

@@ -1,6 +1,8 @@
 ﻿using Ferroviario.Web.Data;
 using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -9,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace Ferroviario.Web.Controllers.API
 {
-    [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
+    [Route("api/[controller]")]
     public class ShiftsController : ControllerBase
     {
         private readonly DataContext _context;

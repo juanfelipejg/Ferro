@@ -14,10 +14,10 @@ namespace Ferroviario.Common.Models
 
         public UserResponse FirstDriver { get; set; }
 
-        public ServiceResponse FirstDriverService { get; set; }
+        public ShiftResponse FirstDriverService { get; set; }
 
         public UserResponse SecondDriver { get; set; }
 
-        public ServiceResponse SecondDriverService { get; set; }
+        public ShiftResponse SecondDriverService { get; set; }
     }
 }

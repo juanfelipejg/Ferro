@@ -150,4 +150,34 @@
   <data name="ShiftDetail" xml:space="preserve">
     <value>Detalhe do turno</value>
   </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>O usuário já existe.</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Confirmar email</value>
+  </data>
+  <data name="ConfirmEmailSubject" xml:space="preserve">
+    <value>Para permitir ao usuário, clique neste link</value>
+  </data>
+  <data name="ConfirmEmailMessage" xml:space="preserve">
+    <value>Um email de confirmação foi enviado. Por favor, confirme sua conta e faça o login na App.!</value>
+  </data>
+  <data name="UserDoesntExists" xml:space="preserve">
+    <value>O usuário não existe</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>Recuperar Senha</value>
+  </data>
+  <data name="RecoverPasswordSubject" xml:space="preserve">
+    <value>Para redefinir a senha, clique neste link :!</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>Um email com instruções para alterar a senha foi enviado.</value>
+  </data>
+  <data name="IncorrectCurrentPassword" xml:space="preserve">
+    <value>Senha atual incorreta</value>
+  </data>
+  <data name="PasswordChangedSuccess" xml:space="preserve">
+    <value>A senha foi alterada com êxito.</value>
+  </data>
 </root>

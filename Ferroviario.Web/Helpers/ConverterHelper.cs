@@ -265,6 +265,17 @@ namespace Ferroviario.Web.Helpers
             };
         }
 
+        public ChangeResponse ToChangeResponse(ChangeEntity changeEntity)
+        {
+            return new ChangeResponse
+            {
+                Id = changeEntity.Id,
+                FirstDriver = ToUserResponse(changeEntity.FirstDriver),
+                FirstDriverService = ToShiftResponse(changeEntity.FirstDriverService),
+                SecondDriver = ToUserResponse(changeEntity.SecondDriver),
+                SecondDriverService = ToShiftResponse(changeEntity.SecondDriverService)
+            };
+        }
 
     }
 }

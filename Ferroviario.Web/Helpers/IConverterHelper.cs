@@ -42,6 +42,7 @@ namespace Ferroviario.Web.Helpers
 
         ChangeViewModel ToChangeViewModel(ChangeEntity changeEntity);
 
+        ChangeResponse ToChangeResponse(ChangeEntity changeEntity);       
 
 
     }

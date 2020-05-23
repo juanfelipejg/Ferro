@@ -150,4 +150,34 @@
   <data name="ShiftDetail" xml:space="preserve">
     <value>Dettaglio del turno</value>
   </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>L'utente esiste già.</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Conferma posta elettronica</value>
+  </data>
+  <data name="ConfirmEmailSubject" xml:space="preserve">
+    <value>Consenti all'utente, fai clic su questo link</value>
+  </data>
+  <data name="ConfirmEmailMessage" xml:space="preserve">
+    <value>È stata inviata un'e-mail di conferma, si prega di confermare il proprio account e accedere all'App</value>
+  </data>
+  <data name="UserDoesntExists" xml:space="preserve">
+    <value>l'utente non esiste</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>Recupera password</value>
+  </data>
+  <data name="RecoverPasswordSubject" xml:space="preserve">
+    <value>Per reimpostare la password clicca in questo link :!</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>È stata inviata un'e-mail con le istruzioni per modificare la password</value>
+  </data>
+  <data name="IncorrectCurrentPassword" xml:space="preserve">
+    <value>Password corrente errata</value>
+  </data>
+  <data name="PasswordChangedSuccess" xml:space="preserve">
+    <value>Modifica password completata.</value>
+  </data>
 </root>

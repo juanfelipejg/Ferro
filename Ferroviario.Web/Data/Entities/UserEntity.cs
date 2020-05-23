@@ -42,12 +42,5 @@ namespace Ferroviario.Web.Data.Entities
         public List<ShiftEntity> Services { get; set; }
 
         public ICollection<ShiftEntity> Shifts { get; set; }
-
-        //public ICollection<ChangeEntity> ChangesSent { get; set; }
-
-        //public ICollection<ChangeEntity> ChangesReceive { get; set; }
-
-        // public ICollection<ChangeEntity> Changes { get; set; }
-
     }
 }
