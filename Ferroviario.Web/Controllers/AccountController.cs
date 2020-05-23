@@ -300,5 +300,30 @@ namespace Ferroviario.Web.Controllers
             return View(model);
         }
 
+        public IActionResult ChangePasswordMVC()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePasswordMVC(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
+                IdentityResult result = await _userHelper.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ChangeUser");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault().Description);
+                }
+            }
+
+            return View(model);
+        }
+
     }
 }
