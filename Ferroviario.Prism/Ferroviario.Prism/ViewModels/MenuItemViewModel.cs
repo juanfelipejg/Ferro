@@ -1,4 +1,5 @@
-﻿using Ferroviario.Common.Models;
+﻿using Ferroviario.Common.Helpers;
+using Ferroviario.Common.Models;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -21,6 +22,12 @@ namespace Ferroviario.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
+            if (PageName == "LoginPage" && Settings.IsLogin)
+            {
+                Settings.IsLogin = false;
+                Settings.User = null;
+                Settings.Token = null;
+            }
             await _navigationService.NavigateAsync($"/FerroviarioMasterDetailPage/NavigationPage/{PageName}");
         }
     }

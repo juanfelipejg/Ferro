@@ -1,5 +1,7 @@
-﻿using Ferroviario.Common.Models;
+﻿using Ferroviario.Common.Helpers;
+using Ferroviario.Common.Models;
 using Ferroviario.Prism.Helpers;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -13,14 +15,31 @@ namespace Ferroviario.Prism.ViewModels
         public class FerroviarioMasterDetailPageViewModel : ViewModelBase
         {
             private readonly INavigationService _navigationService;
+            private UserResponse _user;
 
             public FerroviarioMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
             {
                 _navigationService = navigationService;
-                LoadMenus();
+                 LoadUser();
+                 LoadMenus();
             }
 
-            public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+        public UserResponse User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        private void LoadUser()
+        {
+            if (Settings.IsLogin)
+            {
+                User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            }
+        }
+
+
+        public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
             private void LoadMenus()
             {
@@ -43,7 +62,14 @@ namespace Ferroviario.Prism.ViewModels
                     Icon = "user",
                     PageName = "UsersPage",
                     Title = Languages.User
+                },
+                new Menu
+                {
+                 Icon = "login",
+                 PageName = "LoginPage",
+                 Title = Settings.IsLogin ? Languages.Logout : Languages.Login
                 }
+
             };
 
                 Menus = new ObservableCollection<MenuItemViewModel>(

@@ -5,6 +5,7 @@ using Ferroviario.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,10 +30,26 @@ namespace Ferroviario.Web.Controllers
         public async Task<IActionResult> Index()
         {
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
-            return View(await _context.ShiftEntity.
+
+            List<ShiftEntity> ShiftEntities = new List<ShiftEntity>();
+
+            if (user.UserType.ToString() == "Admin")
+            {
+                ShiftEntities = await _context.ShiftEntity.
                 Include(s => s.User).
-                Include(s => s.Service).
-                Where(s=>s.User == user).ToListAsync());
+                Include(s => s.Service).ToListAsync();
+            }
+            else
+            {
+                ShiftEntities = await _context.ShiftEntity.
+                    Include(s => s.User).
+                    Include(s => s.Service).
+                    Where(s => s.User == user).ToListAsync();
+            }
+
+
+
+            return View(ShiftEntities);
         }
 
 

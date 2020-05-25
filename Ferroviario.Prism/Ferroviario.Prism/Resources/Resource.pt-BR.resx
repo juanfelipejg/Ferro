@@ -180,4 +180,34 @@
   <data name="PasswordChangedSuccess" xml:space="preserve">
     <value>A senha foi alterada com êxito.</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Insira seu e-mail</value>
+  </data>
+  <data name="EmailError" xml:space="preserve">
+    <value>Você precisa inserir o seu endereço de email.</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="PasswordPlaceHolder" xml:space="preserve">
+    <value>Digite sua senha</value>
+  </data>
+  <data name="PasswordError" xml:space="preserve">
+    <value>Insira uma senha.</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrar</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Conecte-se</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Usuário ou senha incorreta!</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Fazer logoff</value>
+  </data>
 </root>
