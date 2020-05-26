@@ -300,4 +300,34 @@
   <data name="UserUpdated" xml:space="preserve">
     <value>Usuário atualizado</value>
   </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirmar Nova Senha</value>
+  </data>
+  <data name="ConfirmNewPasswordError" xml:space="preserve">
+    <value>Você deve digitar uma senha.</value>
+  </data>
+  <data name="ConfirmNewPasswordError2" xml:space="preserve">
+    <value>Sua nova senha não corresponde!</value>
+  </data>
+  <data name="ConfirmNewPasswordPlaceHolder" xml:space="preserve">
+    <value>DIGITE A SENHA&amp;#x0D;</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Senha atual</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>Você deve inserir a senha atual!</value>
+  </data>
+  <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
+    <value>Insira sua senha atual.</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nova senha</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>Você deve digitar a senha.</value>
+  </data>
+  <data name="NewPasswordPlaceHolder" xml:space="preserve">
+    <value>Inserir a nova senha</value>
+  </data>
 </root>

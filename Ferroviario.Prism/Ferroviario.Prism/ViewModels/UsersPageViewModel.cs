@@ -2,6 +2,7 @@
 using Ferroviario.Common.Models;
 using Ferroviario.Common.Services;
 using Ferroviario.Prism.Helpers;
+using Ferroviario.Prism.Views;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -28,6 +29,7 @@ namespace Ferroviario.Prism.ViewModels
         private MediaFile _file;
         private DelegateCommand _changeImageCommand;
         private DelegateCommand _saveCommand;
+        private DelegateCommand _changePasswordCommand;
 
         public UserPageViewModel(INavigationService navigationService, IFilesHelper filesHelper, IApiService apiService)
             : base(navigationService)
@@ -44,6 +46,8 @@ namespace Ferroviario.Prism.ViewModels
         public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(SaveAsync));
+
+        public DelegateCommand ChangePasswordCommand => _changePasswordCommand ?? (_changePasswordCommand = new DelegateCommand(ChangePasswordAsync));
 
         public ImageSource Image
         {
@@ -198,7 +202,12 @@ namespace Ferroviario.Prism.ViewModels
                 });
             }
         }
-        
+
+        private async void ChangePasswordAsync()
+        {
+            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
+        }
+
     }
 
 }
