@@ -62,6 +62,47 @@ namespace Ferroviario.Prism.Helpers
 
         public static string Logout => Resource.Logout;
 
+        public static string DocumentError => Resource.DocumentError;
+
+        public static string FirstNameError => Resource.FirstNameError;
+
+        public static string LastNameError => Resource.LastNameError;
+
+        public static string Address => Resource.Address;
+
+        public static string AddressError => Resource.AddressError;
+
+        public static string AddressPlaceHolder => Resource.AddressPlaceHolder;
+
+        public static string Phone => Resource.Phone;
+
+        public static string PhoneError => Resource.PhoneError;
+
+        public static string PhonePlaceHolder => Resource.PhonePlaceHolder;
+
+        public static string PasswordConfirm => Resource.PasswordConfirm;
+
+        public static string PasswordConfirmError1 => Resource.PasswordConfirmError1;
+
+        public static string PasswordConfirmError2 => Resource.PasswordConfirmError2;
+
+        public static string PasswordConfirmPlaceHolder => Resource.PasswordConfirmPlaceHolder;
+
+        public static string Ok => Resource.ok;
+
+        public static string PictureSource => Resource.PictureSource;
+
+        public static string Cancel => Resource.Cancel;
+
+        public static string FromCamera => Resource.FromCamera;
+
+        public static string FromGallery => Resource.FromGallery;
+
+        public static string PasswordRecover => Resource.PasswordRecover;
+
+        public static string ForgotPassword => Resource.ForgotPassword;
+
+
     }
 
 }

@@ -9,6 +9,7 @@
 
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">https://ferroviarioweb2020.azurewebsites.net/</x:String>
+            <x:String x:Key="UrlNoImage">https://ferroviarioweb2020.azurewebsites.net/images/noimage.png</x:String>
 
             <!-- Colors -->
             <Color x:Key="ColorBackgroud">#FFFFFF</Color>
@@ -31,13 +32,21 @@
                 <Setter Property="TextColor" Value="{StaticResource ColorFont}" />
             </Style>
 
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorBackgroud}" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
             <Style x:Key="SecondaryButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource ColorSecondary}" />
             </Style>
 
             <Style x:Key="DangerButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource ColorDanger}" />
-                <Setter Property="TextColor" Value="{StaticResource ColorFont}" />
+                <Setter Property="TextColor" Value="{StaticResource ColorBackgroud}" />
             </Style>
 
 

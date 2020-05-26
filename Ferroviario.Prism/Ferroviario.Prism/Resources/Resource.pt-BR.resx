@@ -210,4 +210,82 @@
   <data name="Logout" xml:space="preserve">
     <value>Fazer logoff</value>
   </data>
+  <data name="Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="DocumentPlaceHolder" xml:space="preserve">
+    <value>Digite o número do seu documento ...!</value>
+  </data>
+  <data name="DocumentError" xml:space="preserve">
+    <value>Você deve inserir um documento.</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="FirstNamePlaceHolder" xml:space="preserve">
+    <value>Insira seu nome</value>
+  </data>
+  <data name="FirstNameError" xml:space="preserve">
+    <value>- Digite um nome</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Sobrenome</value>
+  </data>
+  <data name="LastNamePlaceHolder" xml:space="preserve">
+    <value>Insira seu sobrenome</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>- Digite um sobrenome</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="AddressPlaceHolder" xml:space="preserve">
+    <value>Digite seu endereço</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>Você deve digitar um endereço</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefone</value>
+  </data>
+  <data name="PhoneError" xml:space="preserve">
+    <value>Coloque aqui seu telefone</value>
+  </data>
+  <data name="PhonePlaceHolder" xml:space="preserve">
+    <value>Você deve inserir um telefone.!</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Confirmar senha</value>
+  </data>
+  <data name="PasswordConfirmError1" xml:space="preserve">
+    <value>Você deve digitar uma senha.</value>
+  </data>
+  <data name="PasswordConfirmError2" xml:space="preserve">
+    <value>A nova senha e senha de confirmação não coincidem.</value>
+  </data>
+  <data name="PasswordConfirmPlaceHolder" xml:space="preserve">
+    <value>Digite a senha confirmar ...!</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>Onde você quer tirar a foto!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>Da Camera</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>Da Galeria</value>
+  </data>
+  <data name="PasswordRecover" xml:space="preserve">
+    <value>Recuperar senha</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Você esqueceu a senha ?</value>
+  </data>
 </root>

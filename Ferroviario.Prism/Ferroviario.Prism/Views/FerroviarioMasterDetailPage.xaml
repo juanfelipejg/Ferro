@@ -2,6 +2,7 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="http://prismlibrary.com"
+                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="Ferroviario.Prism.Views.FerroviarioMasterDetailPage">
 
@@ -9,8 +10,14 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" BackgroundColor="{StaticResource ColorBackgroud}">
                 <StackLayout Padding="20">
-                    <Image HeightRequest="150"
-                       Source="ic_train"/>
+                <ffimageloading:CachedImage Grid.Column="0"
+                                                        Aspect="AspectFit"
+                                                        Source="{Binding User.PictureFullPath}" 
+                                                        CacheDuration= "50"
+                                                        Margin="5"
+                                                        RetryCount= "3"
+                                                        RetryDelay= "600"
+                                                        WidthRequest="100"/>
                 <Label FontAttributes="Bold"
                        FontSize="Large"
                        Text="{Binding User.FullName}"

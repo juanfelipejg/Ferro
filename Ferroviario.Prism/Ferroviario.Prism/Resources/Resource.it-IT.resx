@@ -210,4 +210,82 @@
   <data name="Logout" xml:space="preserve">
     <value>Disconnetti</value>
   </data>
+  <data name="Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="DocumentPlaceHolder" xml:space="preserve">
+    <value>Inserisci il numero del tuo documento ...!</value>
+  </data>
+  <data name="DocumentError" xml:space="preserve">
+    <value>Devi inserire un documento.!</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="FirstNamePlaceHolder" xml:space="preserve">
+    <value>Immetti il tuo nome.</value>
+  </data>
+  <data name="FirstNameError" xml:space="preserve">
+    <value>- Immettere un nome</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Cognome</value>
+  </data>
+  <data name="LastNamePlaceHolder" xml:space="preserve">
+    <value>Immetti il tuo cognome.</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>- Immettere un cognome</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Indirizzo</value>
+  </data>
+  <data name="AddressPlaceHolder" xml:space="preserve">
+    <value>Inserisci il tuo indirizzo</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>Puoi inserire un indirizzo</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="PhoneError" xml:space="preserve">
+    <value>Inserisci il tuo numero di telefono</value>
+  </data>
+  <data name="PhonePlaceHolder" xml:space="preserve">
+    <value>Devi inserire un telefono.!</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Conferma password</value>
+  </data>
+  <data name="PasswordConfirmError1" xml:space="preserve">
+    <value>È necessario inserire una password di conferma.!</value>
+  </data>
+  <data name="PasswordConfirmError2" xml:space="preserve">
+    <value>Le password immesse non corrispondono.</value>
+  </data>
+  <data name="PasswordConfirmPlaceHolder" xml:space="preserve">
+    <value>Inserisci la password conferma ...!</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>Dove vuoi scattare la foto!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>Da fotocamera</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>Da raccolta</value>
+  </data>
+  <data name="PasswordRecover" xml:space="preserve">
+    <value>Recupera password</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>¿Hai dimenticato la password ?</value>
+  </data>
 </root>

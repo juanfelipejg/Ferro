@@ -15,6 +15,7 @@
             <Image HeightRequest="150"
                    Margin="0,20,0,0"
                    Source="ic_train"/>
+            <StackLayout VerticalOptions="CenterAndExpand">
             <Grid Margin="20" 
                   VerticalOptions="CenterAndExpand">
                 <Grid.ColumnDefinitions>
@@ -44,6 +45,16 @@
                        Placeholder="{i18n:Translate PasswordPlaceHolder}"
                        Text="{Binding Password}"/>
             </Grid>
+                <Label FontAttributes="Bold"
+                       HorizontalOptions="Center" 
+                       Text="{i18n:Translate ForgotPassword}"
+                       TextColor="{StaticResource ColorAccent}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
             <StackLayout>
                 <Button Command="{Binding LoginCommand}" 
                         IsEnabled="{Binding IsEnabled}"

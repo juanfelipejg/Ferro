@@ -2,6 +2,7 @@
 using Ferroviario.Common.Models;
 using Ferroviario.Common.Services;
 using Ferroviario.Prism.Helpers;
+using Ferroviario.Prism.Views;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -19,6 +20,7 @@ namespace Ferroviario.Prism.ViewModels
         private string _password;
         private DelegateCommand _loginCommand;
         private DelegateCommand _registerCommand;
+        private DelegateCommand _forgotPasswordCommand;
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
 
@@ -34,6 +36,8 @@ namespace Ferroviario.Prism.ViewModels
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(RegisterAsync));
+
+        public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPasswordAsync));
 
         public bool IsRunning
         {
@@ -54,6 +58,7 @@ namespace Ferroviario.Prism.ViewModels
             get => _password;
             set => SetProperty(ref _password, value);
         }
+
 
         private async void LoginAsync()
         {
@@ -127,9 +132,15 @@ namespace Ferroviario.Prism.ViewModels
 
         }
 
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            await _navigationService.NavigateAsync(nameof(RegisterPage));
         }
+        private async void ForgotPasswordAsync()
+        {
+            await _navigationService.NavigateAsync(nameof(RememberPasswordPage));
+        }
+
     }
 
 }

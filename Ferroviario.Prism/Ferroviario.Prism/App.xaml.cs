@@ -27,6 +27,8 @@ namespace Ferroviario.Prism
         {
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.Register<ITransformHelper, TransformHelper>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RequestsPage, RequestsPageViewModel>();            
             containerRegistry.RegisterForNavigation<FerroviarioMasterDetailPage, FerroviarioMasterDetailPageViewModel>();
@@ -34,6 +36,8 @@ namespace Ferroviario.Prism
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsPageViewModel>();
             containerRegistry.RegisterForNavigation<ShiftDetailPage, ShiftDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
+            containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
         }
     }
 }

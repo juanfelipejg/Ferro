@@ -29,5 +29,9 @@ namespace Ferroviario.Common.Models
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
+        public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
+        ? "https://ferroviarioweb2020.azurewebsites.net//images/noimage.png"
+        :  $"https://ferroviarioweb2020.azurewebsites.net{PicturePath.Substring(1)}";
+
     }
 }
