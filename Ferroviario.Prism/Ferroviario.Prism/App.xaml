@@ -24,7 +24,7 @@
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource ColorAccent}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                <Setter Property="TextColor" Value="{StaticResource ColorFontInverse}" />
+                <Setter Property="TextColor" Value="{StaticResource ColorBackgroud}" />
                 <Setter Property="CornerRadius" Value="10" />
             </Style>
 

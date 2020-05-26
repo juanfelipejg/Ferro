@@ -32,7 +32,7 @@ namespace Ferroviario.Prism
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<RequestsPage, RequestsPageViewModel>();            
             containerRegistry.RegisterForNavigation<FerroviarioMasterDetailPage, FerroviarioMasterDetailPageViewModel>();
-            containerRegistry.RegisterForNavigation<UsersPage, UsersPageViewModel>();
+            containerRegistry.RegisterForNavigation<UsersPage, UserPageViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsPageViewModel>();
             containerRegistry.RegisterForNavigation<ShiftDetailPage, ShiftDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();

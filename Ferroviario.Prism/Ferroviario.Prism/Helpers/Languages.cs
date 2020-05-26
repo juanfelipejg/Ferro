@@ -102,6 +102,13 @@ namespace Ferroviario.Prism.Helpers
 
         public static string ForgotPassword => Resource.ForgotPassword;
 
+        public static string Save => Resource.Save;
+
+        public static string ChangePassword => Resource.ChangePassword;
+
+        public static string ModifyUser => Resource.ModifyUser;
+
+        public static string UserUpdated => Resource.UserUpdated;
 
     }
 

@@ -291,4 +291,16 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>¿Olvidó su contraseña?</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modificar Usuario</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>Usuario actualizado</value>
+  </data>
 </root>

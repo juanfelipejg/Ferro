@@ -3,6 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="http://prismlibrary.com"
                   xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                  xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="Ferroviario.Prism.Views.FerroviarioMasterDetailPage">
 
@@ -10,7 +11,12 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" BackgroundColor="{StaticResource ColorBackgroud}">
                 <StackLayout Padding="20">
-                <ffimageloading:CachedImage Grid.Column="0"
+                    
+                <RelativeLayout>
+                    <RelativeLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ModifyUserCommand}"/>
+                    </RelativeLayout.GestureRecognizers>
+                    <ffimageloading:CachedImage Grid.Column="0"
                                                         Aspect="AspectFit"
                                                         Source="{Binding User.PictureFullPath}" 
                                                         CacheDuration= "50"
@@ -18,10 +24,16 @@
                                                         RetryCount= "3"
                                                         RetryDelay= "600"
                                                         WidthRequest="100"/>
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                    </ffimageloading:CachedImage.Transformations>
+
+                </RelativeLayout>
                 <Label FontAttributes="Bold"
                        FontSize="Large"
                        Text="{Binding User.FullName}"
                        TextColor="Black"/>
+
                 <ListView BackgroundColor="{StaticResource ColorBackgroud}"
                           ItemsSource="{Binding Menus}"
                 	      HasUnevenRows="True"

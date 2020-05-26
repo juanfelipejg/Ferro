@@ -1,29 +1,34 @@
 ﻿using Ferroviario.Common.Helpers;
 using Ferroviario.Common.Models;
+using Ferroviario.Common.Services;
 using Ferroviario.Prism.Helpers;
+using Ferroviario.Prism.Views;
 using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Ferroviario.Prism.ViewModels
 {
-        public class FerroviarioMasterDetailPageViewModel : ViewModelBase
+    public class FerroviarioMasterDetailPageViewModel : ViewModelBase
+    {
+        private readonly INavigationService _navigationService;
+        private readonly IApiService _apiService;
+        private static FerroviarioMasterDetailPageViewModel _instance;
+        private DelegateCommand _modifyUserCommand;
+        private UserResponse _user;
+
+        public FerroviarioMasterDetailPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
-            private readonly INavigationService _navigationService;
-            private UserResponse _user;
-
-            public FerroviarioMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
-            {
-                _navigationService = navigationService;
-                 LoadUser();
-                 LoadMenus();
-            }
-
+            _instance = this;
+            _apiService = apiService;
+            _navigationService = navigationService;
+            LoadUser();
+            LoadMenus();
+        }
+        public DelegateCommand ModifyUserCommand => _modifyUserCommand ?? (_modifyUserCommand = new DelegateCommand(ModifyUserAsync));
         public UserResponse User
         {
             get => _user;
@@ -38,12 +43,40 @@ namespace Ferroviario.Prism.ViewModels
             }
         }
 
-
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
-            private void LoadMenus()
+        public static FerroviarioMasterDetailPageViewModel GetInstance()
+        {
+            return _instance;
+        }
+
+        public async void ReloadUser()
+        {
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            bool connection = await _apiService.CheckConnectionAsync(url);
+            if (!connection)
             {
-                List<Menu> menus = new List<Menu>
+                return;
+            }
+
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            EmailRequest emailRequest = new EmailRequest
+            {
+                CultureInfo = Languages.Culture,
+                Email = user.Email
+            };
+
+            Response response = await _apiService.GetUserByEmail(url, "api", "/Account/GetUserByEmail", "bearer", token.Token, emailRequest);
+            UserResponse userResponse = (UserResponse)response.Result;
+            Settings.User = JsonConvert.SerializeObject(userResponse);
+            LoadUser();
+        }
+
+
+        private void LoadMenus()
+        {
+            List<Menu> menus = new List<Menu>
             {
                 new Menu
                 {
@@ -72,15 +105,20 @@ namespace Ferroviario.Prism.ViewModels
 
             };
 
-                Menus = new ObservableCollection<MenuItemViewModel>(
-                    menus.Select(m => new MenuItemViewModel(_navigationService)
-                    {
-                        Icon = m.Icon,
-                        PageName = m.PageName,
-                        Title = m.Title
-                    }).ToList());
-            }
+            Menus = new ObservableCollection<MenuItemViewModel>(
+                menus.Select(m => new MenuItemViewModel(_navigationService)
+                {
+                    Icon = m.Icon,
+                    PageName = m.PageName,
+                    Title = m.Title
+                }).ToList());
         }
 
+        private async void ModifyUserAsync()
+        {
+            await _navigationService.NavigateAsync($"/FerroviarioMasterDetailPage/NavigationPage/{nameof(UsersPage)}");
+        }
     }
+
+}
 

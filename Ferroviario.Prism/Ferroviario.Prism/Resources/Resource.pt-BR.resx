@@ -288,4 +288,16 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>Você esqueceu a senha ?</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Alterar Senha</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modificar usuário</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>Usuário atualizado</value>
+  </data>
 </root>
