@@ -273,7 +273,8 @@ namespace Ferroviario.Web.Helpers
                 FirstDriver = ToUserResponse(changeEntity.FirstDriver),
                 FirstDriverService = ToShiftResponse(changeEntity.FirstDriverService),
                 SecondDriver = ToUserResponse(changeEntity.SecondDriver),
-                SecondDriverService = ToShiftResponse(changeEntity.SecondDriverService)
+                SecondDriverService = ToShiftResponse(changeEntity.SecondDriverService),
+                State = changeEntity.State
             };
         }
 

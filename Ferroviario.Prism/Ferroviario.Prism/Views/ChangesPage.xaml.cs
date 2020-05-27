@@ -2,7 +2,7 @@
 
 namespace Ferroviario.Prism.Views
 {
-    public partial class ChangesPage : TabbedPage
+    public partial class ChangesPage : ContentPage
     {
         public ChangesPage()
         {

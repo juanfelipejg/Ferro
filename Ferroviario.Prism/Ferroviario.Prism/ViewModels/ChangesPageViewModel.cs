@@ -1,4 +1,9 @@
-﻿using Prism.Commands;
+﻿using Ferroviario.Common.Helpers;
+using Ferroviario.Common.Models;
+using Ferroviario.Common.Services;
+using Ferroviario.Prism.Helpers;
+using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -9,10 +14,60 @@ namespace Ferroviario.Prism.ViewModels
 {
     public class ChangesPageViewModel : ViewModelBase
     {
-        public ChangesPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        private readonly INavigationService _navigationService;
+        private readonly IApiService _apiService;
+        private List<ChangeResponse> _changes;
+        private bool _isRunning;
+        public ChangesPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
-            Title = "Changes";
+            _navigationService = navigationService;
+            _apiService = apiService;
+            Title = Languages.Changes;
+            LoadChangesAsync();
+        }
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
+        }
+
+        public List<ChangeResponse> Changes
+        {
+            get => _changes;
+            set => SetProperty(ref _changes, value);
+        }
+
+        private async void LoadChangesAsync()
+        {
+            IsRunning = true;
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            var connection = await _apiService.CheckConnectionAsync(url);
+            if (!connection)
+            {
+                IsRunning = false;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
+                return;
+            }
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+
+            var request = new ChangesForUserRequest
+            {
+                UserId = new Guid(user.Id),
+                CultureInfo = Languages.Culture
+            };
+
+            Response response = await _apiService.GetChangesForUserAsync(url, "/api", "/Changes/GetChangesForUser", request, "bearer", token.Token);
+            IsRunning = false;
+
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+
+            Changes = (List<ChangeResponse>)response.Result;
+
         }
     }
 

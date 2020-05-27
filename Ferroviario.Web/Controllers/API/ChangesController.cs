@@ -42,6 +42,14 @@ namespace Ferroviario.Web.Controllers.API
             CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
             Resource.Culture = cultureInfo;
 
+            UserEntity userEntity = await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == request.UserId.ToString());
+
+            if (userEntity == null)
+            {
+                return BadRequest(Resource.UserDoesntExists);
+            }
+
             List<ChangeEntity> changeEntitys = await _context.Changes
                 .Include(c => c.FirstDriver)
                 .Include(c => c.FirstDriverService)
@@ -54,12 +62,8 @@ namespace Ferroviario.Web.Controllers.API
                 .Where(c => c.FirstDriver.Id == request.UserId.ToString() || c.SecondDriver.Id == request.UserId.ToString())
                 .ToListAsync();
 
-            if (changeEntitys == null)
-            {
-                return BadRequest(Resource.UserDoesntExists);
-            }
-
             List<ChangeResponse> changeResponses = new List<ChangeResponse>();
+
             foreach (ChangeEntity changeEntity in changeEntitys)
             {
                 changeResponses.Add(_converterHelper.ToChangeResponse(changeEntity));

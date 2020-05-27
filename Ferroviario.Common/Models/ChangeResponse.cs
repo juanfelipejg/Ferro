@@ -19,5 +19,7 @@ namespace Ferroviario.Common.Models
         public UserResponse SecondDriver { get; set; }
 
         public ShiftResponse SecondDriverService { get; set; }
+
+        public string State { get; set; }
     }
 }
