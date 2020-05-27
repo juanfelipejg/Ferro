@@ -14,11 +14,13 @@ namespace Ferroviario.Prism.ViewModels
 {
     public class RequestsPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private List<RequestResponse> _requests;
+        private List<RequestItemViewModel> _requests;        
         private bool _isRunning;
         public RequestsPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
             _apiService = apiService;
             Title = Languages.MyRequests;
             LoadRequestsAsync();
@@ -30,7 +32,7 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _isRunning, value);
         }
 
-        public List<RequestResponse> Requests
+        public List<RequestItemViewModel> Requests
         {
             get => _requests;
             set => SetProperty(ref _requests, value);
@@ -64,7 +66,20 @@ namespace Ferroviario.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
-            Requests = (List<RequestResponse>)response.Result;
+            
+            List<RequestResponse> list = (List<RequestResponse>)response.Result;
+            Requests = list.Select(t => new RequestItemViewModel(_navigationService)
+            {
+                Id = t.Id,
+                Type = t.Type,
+                InitialDate = t.InitialDate,
+                FinishDate = t.FinishDate,
+                Description = t.Description,
+                State = t.State,
+                Comment = t.Comment,
+                User = t.User
+            }).ToList();
+
         }
     }
 

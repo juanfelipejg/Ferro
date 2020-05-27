@@ -9,11 +9,12 @@
              Title="{Binding Title}">
 
     <StackLayout Padding="5">
-        <Grid>
+        <Grid BackgroundColor="{StaticResource ColorAccent}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -22,17 +23,26 @@
                    HorizontalTextAlignment="Start"
                    FontAttributes="Bold"
                    FontSize="Medium"
-                   Text="Date"/>
+                   Text="Date"
+                   TextColor="{StaticResource ColorBackgroud}"/>
             <Label Grid.Column="1"
                    HorizontalTextAlignment="Start"
                    FontAttributes="Bold"
                    FontSize="Medium"
-                   Text="Start"/>
+                   Text="Service"
+                   TextColor="{StaticResource ColorBackgroud}"/>
             <Label Grid.Column="2"
                    HorizontalTextAlignment="Start"
                    FontAttributes="Bold"
                    FontSize="Medium"
-                   Text="End"/>
+                   Text="Start"
+                   TextColor="{StaticResource ColorBackgroud}"/>
+            <Label Grid.Column="3"
+                   HorizontalTextAlignment="Start"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   Text="End"
+                   TextColor="{StaticResource ColorBackgroud}"/>
         </Grid>
 
         <ListView ItemsSource="{Binding Shifts}">            
@@ -43,18 +53,21 @@
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelectShiftCommand}"/>
                             </Grid.GestureRecognizers>
-
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-
-                            <Label Text="{Binding DateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                            <Label Grid.Column="0"
+                                   Text="{Binding DateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    FontAttributes="Bold"                                    
                                    VerticalOptions="Center"/>
-                            
-                            <StackLayout Grid.Column="1"
+                            <Label Grid.Column="1"
+                                   Text="{Binding Service.Name}"
+                                   FontAttributes="Bold"                                    
+                                   VerticalOptions="Center"/>
+                            <StackLayout Grid.Column="2"
                                      VerticalOptions="Center">
                                 <Label Text="{Binding Service.InitialStation}"
                                    FontAttributes="Bold"                                    
@@ -63,7 +76,7 @@
                                    VerticalOptions="Center"/>
                             </StackLayout>
 
-                            <StackLayout Grid.Column="2"
+                            <StackLayout Grid.Column="3"
                                      VerticalOptions="Center">
                                 <Label Text="{Binding Service.FinalStation}"
                                    FontAttributes="Bold"                                    

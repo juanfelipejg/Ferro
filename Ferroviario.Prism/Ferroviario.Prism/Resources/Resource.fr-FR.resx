@@ -360,4 +360,13 @@
   <data name="Others" xml:space="preserve">
     <value>Autres</value>
   </data>
+  <data name="YourDescription" xml:space="preserve">
+    <value>Votre description</value>
+  </data>
+  <data name="AdminComment" xml:space="preserve">
+    <value>commentaire de l'administrateur</value>
+  </data>
+  <data name="RequestDetail" xml:space="preserve">
+    <value>Détails de la demande</value>
+  </data>
 </root>

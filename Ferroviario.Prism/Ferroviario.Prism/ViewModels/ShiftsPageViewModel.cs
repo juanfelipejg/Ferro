@@ -1,6 +1,8 @@
-﻿using Ferroviario.Common.Models;
+﻿using Ferroviario.Common.Helpers;
+using Ferroviario.Common.Models;
 using Ferroviario.Common.Services;
 using Ferroviario.Prism.Helpers;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -50,12 +52,18 @@ namespace Ferroviario.Prism.ViewModels
                 return;
             }
 
-            Response response = await _apiService.GetListAsync<ShiftResponse>(
-                url,
-                "/api",
-                "/Shifts");
-            IsRunning = false;
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
+            var request = new ShiftsForUserRequest
+            {
+                UserId = new Guid(user.Id),
+                CultureInfo = Languages.Culture
+            };
+
+            Response response = await _apiService.GetShiftsForUserAsync(url, "/api", "/Shifts/GetShiftsForUser", request, "bearer", token.Token);
+
+            IsRunning = false;
 
             if (!response.IsSuccess)
             {
@@ -69,7 +77,7 @@ namespace Ferroviario.Prism.ViewModels
                 User = t.User,
                 Service = t.Service,
                 Date = t.Date,                
-            }).ToList();
+            }).ToList(); 
 
         }
     }

@@ -148,6 +148,11 @@ namespace Ferroviario.Prism.Helpers
 
         public static string Others => Resource.Others;
 
+        public static string YourDescription => Resource.YourDescription;
+
+        public static string AdminComment => Resource.AdminComment;
+
+        public static string RequestDetail => Resource.RequestDetail;
 
     }
 

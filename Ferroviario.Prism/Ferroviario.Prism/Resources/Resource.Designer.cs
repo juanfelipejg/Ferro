@@ -106,6 +106,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin&apos;s comment.
+        /// </summary>
+        public static string AdminComment {
+            get {
+                return ResourceManager.GetString("AdminComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -700,6 +709,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request&apos;s detail.
+        /// </summary>
+        public static string RequestDetail {
+            get {
+                return ResourceManager.GetString("RequestDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -777,6 +795,15 @@ namespace Ferroviario.Prism.Resources {
         public static string UserUpdated {
             get {
                 return ResourceManager.GetString("UserUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your description.
+        /// </summary>
+        public static string YourDescription {
+            get {
+                return ResourceManager.GetString("YourDescription", resourceCulture);
             }
         }
     }

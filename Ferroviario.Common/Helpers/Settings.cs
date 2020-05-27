@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 
 
-
 namespace Ferroviario.Common.Helpers
 {
     public static class Settings

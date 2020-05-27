@@ -12,11 +12,11 @@ namespace Ferroviario.Prism.ViewModels
 {
     public class ShiftDetailPageViewModel : ViewModelBase
     {
-        private readonly ITransformHelper _transformHelper; //
+        private readonly ITransformHelper _transformHelper; 
 
         private ShiftResponse _shift;
 
-        private Service  _service; //
+        private Service  _service;
 
         public ShiftDetailPageViewModel(INavigationService navigationService, ITransformHelper transformHelper) : base(navigationService)
         {
@@ -30,20 +30,18 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _service, value);
         }
 
-
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
 
             if (parameters.ContainsKey("shift"))
             {
-                _shift = parameters.GetValue<ShiftResponse>("shift");
-                Title = $"Service's Detail: { _shift.Service.Name}";
+                _shift = parameters.GetValue<ShiftResponse>("shift");                
                 Service = _transformHelper.ToService(_shift.Service);
+                Title = $"{Languages.ShiftDetail}: { _shift.Service.Name}";
             }
         }
     }
-
 
 }
 

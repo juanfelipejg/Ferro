@@ -1,11 +1,14 @@
-﻿using Ferroviario.Web.Data;
+﻿using Ferroviario.Common.Models;
+using Ferroviario.Web.Data;
 using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Helpers;
+using Ferroviario.Web.Resources;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -52,6 +55,41 @@ namespace Ferroviario.Web.Controllers.API
             }
 
             return Ok(shiftEntity);
+        }
+
+        [HttpPost]
+        [Route("GetShiftsForUser")]
+        public async Task<IActionResult> GetShiftsForUser([FromBody] ShiftsForUserRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
+            Resource.Culture = cultureInfo;
+
+            UserEntity userEntity = await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == request.UserId.ToString());
+
+            if (userEntity == null)
+            {
+                return BadRequest(Resource.UserDoesntExists);
+            }
+
+            List<ShiftEntity> shiftEntities = await _context.Shifts.Include(s => s.Service).
+                ThenInclude(s=>s.ServiceDetail).
+                Include(s => s.User).
+                Where(r => r.User.Id == request.UserId.ToString()).ToListAsync();
+
+            List<ShiftResponse> shiftResponses = new List<ShiftResponse>();
+
+            foreach (ShiftEntity shiftEntity in shiftEntities)
+            {
+                shiftResponses.Add(_converterHelper.ToShiftResponse(shiftEntity));
+            }
+
+            return Ok(shiftResponses);
         }
 
 

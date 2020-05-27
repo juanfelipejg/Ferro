@@ -357,4 +357,13 @@
   <data name="Others" xml:space="preserve">
     <value>Altri</value>
   </data>
+  <data name="YourDescription" xml:space="preserve">
+    <value>Descrizione</value>
+  </data>
+  <data name="AdminComment" xml:space="preserve">
+    <value>Commento del amministratore</value>
+  </data>
+  <data name="RequestDetail" xml:space="preserve">
+    <value>Dettaglio richiesta</value>
+  </data>
 </root>

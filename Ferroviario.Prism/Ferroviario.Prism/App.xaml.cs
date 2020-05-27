@@ -20,7 +20,7 @@ namespace Ferroviario.Prism
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/LoginPage");
+            await NavigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/ShiftsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -40,6 +40,7 @@ namespace Ferroviario.Prism
             containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<ChangesPage, ChangesPageViewModel>();
+            containerRegistry.RegisterForNavigation<RequestDetailPage, RequestDetailPageViewModel>();
         }
     }
 }

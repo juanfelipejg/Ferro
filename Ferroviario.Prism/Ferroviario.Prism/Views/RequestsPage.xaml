@@ -68,7 +68,7 @@
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation" />
                         <Button    Grid.Column="3"
-                                   Command="{Binding DetailCommand}"
+                                   Command="{Binding SelectRequestCommand}"
                                    IsEnabled="{Binding IsEnabled}"
                                    ImageSource="ic_more_vert"
                                    BackgroundColor="{StaticResource ColorBackgroud}"/>
