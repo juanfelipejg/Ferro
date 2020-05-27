@@ -61,6 +61,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Academic permission.
+        /// </summary>
+        public static string AcademicPermission {
+            get {
+                return ResourceManager.GetString("AcademicPermission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accept.
         /// </summary>
         public static string Accept {
@@ -223,6 +232,24 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dates.
+        /// </summary>
+        public static string Dates {
+            get {
+                return ResourceManager.GetString("Dates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string Document {
@@ -322,6 +349,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Free day.
+        /// </summary>
+        public static string FreeDay {
+            get {
+                return ResourceManager.GetString("FreeDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From camera.
         /// </summary>
         public static string FromCamera {
@@ -336,6 +372,15 @@ namespace Ferroviario.Prism.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holidays.
+        /// </summary>
+        public static string Holidays {
+            get {
+                return ResourceManager.GetString("Holidays", resourceCulture);
             }
         }
         
@@ -372,6 +417,15 @@ namespace Ferroviario.Prism.Resources {
         public static string LastNamePlaceHolder {
             get {
                 return ResourceManager.GetString("LastNamePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License.
+        /// </summary>
+        public static string License {
+            get {
+                return ResourceManager.GetString("License", resourceCulture);
             }
         }
         
@@ -480,6 +534,15 @@ namespace Ferroviario.Prism.Resources {
         public static string ok {
             get {
                 return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        public static string Others {
+            get {
+                return ResourceManager.GetString("Others", resourceCulture);
             }
         }
         
@@ -660,6 +723,24 @@ namespace Ferroviario.Prism.Resources {
         public static string ShiftDetail {
             get {
                 return ResourceManager.GetString("ShiftDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        public static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
         

@@ -10,6 +10,10 @@ namespace Ferroviario.Common.Models
 
         public RequestTypeResponse Type { get; set; }
 
+        /*public DateTime Date { get; set; }
+
+        public DateTime DateLocal => Date.ToLocalTime(); */
+
         public DateTime InitialDate { get; set; }
 
         public DateTime InitialDateLocal => InitialDate.ToLocalTime();

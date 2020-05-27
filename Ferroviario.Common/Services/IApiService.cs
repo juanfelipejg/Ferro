@@ -20,6 +20,8 @@ namespace Ferroviario.Common.Services
         Task<Response> PutAsync<T>(string urlBase, string servicePrefix, string controller, T model, string tokenType, string accessToken);
 
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken);
+
+        Task<Response> GetRequestsForUserAsync(string urlBase, string servicePrefix, string controller, RequestsForUserRequest requestsForUserRequest, string tokenType, string accessToken);
     }
 
 }

@@ -82,19 +82,29 @@ namespace Ferroviario.Prism.ViewModels
                 {
                     Icon = "request",
                     PageName = "RequestsPage",
-                    Title = Languages.MyRequests
+                    Title = Languages.MyRequests,
+                    IsLoginRequired = true
                 },
                 new Menu
                 {
                     Icon = "shift",
                     PageName = "ShiftsPage",
-                    Title = Languages.MyShifts
+                    Title = Languages.MyShifts,
+                    IsLoginRequired = true
+                },
+                new Menu
+                {
+                    Icon = "change",
+                    PageName = "ChangesPage",
+                    Title = Languages.Changes,
+                    IsLoginRequired = true
                 },
                 new Menu
                 {
                     Icon = "user",
                     PageName = "UsersPage",
-                    Title = Languages.User
+                    Title = Languages.User,
+                    IsLoginRequired = true
                 },
                 new Menu
                 {
@@ -110,7 +120,8 @@ namespace Ferroviario.Prism.ViewModels
                 {
                     Icon = m.Icon,
                     PageName = m.PageName,
-                    Title = m.Title
+                    Title = m.Title,
+                    IsLoginRequired = m.IsLoginRequired
                 }).ToList());
         }
 

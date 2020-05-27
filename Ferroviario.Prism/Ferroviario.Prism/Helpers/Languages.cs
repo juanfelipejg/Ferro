@@ -130,6 +130,24 @@ namespace Ferroviario.Prism.Helpers
 
         public static string NewPasswordPlaceHolder => Resource.NewPasswordPlaceHolder;
 
+        public static string Type => Resource.Type;
+
+        public static string Dates => Resource.Dates;
+
+        public static string State => Resource.State;
+
+        public static string Details => Resource.Details;
+
+        public static string Holidays => Resource.Holidays;
+
+        public static string License => Resource.License;
+
+        public static string FreeDay => Resource.FreeDay;
+
+        public static string AcademicPermission => Resource.AcademicPermission;
+
+        public static string Others => Resource.Others;
+
 
     }
 

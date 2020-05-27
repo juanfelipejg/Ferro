@@ -22,6 +22,7 @@ namespace Ferroviario.Prism.Droid
             CrossCurrentActivity.Current.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Essentials.Platform.Init(this, bundle);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             LoadApplication(new App(new AndroidInitializer()));
         }

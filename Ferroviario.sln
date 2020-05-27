@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Prism.iOS", "Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Cross.iOS", "Ferroviario.Cross.iOS\Ferroviario.Cross.iOS.csproj", "{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ferroviario.Cross.Android", "Ferroviario.Cross.Android\Ferroviario.Cross.Android.csproj", "{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -181,6 +183,42 @@ Global
 		{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}.Release|iPhone.Build.0 = Release|iPhone
 		{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{9A2D045F-3103-42E9-AE3D-2349DD74C6D8}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|Any CPU.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|iPhone.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Ad-Hoc|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|Any CPU.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|iPhone.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.AppStore|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|iPhone.Deploy.0 = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|iPhone.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|iPhone.Deploy.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7ABE19EF-6D96-49F5-AB23-F4AC944F9A9A}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

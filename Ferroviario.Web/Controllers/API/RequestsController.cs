@@ -10,6 +10,9 @@ using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Ferroviario.Common.Models;
+using System.Globalization;
+using Ferroviario.Web.Resources;
 
 namespace Ferroviario.Web.Controllers.API
 {
@@ -54,6 +57,38 @@ namespace Ferroviario.Web.Controllers.API
             return Ok(requestEntity);
         }
 
-        
+        [HttpPost]
+        [Route("GetRequestsForUser")]
+        public async Task<IActionResult> GetRequestsForUser([FromBody] RequestsForUserRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
+            Resource.Culture = cultureInfo;
+
+            UserEntity userEntity = await _context.Users             
+            .FirstOrDefaultAsync(u => u.Id == request.UserId.ToString());
+
+            if (userEntity == null)
+            {
+                return BadRequest(Resource.UserDoesntExists);
+            }
+
+            List<RequestEntity> requestEntities = await _context.Requests.Include(r => r.Type).
+                Include(r=>r.User).
+                Where(r => r.User.Id == request.UserId.ToString()).ToListAsync();
+
+            List<RequestResponse> requestResponses = new List<RequestResponse>();
+
+            foreach (RequestEntity requestEntity in requestEntities)
+            {
+                requestResponses.Add(_converterHelper.ToRequestResponse(requestEntity));
+            }                       
+
+            return Ok(requestResponses);
+        }
     }
 }

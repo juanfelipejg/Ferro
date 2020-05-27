@@ -9,6 +9,33 @@
              Title="{Binding Title}">
 
     <StackLayout Padding="5">
+        <Grid BackgroundColor="{StaticResource ColorAccent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"                   
+                   Text="{i18n:Translate Type}"
+                   FontSize="Medium"
+                   TextColor="{StaticResource ColorBackgroud}"/>
+            <Label Grid.Column="1"                   
+                   Text="{i18n:Translate Dates}"
+                   FontSize="Medium"
+                   TextColor="{StaticResource ColorBackgroud}"/>
+            <Label Grid.Column="2"              
+                   Text="{i18n:Translate State}"
+                   FontSize="Medium"
+                   TextColor="{StaticResource ColorBackgroud}"/>
+            <Label Grid.Column="3"                
+                   Text="{i18n:Translate Details}"
+                   FontSize="Medium"
+                   TextColor="{StaticResource ColorBackgroud}"/>
+        </Grid>
         <CollectionView ItemsSource="{Binding Requests}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>
@@ -19,37 +46,32 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0"
-                                     VerticalOptions="Center">
-                            <Label Text="{Binding Type.Type}" 
-                                   FontAttributes="Bold"
+                        <Label     Grid.Column="0"
+                                   Text="{Binding Type.Type}"                                    
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation" />
-                            <Label Text="{Binding InitialDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                    <StackLayout   Grid.Column="1">
+                        <Label     Text="{Binding InitialDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />
-                            <Label Text="{Binding FinishDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                        <Label     Text="{Binding FinishDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />
-                        </StackLayout>
-
-                        <StackLayout Grid.Column="1"
-                                     VerticalOptions="Start">
-                            <Label Text="{Binding State}" 
-                                   FontAttributes="Bold"
+                    </StackLayout>
+                        <Label     Grid.Column="2"
+                                   Text="{Binding State}"                                    
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation" />
-                            <Label Text="{Binding Comment}" 
-                                   FontSize="Medium"
-                                   LineBreakMode="TailTruncation" />
-
-                        </StackLayout>
-                        <Image Grid.Column="2" 
-                               Source="ic_more_vert"/>
+                        <Button    Grid.Column="3"
+                                   Command="{Binding DetailCommand}"
+                                   IsEnabled="{Binding IsEnabled}"
+                                   ImageSource="ic_more_vert"
+                                   BackgroundColor="{StaticResource ColorBackgroud}"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

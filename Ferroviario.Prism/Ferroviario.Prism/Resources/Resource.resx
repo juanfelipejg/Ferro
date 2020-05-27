@@ -330,4 +330,31 @@
   <data name="NewPasswordPlaceHolder" xml:space="preserve">
     <value>Enter the new password</value>
   </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Dates" xml:space="preserve">
+    <value>Dates</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Holidays" xml:space="preserve">
+    <value>Holidays</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="FreeDay" xml:space="preserve">
+    <value>Free day</value>
+  </data>
+  <data name="AcademicPermission" xml:space="preserve">
+    <value>Academic permission</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
 </root>
