@@ -16,7 +16,8 @@ namespace Ferroviario.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private List<RequestItemViewModel> _requests;        
+        private List<RequestItemViewModel> _requests;
+        private DelegateCommand _newRequestCommand;
         private bool _isRunning;
         public RequestsPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -25,6 +26,8 @@ namespace Ferroviario.Prism.ViewModels
             Title = Languages.MyRequests;
             LoadRequestsAsync();
         }
+
+        public DelegateCommand NewRequestCommand => _newRequestCommand ?? (_newRequestCommand = new DelegateCommand(CreateRequestAsync));
 
         public bool IsRunning
         {
@@ -36,6 +39,11 @@ namespace Ferroviario.Prism.ViewModels
         {
             get => _requests;
             set => SetProperty(ref _requests, value);
+        }
+
+        private async void CreateRequestAsync()
+        {
+            await _navigationService.NavigateAsync("CreateRequestPage");
         }
 
         private async void LoadRequestsAsync()

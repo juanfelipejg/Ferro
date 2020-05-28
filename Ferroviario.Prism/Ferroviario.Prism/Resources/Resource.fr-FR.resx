@@ -387,4 +387,25 @@
   <data name="CreateChange" xml:space="preserve">
     <value>Créer modifier </value>
   </data>
+  <data name="NewRequest" xml:space="preserve">
+    <value>Nouvelle demande</value>
+  </data>
+  <data name="TypePlaceHolder" xml:space="preserve">
+    <value>Entrez la demande de type!</value>
+  </data>
+  <data name="InitialDate" xml:space="preserve">
+    <value>Date initiale</value>
+  </data>
+  <data name="FinishDate" xml:space="preserve">
+    <value>Date finale</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description :</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="DescriptionPlaceHolder" xml:space="preserve">
+    <value>Entrer une description</value>
+  </data>
 </root>

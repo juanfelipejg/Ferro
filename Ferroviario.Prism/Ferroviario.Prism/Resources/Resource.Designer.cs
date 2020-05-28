@@ -142,6 +142,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
         public static string ConfirmEmail {
@@ -268,6 +277,24 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a description.
+        /// </summary>
+        public static string DescriptionPlaceHolder {
+            get {
+                return ResourceManager.GetString("DescriptionPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -358,6 +385,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Final date.
+        /// </summary>
+        public static string FinishDate {
+            get {
+                return ResourceManager.GetString("FinishDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {
@@ -435,6 +471,15 @@ namespace Ferroviario.Prism.Resources {
         public static string IncorrectCurrentPassword {
             get {
                 return ResourceManager.GetString("IncorrectCurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initial Date.
+        /// </summary>
+        public static string InitialDate {
+            get {
+                return ResourceManager.GetString("InitialDate", resourceCulture);
             }
         }
         
@@ -822,6 +867,15 @@ namespace Ferroviario.Prism.Resources {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter type request.
+        /// </summary>
+        public static string TypePlaceHolder {
+            get {
+                return ResourceManager.GetString("TypePlaceHolder", resourceCulture);
             }
         }
         

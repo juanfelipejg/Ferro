@@ -384,4 +384,25 @@
   <data name="CreateChange" xml:space="preserve">
     <value>Criar Plano de Mudança</value>
   </data>
+  <data name="NewRequest" xml:space="preserve">
+    <value>Nova solicitação</value>
+  </data>
+  <data name="TypePlaceHolder" xml:space="preserve">
+    <value>Digite solicitação de tipo!</value>
+  </data>
+  <data name="InitialDate" xml:space="preserve">
+    <value>Data Inicial</value>
+  </data>
+  <data name="FinishDate" xml:space="preserve">
+    <value>Data fim</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição:</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="DescriptionPlaceHolder" xml:space="preserve">
+    <value>Insira uma descrição</value>
+  </data>
 </root>

@@ -387,4 +387,22 @@
   <data name="NewRequest" xml:space="preserve">
     <value>NEW REQUEST</value>
   </data>
+  <data name="TypePlaceHolder" xml:space="preserve">
+    <value>Enter type request</value>
+  </data>
+  <data name="InitialDate" xml:space="preserve">
+    <value>Initial Date</value>
+  </data>
+  <data name="FinishDate" xml:space="preserve">
+    <value>Final date</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DescriptionPlaceHolder" xml:space="preserve">
+    <value>Enter a description</value>
+  </data>
 </root>

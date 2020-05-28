@@ -168,6 +168,18 @@ namespace Ferroviario.Prism.Helpers
 
         public static string NewRequest => Resource.NewRequest;
 
+        public static string TypePlaceHolder => Resource.TypePlaceHolder;
+
+        public static string InitialDate => Resource.InitialDate;
+
+        public static string FinishDate => Resource.FinishDate;
+
+        public static string Description => Resource.Description;
+
+        public static string DescriptionPlaceHolder => Resource.DescriptionPlaceHolder;
+
+        public static string Confirm => Resource.Confirm;
+
     }
 
 }

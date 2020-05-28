@@ -80,7 +80,7 @@
 
         </CollectionView>
         <Button                    HorizontalOptions="CenterAndExpand"
-                                   Command="{Binding SelectRequestCommand}"
+                                   Command="{Binding NewRequestCommand}"
                                    IsEnabled="{Binding IsEnabled}"
                                    Text="{i18n:Translate NewRequest}"
                                    BackgroundColor="{StaticResource ColorAccent}"
