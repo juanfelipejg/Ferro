@@ -73,7 +73,7 @@ namespace Ferroviario.Web.Helpers
                 Id = isNew ? 0 : model.Id,
                 User = await _context.Users.FindAsync(model.User),
                 Service = await _context.Services.FindAsync(model.Service),
-                Date = model.Date
+                Date = model.Date.ToUniversalTime()
             };
 
         }

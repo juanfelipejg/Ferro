@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -39,23 +40,44 @@ namespace Ferroviario.Web.Controllers.API
             return Ok(_converterHelper.ToShiftResponse(shifts));
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetShiftEntity([FromRoute] int id)
+        [HttpPost]
+        [Route("GetShiftsForChange")]
+        public async Task<IActionResult> GetShiftsForChange([FromBody] ShiftsForUserRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            ShiftEntity shiftEntity = await _context.Shifts.FindAsync(id);
+            CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
+            Resource.Culture = cultureInfo;
 
-            if (shiftEntity == null)
+            UserEntity userEntity = await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == request.UserId.ToString());
+
+            if (userEntity == null)
             {
-                return NotFound();
+                return BadRequest(Resource.UserDoesntExists);
+            }
+            DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
+
+            List<ShiftEntity> shifts = await _context.Shifts.
+            Include(s => s.Service).
+            ThenInclude(s => s.ServiceDetail).
+            Include(s => s.User).
+            Where(s=>s.User.Id != request.UserId.ToString() && s.Date.Day == Tomorrow.Day).
+            ToListAsync();
+
+            List<ShiftResponse> shiftResponses = new List<ShiftResponse>();
+
+            foreach (ShiftEntity shiftEntity in shifts)
+            {
+                shiftResponses.Add(_converterHelper.ToShiftResponse(shiftEntity));
             }
 
-            return Ok(shiftEntity);
+            return Ok(shiftResponses);
         }
+
 
         [HttpPost]
         [Route("GetShiftsForUser")]

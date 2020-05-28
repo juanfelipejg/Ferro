@@ -369,4 +369,25 @@
   <data name="RequestDetail" xml:space="preserve">
     <value>Detalles de solicitud</value>
   </data>
+  <data name="SearchChange" xml:space="preserve">
+    <value>Buscar cambio</value>
+  </data>
+  <data name="Driver" xml:space="preserve">
+    <value>Conductor</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="CreateChange" xml:space="preserve">
+    <value>Crear cambio</value>
+  </data>
+  <data name="NewRequest" xml:space="preserve">
+    <value>NUEVA SOLICITUD</value>
+  </data>
 </root>

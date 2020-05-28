@@ -32,7 +32,8 @@ namespace Ferroviario.Web.Controllers
             if (user == null)
             {
                 return NotFound();
-            }
+            }            
+
             return View(await _context.Shifts.
                 Include(s => s.User).
                 Include(s => s.Service).

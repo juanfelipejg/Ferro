@@ -95,7 +95,7 @@ namespace Ferroviario.Prism.ViewModels
                 new Menu
                 {
                     Icon = "change",
-                    PageName = "ChangesPage",
+                    PageName = "ChangesTabbedPage",
                     Title = Languages.Changes,
                     IsLoginRequired = true
                 },

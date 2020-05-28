@@ -36,6 +36,7 @@
                    FontSize="Medium"
                    TextColor="{StaticResource ColorBackgroud}"/>
         </Grid>
+
         <CollectionView ItemsSource="{Binding Requests}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>
@@ -73,10 +74,16 @@
                                    ImageSource="ic_more_vert"
                                    BackgroundColor="{StaticResource ColorBackgroud}"/>
                     </Grid>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
         </CollectionView>
+        <Button                    HorizontalOptions="CenterAndExpand"
+                                   Command="{Binding SelectRequestCommand}"
+                                   IsEnabled="{Binding IsEnabled}"
+                                   Text="{i18n:Translate NewRequest}"
+                                   BackgroundColor="{StaticResource ColorAccent}"
+                                   TextColor="{StaticResource ColorBackgroud}"/>
     </StackLayout>
-
-
 </ContentPage>

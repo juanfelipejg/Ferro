@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:i18n="clr-namespace:Ferroviario.Prism.Helpers"
+             x:Class="Ferroviario.Prism.Views.CreateChangePage"
+             BackgroundColor="{StaticResource ColorBackgroud}"
+             Title="{Binding Title}">
+
+    <StackLayout>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="0"
+               Text="{i18n:Translate Driver}"               
+               FontSize="Medium"          
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource ColorBackgroud}"
+               BackgroundColor="{StaticResource ColorAccent}"/>
+            <Label Grid.Column="1"
+                   Grid.Row="0"
+               Text="{i18n:Translate Service}" 
+               FontSize="Medium"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource ColorBackgroud}"
+               BackgroundColor="{StaticResource ColorAccent}"/>
+            <Label Grid.Column="2"
+                   Grid.Row="0"
+               Text="{i18n:Translate Start}" 
+               FontSize="Medium"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource ColorBackgroud}"
+               BackgroundColor="{StaticResource ColorAccent}"/>
+            <Label Grid.Column="3"
+                   Grid.Row="0"
+               Text="{i18n:Translate End}"
+               FontSize="Medium"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource ColorBackgroud}"
+               BackgroundColor="{StaticResource ColorAccent}"/>
+            
+            <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="{Binding Shift.User.FullName}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="second sh"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <StackLayout Grid.Row="1" Grid.Column="2">
+                <Label Text="Ini sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+                <Label Text="Ini sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="3">
+                <Label Text="Fin sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+                <Label Text="Fin sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Label Grid.Row="2"
+               Grid.Column="0"
+               Text="Mi name"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <Label Grid.Row="2"
+               Grid.Column="1"
+               Text="{Binding Shift.Service.Name}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <StackLayout Grid.Row="2" Grid.Column="2">
+                <Label 
+               Text="{Binding Shift.Service.InitialStation}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+                <Label 
+               Text="{Binding Shift.Service.InitialHour}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Grid.Column="3">
+                <Label Text="{Binding Shift.Service.FinalStation}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Shift.Service.FinalHour}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+
+        </Grid>
+    </StackLayout>
+<!--
+
+    <Grid>
+            <Grid.ColumnDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Text="{Binding User.FullName}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Text="second sh"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        <StackLayout Grid.Row="0" Grid.Column="2">
+            <Label Text="Ini sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <Label Text="Ini sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="3">
+            <Label Text="Fin sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <Label Text="Fin sec"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="Mi name"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="{Binding Service.Name}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        <StackLayout Grid.Row="1" Grid.Column="2">
+            <Label 
+               Text="{Binding Service.InitialStation}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <Label 
+               Text="{Binding Service.InitialHour}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Grid.Column="3">
+            <Label Text="{Binding Service.FinalStation}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding Service.FinalHour}"               
+               FontSize="Small"          
+               HorizontalTextAlignment="Center"/>
+        </StackLayout>
+            </Grid>
+
+        </StackLayout> -->
+</ContentPage>

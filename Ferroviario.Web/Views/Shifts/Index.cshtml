@@ -35,8 +35,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Service.FinalStation)
             </th>
-            <th></th>
-        </tr>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FullName)
+                </th>
+            }
+                <th></th>
+            </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.OrderBy(g => g.Date))
@@ -60,16 +66,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Service.FinalStation)
             </td>
-            <td>
-                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
-                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
-                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a>
-                }
-                <a asp-action="Details" asp-route-id="@item.Id"><i class="glyphicon glyphicon-align-justify"></i></a>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+             <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+             </td>
+            }
+                <td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="glyphicon glyphicon-align-justify"></i></a>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

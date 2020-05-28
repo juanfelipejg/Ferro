@@ -366,4 +366,25 @@
   <data name="RequestDetail" xml:space="preserve">
     <value>Request's detail</value>
   </data>
+  <data name="SearchChange" xml:space="preserve">
+    <value>Search change</value>
+  </data>
+  <data name="Driver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="CreateChange" xml:space="preserve">
+    <value>Create change</value>
+  </data>
+  <data name="NewRequest" xml:space="preserve">
+    <value>NEW REQUEST</value>
+  </data>
 </root>

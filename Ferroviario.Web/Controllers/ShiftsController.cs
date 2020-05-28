@@ -26,7 +26,6 @@ namespace Ferroviario.Web.Controllers
             _userHelper = userHelper;
         }
 
-
         public async Task<IActionResult> Index()
         {
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
@@ -46,8 +45,6 @@ namespace Ferroviario.Web.Controllers
                     Include(s => s.Service).
                     Where(s => s.User == user).ToListAsync();
             }
-
-
 
             return View(ShiftEntities);
         }

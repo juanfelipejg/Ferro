@@ -154,6 +154,20 @@ namespace Ferroviario.Prism.Helpers
 
         public static string RequestDetail => Resource.RequestDetail;
 
+        public static string SearchChange => Resource.SearchChange;
+
+        public static string Driver => Resource.Driver;
+
+        public static string Start => Resource.Start;
+
+        public static string End => Resource.End;
+
+        public static string Date => Resource.Date;
+
+        public static string CreateChange => Resource.CreateChange;
+
+        public static string NewRequest => Resource.NewRequest;
+
     }
 
 }

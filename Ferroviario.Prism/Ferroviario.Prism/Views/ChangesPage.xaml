@@ -5,6 +5,7 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             xmlns:i18n="clr-namespace:Ferroviario.Prism.Helpers" 
             x:Class="Ferroviario.Prism.Views.ChangesPage"
+            IconImageSource="my_changes" 
             BackgroundColor="{StaticResource ColorBackgroud}"
             Title="{Binding Title}">
 
@@ -20,22 +21,22 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0"                   
-                   Text="Date"
+                   Text="{i18n:Translate Date}"
                    FontSize="Medium"
                    TextColor="{StaticResource ColorBackgroud}"
                    HorizontalTextAlignment="Center"/>
             <Label Grid.Column="1"                   
-                   Text="Driver"
+                   Text="{i18n:Translate Driver}"
                    FontSize="Medium"
                    TextColor="{StaticResource ColorBackgroud}"
                    HorizontalTextAlignment="Center"/>
             <Label Grid.Column="2"              
-                   Text="Driver"
+                   Text="{i18n:Translate Driver}"
                    FontSize="Medium"
                    TextColor="{StaticResource ColorBackgroud}"
                    HorizontalTextAlignment="Center"/>
             <Label Grid.Column="3"                
-                   Text="State"
+                   Text="{i18n:Translate State}"
                    FontSize="Medium"
                    TextColor="{StaticResource ColorBackgroud}"
                    HorizontalTextAlignment="Center"/>
@@ -68,8 +69,7 @@
                                    HorizontalTextAlignment="Center"/>
                         </StackLayout>
                         <StackLayout Grid.Column="2">
-                            <Label Text="{Binding SecondDriver.FullName}"                                    
-                                   FontSize="small"
+                            <Label Text="{Binding SecondDriver.FullName}"                                 
                                    LineBreakMode="TailTruncation" 
                                    HorizontalTextAlignment="Center"/>
                             <Label Text="{Binding SecondDriverService.Service.Name}"
@@ -80,7 +80,7 @@
                         </StackLayout>
                         <Label     Grid.Column="3"
                                    Text="{Binding State}"                                    
-                                   FontSize="small"
+                                   FontSize="Small"
                                    LineBreakMode="TailTruncation" 
                                    HorizontalTextAlignment="Center"/>
                     </Grid>
