@@ -408,4 +408,10 @@
   <data name="DescriptionPlaceHolder" xml:space="preserve">
     <value>Entrer une description</value>
   </data>
+  <data name="RequestTypeError" xml:space="preserve">
+    <value>Vous devez entrer un type de demande</value>
+  </data>
+  <data name="DateError" xml:space="preserve">
+    <value>Vous devez entrer une date </value>
+  </data>
 </root>

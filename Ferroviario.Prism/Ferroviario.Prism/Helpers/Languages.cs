@@ -180,6 +180,10 @@ namespace Ferroviario.Prism.Helpers
 
         public static string Confirm => Resource.Confirm;
 
+        public static string RequestTypeError => Resource.RequestTypeError;
+
+        public static string DateError  => Resource.DateError;
+
     }
 
 }

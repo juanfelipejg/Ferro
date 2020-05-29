@@ -8,8 +8,6 @@ namespace Ferroviario.Common.Models
 {
     public class RequestRequest
     {
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public Guid UserId { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int TypeId { get; set; }
@@ -24,6 +22,9 @@ namespace Ferroviario.Common.Models
 
         [Required]
         public string CultureInfo { get; set; }
+
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        public Guid UserId { get; set; }
 
     }
 }

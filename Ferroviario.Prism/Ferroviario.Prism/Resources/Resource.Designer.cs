@@ -268,6 +268,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a date.
+        /// </summary>
+        public static string DateError {
+            get {
+                return ResourceManager.GetString("DateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dates.
         /// </summary>
         public static string Dates {
@@ -619,7 +628,7 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NEW REQUEST.
+        ///   Looks up a localized string similar to New request.
         /// </summary>
         public static string NewRequest {
             get {
@@ -804,6 +813,15 @@ namespace Ferroviario.Prism.Resources {
         public static string RequestDetail {
             get {
                 return ResourceManager.GetString("RequestDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a request type.
+        /// </summary>
+        public static string RequestTypeError {
+            get {
+                return ResourceManager.GetString("RequestTypeError", resourceCulture);
             }
         }
         

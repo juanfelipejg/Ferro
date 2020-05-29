@@ -38,6 +38,7 @@ namespace Ferroviario.Prism.ViewModels
         {
             get => _shifts;
             set => SetProperty(ref _shifts, value);
+
         }
 
         private async void LoadShiftsAsync()

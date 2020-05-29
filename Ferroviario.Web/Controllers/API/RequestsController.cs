@@ -90,5 +90,34 @@ namespace Ferroviario.Web.Controllers.API
 
             return Ok(requestResponses);
         }
+
+        [HttpPost]
+        [Route("PostRequest")]
+        public async Task<IActionResult> PostRequest([FromBody] RequestRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request",
+                    Result = ModelState
+                });
+            }
+
+            RequestEntity requestEntity = new RequestEntity
+            {
+                Type = await _context.RequestTypes.FindAsync(request.TypeId),
+                InitialDate = request.InitialDate,
+                FinishDate = request.FinishDate,
+                Description = request.Description,
+                State = "Pending",
+                User = await _context.Users.FindAsync(request.UserId.ToString())
+            };
+
+            _context.Requests.Add(requestEntity);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }

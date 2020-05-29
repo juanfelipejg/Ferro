@@ -32,6 +32,10 @@ namespace Ferroviario.Web.Helpers
 
         List<RequestResponse> ToRequestResponse(List<RequestEntity> requestEntities);
 
+        List<RequestTypeResponse> ToRequestTypeResponse(List<RequestTypeEntity> requestTypeEntities);
+
+        RequestTypeResponse ToRequestTypeResponse(RequestTypeEntity requestTypeEntity);
+
         ServiceResponse ToServiceResponse(ServiceEntity serviceEntity);
 
         List<ServiceResponse> ToServiceResponse(List<ServiceEntity> serviceEntities);

@@ -37,7 +37,7 @@
             </Style>
 
             <Style TargetType="Picker">
-                <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorBackgroud}" />
             </Style>
 
             <Style x:Key="SecondaryButton" TargetType="Button">

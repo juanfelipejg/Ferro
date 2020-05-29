@@ -33,11 +33,25 @@ namespace Ferroviario.Web.Controllers
         public async Task<IActionResult> Index()
         {
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
-            return View(await _context.Requests.
-                Include(r=>r.Type).
-                Include(r=>r.User).
-                Where(r=>r.User == user).
-                ToListAsync());
+
+            List<RequestEntity> requestEntities = new List<RequestEntity>();
+
+            if (user.UserType.ToString() == "Admin")
+            {
+                requestEntities = await _context.Requests.Include(r => r.Type).Include(r => r.User).ToListAsync();
+            }
+            else
+            {
+                requestEntities = await _context.Requests.
+                    Include(r => r.Type).
+                    Include(r => r.User).
+                    Where(r => r.User == user).
+                    ToListAsync();
+            }
+
+
+
+            return View(requestEntities);
         }
 
         public async Task<IActionResult> Details(int? id)

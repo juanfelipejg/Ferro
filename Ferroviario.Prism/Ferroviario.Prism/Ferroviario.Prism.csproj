@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.54" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />

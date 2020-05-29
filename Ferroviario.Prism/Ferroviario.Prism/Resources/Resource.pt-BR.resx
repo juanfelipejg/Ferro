@@ -405,4 +405,10 @@
   <data name="DescriptionPlaceHolder" xml:space="preserve">
     <value>Insira uma descrição</value>
   </data>
+  <data name="RequestTypeError" xml:space="preserve">
+    <value>Você deve inserir um tipo de solicitação!</value>
+  </data>
+  <data name="DateError" xml:space="preserve">
+    <value>Você deve entrar em uma data</value>
+  </data>
 </root>

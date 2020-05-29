@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 using Ferroviario.Common.Services;
 using Ferroviario.Prism.Views;
 using Ferroviario.Common.Helpers;
+using Syncfusion.Licensing;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ferroviario.Prism
@@ -19,6 +20,7 @@ namespace Ferroviario.Prism
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MjY0MzEwQDMxMzgyZTMxMmUzME5rWlhvSHBaU1lLeWV4bzh6cHdvdVo3Z0xaSkt0Ukw5Wng5OUJac2h3U009");
             InitializeComponent();
             await NavigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/LoginPage");
         }

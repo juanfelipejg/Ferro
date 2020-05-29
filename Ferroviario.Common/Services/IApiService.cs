@@ -28,6 +28,8 @@ namespace Ferroviario.Common.Services
         Task<Response> GetShiftsForChangeAsync(string urlBase, string servicePrefix, string controller, ShiftsForUserRequest shiftsForUserRequest, string tokenType, string accessToken);
 
         Task<Response> GetChangesForUserAsync(string urlBase, string servicePrefix, string controller, ChangesForUserRequest changesForUserRequest, string tokenType, string accessToken);
+
+        Task<Response> RegisterRequestAsync(string urlBase, string servicePrefix, string controller, RequestRequest requestRequest, string tokenType, string accessToken);
     }
 
 }

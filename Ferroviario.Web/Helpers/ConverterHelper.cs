@@ -78,8 +78,6 @@ namespace Ferroviario.Web.Helpers
 
         }
 
-
-
         public ShiftViewModel ToShiftViewModel(ShiftEntity shiftEntity)
         {
             return new ShiftViewModel
@@ -144,6 +142,33 @@ namespace Ferroviario.Web.Helpers
 
         }
 
+        public RequestTypeResponse ToRequestTypeResponse(RequestTypeEntity requestTypeEntity)
+        {
+            if (requestTypeEntity == null)
+            {
+                return null;
+            }
+
+            return new RequestTypeResponse
+            {
+                Id = requestTypeEntity.Id,
+                Type = requestTypeEntity.Type,
+            };
+        }
+
+        public List<RequestTypeResponse> ToRequestTypeResponse(List<RequestTypeEntity> requestTypeEntities)
+        {
+            List<RequestTypeResponse> list = new List<RequestTypeResponse>();
+            foreach (RequestTypeEntity requestTypeEntity in requestTypeEntities)
+            {
+                list.Add(ToRequestTypeResponse(requestTypeEntity));
+            }
+
+            return list;
+
+        }
+
+
         public ServiceResponse ToServiceResponse(ServiceEntity serviceEntity)
         {
             return new ServiceResponse
@@ -169,19 +194,6 @@ namespace Ferroviario.Web.Helpers
             return list;
         }
 
-        private RequestTypeResponse ToRequestTypeResponse(RequestTypeEntity requestTypeEntity)
-        {
-            if (requestTypeEntity == null)
-            {
-                return null;
-            }
-
-            return new RequestTypeResponse
-            {
-                Id = requestTypeEntity.Id,
-                Type = requestTypeEntity.Type,
-            };
-        }
 
         private ServiceDetailResponse ToServiceDetailResponse(ServiceDetailEntity serviceDetailEntity)
         {

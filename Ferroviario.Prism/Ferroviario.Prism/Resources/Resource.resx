@@ -385,7 +385,7 @@
     <value>Create change</value>
   </data>
   <data name="NewRequest" xml:space="preserve">
-    <value>NEW REQUEST</value>
+    <value>New request</value>
   </data>
   <data name="TypePlaceHolder" xml:space="preserve">
     <value>Enter type request</value>
@@ -404,5 +404,11 @@
   </data>
   <data name="DescriptionPlaceHolder" xml:space="preserve">
     <value>Enter a description</value>
+  </data>
+  <data name="RequestTypeError" xml:space="preserve">
+    <value>You must enter a request type</value>
+  </data>
+  <data name="DateError" xml:space="preserve">
+    <value>You must enter a date</value>
   </data>
 </root>
