@@ -4,69 +4,8 @@
     ViewData["Title"] = "SelectChanges";
 }
 <hr />
-<h4>My Changes</h4>
 
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DateLocal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstDriver)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstDriverService)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondDriver)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondDriverService)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            @if (item.State != "Pending")
-            {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateLocal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstDriver.FullName)
-            </td>            
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstDriverService.Service.Name)                       
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondDriver.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondDriverService.Service.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-
-        </tr>
-            }
-            
-        }
-    </tbody>
-</table>
-
-
-<hr />
 <h4>My Pending Changes</h4>
-
 
 <table class="table">
     <thead>

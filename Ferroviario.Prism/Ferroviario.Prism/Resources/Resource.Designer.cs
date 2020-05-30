@@ -151,6 +151,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm change.
+        /// </summary>
+        public static string ConfirmChange {
+            get {
+                return ResourceManager.GetString("ConfirmChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
         public static string ConfirmEmail {
@@ -570,6 +579,15 @@ namespace Ferroviario.Prism.Resources {
         public static string ModifyUser {
             get {
                 return ResourceManager.GetString("ModifyUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My changes.
+        /// </summary>
+        public static string MyChanges {
+            get {
+                return ResourceManager.GetString("MyChanges", resourceCulture);
             }
         }
         

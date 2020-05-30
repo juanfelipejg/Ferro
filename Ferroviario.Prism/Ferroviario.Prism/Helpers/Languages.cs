@@ -188,6 +188,9 @@ namespace Ferroviario.Prism.Helpers
 
         public static string NewService => Resource.NewService;
 
+        public static string MyChanges => Resource.MyChanges;
+
+        public static string ConfirmChange => Resource.ConfirmChange;
     }
 
 }

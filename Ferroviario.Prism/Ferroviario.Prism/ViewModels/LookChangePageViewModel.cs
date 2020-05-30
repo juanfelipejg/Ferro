@@ -18,7 +18,6 @@ namespace Ferroviario.Prism.ViewModels
         private readonly IApiService _apiService;
         private List<ChangeItemViewModel> _shifts;
         private ShiftResponse _currentShift;
-        private DelegateCommand _selectChangeCommand;
         private bool _isRunning;
 
         public LookChangePageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)

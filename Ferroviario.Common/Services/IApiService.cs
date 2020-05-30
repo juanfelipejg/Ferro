@@ -34,6 +34,9 @@ namespace Ferroviario.Common.Services
         Task<Response> CreateChangeAsync(string urlBase, string servicePrefix, string controller, ChangeRequest changeRequest, string tokenType, string accessToken);
 
         Task<Response> GetShiftForChangeAsync(string urlBase, string servicePrefix, string controller, CurrentShiftRequest currentShiftRequest, string tokenType, string accessToken);
+
+        Task<Response> EditChangeAsync(string urlBase, string servicePrefix, string controller, ConfirmChangeRequest confirmChangeRequest, string tokenType, string accessToken);
+
     }
 
 }

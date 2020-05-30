@@ -420,4 +420,10 @@
   <data name="NewService" xml:space="preserve">
     <value>Nouveau service</value>
   </data>
+  <data name="MyChanges" xml:space="preserve">
+    <value>Mes modifications</value>
+  </data>
+  <data name="ConfirmChange" xml:space="preserve">
+    <value>Confirmer la modification</value>
+  </data>
 </root>

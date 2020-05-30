@@ -417,4 +417,10 @@
   <data name="NewService" xml:space="preserve">
     <value>Nuovo servizio</value>
   </data>
+  <data name="MyChanges" xml:space="preserve">
+    <value>Modifiche personali</value>
+  </data>
+  <data name="ConfirmChange" xml:space="preserve">
+    <value>Conferma modifica</value>
+  </data>
 </root>

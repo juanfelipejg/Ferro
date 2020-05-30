@@ -16,13 +16,13 @@ namespace Ferroviario.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private List<ChangeResponse> _changes;
+        private List<MyChangesItemViewModel> _changes;
         private bool _isRunning;
         public ChangesPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = Languages.Changes;
+            Title = Languages.MyChanges;
             LoadChangesAsync();
         }
         public bool IsRunning
@@ -31,7 +31,7 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _isRunning, value);
         }
 
-        public List<ChangeResponse> Changes
+        public List<MyChangesItemViewModel> Changes
         {
             get => _changes;
             set => SetProperty(ref _changes, value);
@@ -66,7 +66,17 @@ namespace Ferroviario.Prism.ViewModels
                 return;
             }
 
-            Changes = (List<ChangeResponse>)response.Result;
+            List<ChangeResponse> list = (List<ChangeResponse>)response.Result;
+
+            Changes = list.Select(c => new MyChangesItemViewModel(_navigationService)
+            {
+                Id = c.Id,
+                FirstDriver = c.FirstDriver,
+                FirstDriverService = c.FirstDriverService,
+                SecondDriver = c.SecondDriver,
+                SecondDriverService = c.SecondDriverService,
+                State = c.State
+            }).ToList();
 
         }
     }

@@ -27,7 +27,6 @@ namespace Ferroviario.Prism.ViewModels
             Title = Languages.MyShifts;
             LoadShiftsAsync();
         }
-
         public bool IsRunning
         {
             get => _isRunning;

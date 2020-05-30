@@ -141,16 +141,18 @@ namespace Ferroviario.Web.Controllers
         public async Task<IActionResult> SelectChanges()
         {
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
+
             if (user == null)
             {
                 return NotFound();
             }
+
             return View(await _context.Changes.
                 Include(c => c.FirstDriver).
                 Include(c => c.FirstDriverService).ThenInclude(s=>s.Service).
                 Include(c=> c.SecondDriver).
                 Include(c=>c.SecondDriverService).ThenInclude(s => s.Service).
-                Where(c => c.FirstDriver.Id == user.Id || c.SecondDriver.Id == user.Id ).ToListAsync());
+                Where(c=>c.SecondDriver.Id == user.Id && c.State=="Pending").ToListAsync());
         }
         
 

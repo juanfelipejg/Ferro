@@ -59,7 +59,7 @@ namespace Ferroviario.Web.Controllers.API
                 .Include(c => c.SecondDriverService)
                 .ThenInclude(s => s.Service)
                 .ThenInclude(s => s.ServiceDetail)
-                .Where(c => c.FirstDriver.Id == request.UserId.ToString() || c.SecondDriver.Id == request.UserId.ToString())
+                .Where(c => c.SecondDriver.Id == request.UserId.ToString() && c.State=="Pending")
                 .ToListAsync();
 
             List<ChangeResponse> changeResponses = new List<ChangeResponse>();
@@ -96,6 +96,37 @@ namespace Ferroviario.Web.Controllers.API
             _context.Changes.Add(changeEntity);
             await _context.SaveChangesAsync();
             return NoContent();            
+        }
+
+        [HttpPost]
+        [Route("PutChange")]
+        public async Task<IActionResult> PutChange([FromBody] ConfirmChangeRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
+            Resource.Culture = cultureInfo;
+
+            ChangeEntity changeEntity = await _context.Changes.Include(c=>c.FirstDriver).
+                Include(c=>c.FirstDriverService).
+                ThenInclude(c=>c.Service).
+                Include(c=>c.SecondDriver).
+                Include(c=>c.SecondDriverService).
+                ThenInclude(c=>c.Service).
+                FirstOrDefaultAsync(c=>c.Id == request.ChangeId);
+
+            changeEntity.FirstDriverService.Service = await _context.Services.FindAsync(request.SecondServiceId);
+
+            changeEntity.SecondDriverService.Service = await _context.Services.FindAsync(request.FirstServiceId);
+
+            changeEntity.State = "Approved";
+
+            _context.Changes.Update(changeEntity);
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
     }
 
