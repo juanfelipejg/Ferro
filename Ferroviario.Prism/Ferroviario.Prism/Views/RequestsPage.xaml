@@ -83,7 +83,7 @@
                                    Command="{Binding NewRequestCommand}"
                                    IsEnabled="{Binding IsEnabled}"
                                    Text="{i18n:Translate NewRequest}"
-                                   BackgroundColor="{StaticResource ColorAccent}"
+                                   BackgroundColor="{StaticResource ColorPrimary}"
                                    TextColor="{StaticResource ColorBackgroud}"/>
     </StackLayout>
 </ContentPage>

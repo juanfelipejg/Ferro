@@ -80,89 +80,11 @@
                            <Button Grid.Column="4"
                                    Command="{Binding SelectChangeCommand}"
                                    IsEnabled="{Binding IsEnabled}"
-                                   ImageSource="ic_more_vert"
+                                   ImageSource="ic_send"
                                    BackgroundColor="{StaticResource ColorBackgroud}"/>
                         </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </StackLayout>
-
-
-    <!--
-    <StackLayout Padding="5">
-        <Grid BackgroundColor="{StaticResource ColorAccent}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0"
-                   HorizontalTextAlignment="Start"                   
-                   FontSize="Medium"
-                   Text="{i18n:Translate Driver}"
-                   TextColor="{StaticResource ColorBackgroud}"/>
-            <Label Grid.Column="1"
-                   HorizontalTextAlignment="Start"                   
-                   FontSize="Medium"
-                   Text="{i18n:Translate Service}"
-                   TextColor="{StaticResource ColorBackgroud}"/>
-            <Label Grid.Column="2"
-                   HorizontalTextAlignment="Start"
-                   FontSize="Medium"
-                   Text="{i18n:Translate Start}"
-                   TextColor="{StaticResource ColorBackgroud}"/>
-            <Label Grid.Column="3"
-                   HorizontalTextAlignment="Start"
-                   FontSize="Medium"
-                   Text="{i18n:Translate End}"
-                   TextColor="{StaticResource ColorBackgroud}"/>
-        </Grid>
-
-        <ListView ItemsSource="{Binding Shifts}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectChangeCommand}"/>
-                            </Grid.GestureRecognizers>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0"
-                                   Text="{Binding User.FullName}"
-                                   FontAttributes="Bold"
-                                   VerticalOptions="Center"/>                            
-                            <Label Grid.Column="1"
-                                   Text="{Binding Service.Name}"
-                                   FontAttributes="Bold" 
-                                   VerticalOptions="Center"/>
-                            <StackLayout Grid.Column="2"
-                                     VerticalOptions="Center">
-                                <Label Text="{Binding Service.InitialStation}"
-                                   FontAttributes="Bold"/>
-                                <Label Text="{Binding Service.InitialHour, StringFormat='{0:hh\\:mm}'}"                                                                       
-                                   VerticalOptions="Center"/>
-                            </StackLayout>
-                            <StackLayout Grid.Column="3"
-                                     VerticalOptions="Center">
-                                <Label Text="{Binding Service.FinalStation}"
-                                   FontAttributes="Bold"/>
-                                <Label Text="{Binding Service.FinalHour, StringFormat='{0:hh\\:mm}'}"/>
-                            </StackLayout>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout> -->
-
 </ContentPage>

@@ -410,6 +410,48 @@ namespace Ferroviario.Common.Services
             }
         }
 
+        public async Task<Response> GetShiftForChangeAsync(string urlBase, string servicePrefix, string controller, CurrentShiftRequest currentShiftRequest, string tokenType, string accessToken)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(currentShiftRequest);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = result,
+                    };
+                }
+
+                ShiftResponse shift = JsonConvert.DeserializeObject<ShiftResponse>(result);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = shift
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
+
         public async Task<Response> GetChangesForUserAsync(string urlBase, string servicePrefix, string controller, ChangesForUserRequest changesForUserRequest, string tokenType, string accessToken)
         {
             try
@@ -492,6 +534,45 @@ namespace Ferroviario.Common.Services
             }
         }
 
+        public async Task<Response> CreateChangeAsync(string urlBase, string servicePrefix, string controller, ChangeRequest changeRequest, string tokenType, string accessToken)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(changeRequest);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
 
     }
 }

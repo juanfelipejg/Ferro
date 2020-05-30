@@ -25,6 +25,17 @@ namespace Ferroviario.Web.Controllers
             _converterHelper = converterHelper;
         }
 
+        public async Task<IActionResult> IndexAll()
+        {
+            return View(await _context.Changes.Include(c=>c.FirstDriver).
+                Include(c=>c.FirstDriverService).
+                ThenInclude(s=>s.Service).
+                Include(c=>c.SecondDriver).
+                Include(c=>c.SecondDriverService).
+                ThenInclude(s=>s.Service).
+                ToListAsync());
+        }
+
         public async Task<IActionResult> Index()
         {
             DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
@@ -39,7 +50,6 @@ namespace Ferroviario.Web.Controllers
                 Include(s => s.Service).
                 Where(s => s.User.Id != user.Id && s.Date.Day == Tomorrow.Day).ToListAsync());
         }
-
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -146,9 +156,15 @@ namespace Ferroviario.Web.Controllers
 
         public async Task<IActionResult> ConfirmChange(int id)
         {
-            ChangeEntity changeEntity = await _context.Changes.Include(c=>c.FirstDriver).Include(c => c.FirstDriverService).
-            ThenInclude(c => c.Service).ThenInclude(s => s.ServiceDetail).Include(c=>c.SecondDriver).Include(c=>c.SecondDriverService).
-            ThenInclude(s=>s.Service).ThenInclude(s=>s.ServiceDetail).FirstOrDefaultAsync(c => c.Id == id);
+            ChangeEntity changeEntity = await _context.Changes.Include(c=>c.FirstDriver).
+                Include(c => c.FirstDriverService).
+                ThenInclude(c => c.Service).
+                ThenInclude(s => s.ServiceDetail).
+                Include(c=>c.SecondDriver).
+                Include(c=>c.SecondDriverService).
+                ThenInclude(s=>s.Service).
+                ThenInclude(s=>s.ServiceDetail).
+                FirstOrDefaultAsync(c => c.Id == id);
 
             ChangeViewModel change = _converterHelper.ToChangeViewModel(changeEntity);
 

@@ -60,10 +60,10 @@
                                    LineBreakMode="TailTruncation"
                                    HorizontalTextAlignment="Center"/>
                         <StackLayout   Grid.Column="1">
-                            <Label Text="{Binding FirstDriver.FullName}"
+                            <Label Text="{Binding FirstDriver.FullName}" 
                                    LineBreakMode="TailTruncation"                                    
                                    HorizontalTextAlignment="Center"/>
-                            <Label Text="{Binding FirstDriverService.Service.Name}"
+                            <Label Text="{Binding SecondDriverService.Service.Name}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Bold" 
                                    HorizontalTextAlignment="Center"/>
@@ -72,7 +72,7 @@
                             <Label Text="{Binding SecondDriver.FullName}"                                 
                                    LineBreakMode="TailTruncation" 
                                    HorizontalTextAlignment="Center"/>
-                            <Label Text="{Binding SecondDriverService.Service.Name}"
+                            <Label Text="{Binding FirstDriverService.Service.Name}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Bold" 
                                    VerticalOptions="End"

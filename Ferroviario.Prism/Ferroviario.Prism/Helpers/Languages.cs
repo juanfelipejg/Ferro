@@ -184,6 +184,10 @@ namespace Ferroviario.Prism.Helpers
 
         public static string DateError  => Resource.DateError;
 
+        public static string Send => Resource.Send;
+
+        public static string NewService => Resource.NewService;
+
     }
 
 }

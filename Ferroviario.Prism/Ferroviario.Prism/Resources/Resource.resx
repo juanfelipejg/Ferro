@@ -411,4 +411,10 @@
   <data name="DateError" xml:space="preserve">
     <value>You must enter a date</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="NewService" xml:space="preserve">
+    <value>New Service</value>
+  </data>
 </root>

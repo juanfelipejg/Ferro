@@ -49,8 +49,6 @@ namespace Ferroviario.Web.Controllers
                     ToListAsync();
             }
 
-
-
             return View(requestEntities);
         }
 

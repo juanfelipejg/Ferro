@@ -71,6 +71,32 @@ namespace Ferroviario.Web.Controllers.API
 
             return Ok(changeResponses.OrderBy(c => c.DateLocal));
         }
+
+        [HttpPost]
+        [Route("PostChange")]
+        public async Task<IActionResult> PostChange([FromBody] ChangeRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
+            Resource.Culture = cultureInfo;
+
+            ChangeEntity changeEntity = new ChangeEntity()
+            {
+                FirstDriver = await _context.Users.FirstOrDefaultAsync(u => u.Id == request.FirstDriverId.ToString()),
+                FirstDriverService = await _context.Shifts.FirstOrDefaultAsync(s => s.Id == request.FirstShift),
+                SecondDriver = await _context.Users.FirstOrDefaultAsync(u => u.Id == request.SecondDriverId.ToString()),
+                SecondDriverService = await _context.Shifts.FirstOrDefaultAsync(s => s.Id == request.SecondShift),
+                State = "Pending"
+            };
+
+            _context.Changes.Add(changeEntity);
+            await _context.SaveChangesAsync();
+            return NoContent();            
+        }
     }
 
 }

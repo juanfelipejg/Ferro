@@ -637,6 +637,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Service.
+        /// </summary>
+        public static string NewService {
+            get {
+                return ResourceManager.GetString("NewService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string ok {
@@ -840,6 +849,15 @@ namespace Ferroviario.Prism.Resources {
         public static string SearchChange {
             get {
                 return ResourceManager.GetString("SearchChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         

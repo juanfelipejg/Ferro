@@ -17,6 +17,7 @@ namespace Ferroviario.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private List<ChangeItemViewModel> _shifts;
+        private ShiftResponse _currentShift;
         private DelegateCommand _selectChangeCommand;
         private bool _isRunning;
 
@@ -40,17 +41,12 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _shifts, value);
         }
 
-        public DelegateCommand SelectChangeCommand => _selectChangeCommand ?? (_selectChangeCommand = new DelegateCommand(SelectChangeAsync));
-
-        private async void SelectChangeAsync()
+        public ShiftResponse CurrentShift
         {
-            NavigationParameters parameters = new NavigationParameters
-            {
-                { "shift", this }
-            };
+            get => _currentShift;
+            set => SetProperty(ref _currentShift, value);
+        }        
 
-            await _navigationService.NavigateAsync("LoginPage", parameters);
-        }
         private async void LoadShiftsAsync()
         {
             IsRunning = true;
@@ -82,7 +78,12 @@ namespace Ferroviario.Prism.ViewModels
             }
 
             List<ShiftResponse> list = (List<ShiftResponse>)response.Result;
-            Shifts = list.Select(t => new ChangeItemViewModel(_navigationService)
+
+            ShiftResponse CurrentShift = list.FirstOrDefault(s => s.User == user);
+
+            List<ShiftResponse> list2 =  list.Where(s => s.User.Id != user.Id).ToList();
+
+            Shifts = list2.Select(t => new ChangeItemViewModel(_navigationService)
             {
                 Id = t.Id,
                 User = t.User,  
@@ -91,5 +92,6 @@ namespace Ferroviario.Prism.ViewModels
             }).ToList();
 
         }
+
     }
 }

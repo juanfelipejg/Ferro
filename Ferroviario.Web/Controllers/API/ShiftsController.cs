@@ -59,13 +59,14 @@ namespace Ferroviario.Web.Controllers.API
             {
                 return BadRequest(Resource.UserDoesntExists);
             }
+
             DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
 
             List<ShiftEntity> shifts = await _context.Shifts.
             Include(s => s.Service).
             ThenInclude(s => s.ServiceDetail).
             Include(s => s.User).
-            Where(s=>s.User.Id != request.UserId.ToString() && s.Date.Day == Tomorrow.Day).
+            Where(s=>s.Date.Day == Tomorrow.Day).
             ToListAsync();
 
             List<ShiftResponse> shiftResponses = new List<ShiftResponse>();
@@ -112,6 +113,38 @@ namespace Ferroviario.Web.Controllers.API
             }
 
             return Ok(shiftResponses);
+        }
+
+        [HttpPost]
+        [Route("GetShiftForUser")]
+        public async Task<IActionResult> GetShiftForUser([FromBody] CurrentShiftRequest request)
+        {
+            DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
+            Resource.Culture = cultureInfo;
+
+            UserEntity userEntity = await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == request.UserId.ToString());
+
+            if (userEntity == null)
+            {
+                return BadRequest(Resource.UserDoesntExists);
+            }
+
+            ShiftEntity shiftEntity = await _context.Shifts.Include(s => s.Service).
+                ThenInclude(s => s.ServiceDetail).
+                Include(s => s.User).
+                Where(s => s.User.Id == request.UserId.ToString() && s.Date.Day == Tomorrow.Day).FirstOrDefaultAsync();
+
+            ShiftResponse shiftResponse = _converterHelper.ToShiftResponse(shiftEntity);
+
+            return Ok(shiftResponse);
         }
 
 

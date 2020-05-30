@@ -23,7 +23,6 @@ namespace Ferroviario.Prism.ViewModels
         private bool _isRunning;
         private bool _isEnabled;
         private DelegateCommand _registerRequestCommand;
-
         private ObservableCollection<RequestTypeResponse> _types;
         public CreateRequestPageViewModel(INavigationService navigationService, IApiService apiService): base(navigationService)
         {
