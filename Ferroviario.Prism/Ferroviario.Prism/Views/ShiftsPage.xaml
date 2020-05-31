@@ -3,10 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:i18n="clr-namespace:Ferroviario.Prism.Helpers"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Ferroviario.Prism.Views.ShiftsPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
+    <syncfusion:SfPullToRefresh     TransitionMode="SlideOnTop"
+                                    IsRefreshing="{Binding IsRunning}" 
+                                    RefreshCommand="{Binding Refresh}"
+                                    RefreshContentHeight="60"                                   
+                                    RefreshContentWidth="60"
+                                    ProgressStrokeColor = "#6E8C03"
+                                    ProgressStrokeWidth="10">
+        <syncfusion:SfPullToRefresh.PullableContent>
 
     <StackLayout Padding="5">
         <Grid BackgroundColor="{StaticResource ColorAccent}">
@@ -86,6 +96,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+                <progressBar:SfLinearProgressBar Progress="100" TrackColor="#FFFFFF" ProgressColor="#6E8C03"
+                                                 TrackHeight="100" CornerRadius="10" IsVisible="{Binding IsRunning}"/>
     </StackLayout>
+    </syncfusion:SfPullToRefresh.PullableContent>
+    </syncfusion:SfPullToRefresh>
 
 </ContentPage>

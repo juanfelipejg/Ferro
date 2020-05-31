@@ -18,6 +18,7 @@ namespace Ferroviario.Prism.ViewModels
         private readonly IApiService _apiService;
         private List<ChangeItemViewModel> _shifts;
         private ShiftResponse _currentShift;
+        private DelegateCommand _refresh;
         private bool _isRunning;
 
         public LookChangePageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
@@ -27,6 +28,8 @@ namespace Ferroviario.Prism.ViewModels
             Title = Languages.SearchChange;
             LoadShiftsAsync();
         }
+
+        public DelegateCommand Refresh => _refresh ?? (_refresh = new DelegateCommand(LoadShiftsAsync));
 
         public bool IsRunning
         {
@@ -69,8 +72,6 @@ namespace Ferroviario.Prism.ViewModels
 
             Response response = await _apiService.GetShiftsForChangeAsync(url, "/api", "/Shifts/GetShiftsForChange", request, "bearer", token.Token);
 
-            IsRunning = false;
-
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
@@ -89,7 +90,7 @@ namespace Ferroviario.Prism.ViewModels
                 Service = t.Service,
                 Date = t.Date,
             }).ToList();
-
+            IsRunning = false;
         }
 
     }

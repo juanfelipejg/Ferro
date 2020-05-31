@@ -4,12 +4,24 @@
             xmlns:prism="http://prismlibrary.com"
             prism:ViewModelLocator.AutowireViewModel="True"
             xmlns:i18n="clr-namespace:Ferroviario.Prism.Helpers" 
+            xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+            xmlns:syncfusion="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
             x:Class="Ferroviario.Prism.Views.ChangesPage"
             IconImageSource="my_changes" 
             BackgroundColor="{StaticResource ColorBackgroud}"
             Title="{Binding Title}">
 
-    <StackLayout Padding="5">
+    <syncfusion:SfPullToRefresh     x:Name="pullToRefresh"
+                                    TransitionMode="SlideOnTop"
+                                    IsRefreshing="{Binding IsRunning}" 
+                                    RefreshCommand="{Binding Refresh}"
+                                    RefreshContentHeight="60"                                   
+                                    RefreshContentWidth="60"
+                                    ProgressStrokeColor = "#6E8C03"
+                                    ProgressStrokeWidth="10">
+        <syncfusion:SfPullToRefresh.PullableContent>
+
+            <StackLayout Padding="5">
         <Grid BackgroundColor="{StaticResource ColorAccent}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -87,6 +99,10 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+                <progressBar:SfLinearProgressBar Progress="100" TrackColor="#FFFFFF" ProgressColor="#6E8C03"
+                                                 TrackHeight="100" CornerRadius="10" IsVisible="{Binding IsRunning}"/>
+            </StackLayout>
+        </syncfusion:SfPullToRefresh.PullableContent>
+    </syncfusion:SfPullToRefresh>
 
 </ContentPage>

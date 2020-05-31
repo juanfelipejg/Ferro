@@ -108,6 +108,13 @@ namespace Ferroviario.Prism.ViewModels
                 },
                 new Menu
                 {
+                    Icon = "user",
+                    PageName = "HomePage",
+                    Title = "Home",
+                    IsLoginRequired = false
+                },
+                new Menu
+                {
                  Icon = "login",
                  PageName = "LoginPage",
                  Title = Settings.IsLogin ? Languages.Logout : Languages.Login

@@ -11,6 +11,7 @@ namespace Ferroviario.Prism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private DelegateCommand _confirmChangeCommand;
+        private DelegateCommand _refresh;
 
         public MyChangesItemViewModel(INavigationService navigationService)
         {
@@ -18,7 +19,7 @@ namespace Ferroviario.Prism.ViewModels
         }
 
         public DelegateCommand ConfirmChangeCommand => _confirmChangeCommand ?? (_confirmChangeCommand = new DelegateCommand(ConfirmChangeAsync));
-
+                
         private async void ConfirmChangeAsync()
         {
             NavigationParameters parameters = new NavigationParameters

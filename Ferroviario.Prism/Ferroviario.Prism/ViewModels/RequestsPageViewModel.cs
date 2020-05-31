@@ -18,6 +18,7 @@ namespace Ferroviario.Prism.ViewModels
         private readonly IApiService _apiService;
         private List<RequestItemViewModel> _requests;
         private DelegateCommand _newRequestCommand;
+        private DelegateCommand _refresh;
         private bool _isRunning;
         public RequestsPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -29,6 +30,7 @@ namespace Ferroviario.Prism.ViewModels
 
         public DelegateCommand NewRequestCommand => _newRequestCommand ?? (_newRequestCommand = new DelegateCommand(CreateRequestAsync));
 
+        public DelegateCommand Refresh => _refresh ?? (_refresh = new DelegateCommand(LoadRequestsAsync));
         public bool IsRunning
         {
             get => _isRunning;
@@ -67,7 +69,7 @@ namespace Ferroviario.Prism.ViewModels
             };
 
             Response response = await _apiService.GetRequestsForUserAsync(url, "/api", "/Requests/GetRequestsForUser", request, "bearer", token.Token);
-            IsRunning = false;
+            
 
             if (!response.IsSuccess)
             {
@@ -87,7 +89,7 @@ namespace Ferroviario.Prism.ViewModels
                 Comment = t.Comment,
                 User = t.User
             }).ToList();
-
+            IsRunning = false;
         }
 
 

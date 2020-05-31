@@ -17,6 +17,7 @@ namespace Ferroviario.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private List<MyChangesItemViewModel> _changes;
+        private DelegateCommand _refresh;
         private bool _isRunning;
         public ChangesPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -25,6 +26,7 @@ namespace Ferroviario.Prism.ViewModels
             Title = Languages.MyChanges;
             LoadChangesAsync();
         }
+        public DelegateCommand Refresh => _refresh ?? (_refresh = new DelegateCommand(LoadChangesAsync));
         public bool IsRunning
         {
             get => _isRunning;
@@ -58,8 +60,7 @@ namespace Ferroviario.Prism.ViewModels
             };
 
             Response response = await _apiService.GetChangesForUserAsync(url, "/api", "/Changes/GetChangesForUser", request, "bearer", token.Token);
-            IsRunning = false;
-
+            
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
@@ -77,6 +78,7 @@ namespace Ferroviario.Prism.ViewModels
                 SecondDriverService = c.SecondDriverService,
                 State = c.State
             }).ToList();
+            IsRunning = false;
 
         }
     }
