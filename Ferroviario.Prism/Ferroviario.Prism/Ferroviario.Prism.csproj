@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />

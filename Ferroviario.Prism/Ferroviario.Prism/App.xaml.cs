@@ -27,6 +27,7 @@ namespace Ferroviario.Prism
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IGeolocatorService, GeolocatorService>();
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.Register<ITransformHelper, TransformHelper>();
             containerRegistry.Register<IFilesHelper, FilesHelper>();

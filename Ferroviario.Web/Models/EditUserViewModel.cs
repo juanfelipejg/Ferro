@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Ferroviario.Common.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -38,7 +39,7 @@ namespace Ferroviario.Web.Models
 
         [Display(Name = "Picture")]
         public string PicturePath { get; set; }
-
+        
     }
 
 }

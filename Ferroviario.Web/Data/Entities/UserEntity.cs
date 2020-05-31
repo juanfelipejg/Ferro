@@ -31,6 +31,10 @@ namespace Ferroviario.Web.Data.Entities
         [Display(Name = "Picture")]
         public string PicturePath { get; set; }
 
+        public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
+        ? "https://ferroviarioweb2020.azurewebsites.net/images/noimage.png"
+        : LoginType == LoginType.Ferro ? $"https://ferroviarioweb2020.azurewebsites.net{PicturePath.Substring(1)}" : PicturePath;
+
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
 

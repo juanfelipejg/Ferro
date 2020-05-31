@@ -42,7 +42,6 @@ namespace Ferroviario.Prism.Droid
         }
 
     }
-
     public class AndroidInitializer : IPlatformInitializer
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)

@@ -21,6 +21,8 @@ namespace Ferroviario.Web.Data
 
         public DbSet<ShiftEntity> Shifts { get; set; }
 
+        public DbSet<ReportEntity> Reports { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
