@@ -24,6 +24,16 @@
     <Compile Remove="Migrations\20200512042450_ModifyShifts.Designer.cs" />
     <Compile Remove="Migrations\20200512042945_Test.cs" />
     <Compile Remove="Migrations\20200512042945_Test.Designer.cs" />
+    <Compile Remove="Migrations\20200512043919_ModifyChanges-Shifts.cs" />
+    <Compile Remove="Migrations\20200512043919_ModifyChanges-Shifts.Designer.cs" />
+    <Compile Remove="Migrations\20200513024102_ModifyShifts2.cs" />
+    <Compile Remove="Migrations\20200513024102_ModifyShifts2.Designer.cs" />
+    <Compile Remove="Migrations\20200514033304_CorrectionDatacontext.cs" />
+    <Compile Remove="Migrations\20200514033304_CorrectionDatacontext.Designer.cs" />
+    <Compile Remove="Migrations\20200514043624_AddNotationsShift.cs" />
+    <Compile Remove="Migrations\20200514043624_AddNotationsShift.Designer.cs" />
+    <Compile Remove="Migrations\20200530235126_AddLoginType.cs" />
+    <Compile Remove="Migrations\20200530235126_AddLoginType.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -423,4 +423,10 @@
   <data name="ConfirmChange" xml:space="preserve">
     <value>Confirmar Alteração</value>
   </data>
+  <data name="LoginFacebook" xml:space="preserve">
+    <value>Entrar com Facebook</value>
+  </data>
+  <data name="ChangePhotoNoFerroUser" xml:space="preserve">
+    <value>Os usuários criados por redes sociais devem alterar a foto ou a senha na rede social.</value>
+  </data>
 </root>

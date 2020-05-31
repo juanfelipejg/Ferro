@@ -1,4 +1,5 @@
 ﻿using Ferroviario.Common.Enums;
+using Ferroviario.Common.Models;
 using Ferroviario.Web.Data;
 using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Models;
@@ -64,7 +65,6 @@ namespace Ferroviario.Web.Helpers
                 .FirstOrDefaultAsync(u => u.Email == email);
 
         }
-
 
         public async Task<bool> IsUserInRoleAsync(UserEntity user, string roleName)
         {
@@ -146,6 +146,32 @@ namespace Ferroviario.Web.Helpers
             return await _userManager.ResetPasswordAsync(user, token, password);
         }
 
+        public async Task<UserEntity> AddUserAsync(FacebookProfile model)
+        {
+            UserEntity userEntity = new UserEntity
+            {
+                Address = "...",
+                Document = "...",
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PicturePath = model.Picture?.Data?.Url,
+                PhoneNumber = "...",                
+                UserName = model.Email,
+                UserType = UserType.User,
+                LoginType = LoginType.Facebook
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(userEntity, model.Id);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            UserEntity newUser = await GetUserAsync(model.Email);
+            await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
+            return newUser;
+        }
 
     }
 

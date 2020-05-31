@@ -191,6 +191,10 @@ namespace Ferroviario.Prism.Helpers
         public static string MyChanges => Resource.MyChanges;
 
         public static string ConfirmChange => Resource.ConfirmChange;
+
+        public static string LoginFacebook => Resource.LoginFacebook;
+
+        public static string ChangePhotoNoSoccerUser => Resource.ChangePhotoNoFerroUser;
     }
 
 }

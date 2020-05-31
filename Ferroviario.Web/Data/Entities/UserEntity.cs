@@ -34,6 +34,9 @@ namespace Ferroviario.Web.Data.Entities
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
 
+        [Display(Name = "Login Type")]
+        public LoginType LoginType { get; set; }
+
         [Display(Name = "Full Name")]
         public string FullName => $"{FirstName} {LastName}";
 

@@ -189,6 +189,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Plugin.FacebookClient">
+      <Version>2.2.1</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
       <Version>18.1.0.54</Version>
     </PackageReference>

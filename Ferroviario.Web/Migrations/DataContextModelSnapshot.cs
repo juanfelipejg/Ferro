@@ -33,6 +33,8 @@ namespace Ferroviario.Web.Migrations
 
                     b.Property<int?>("SecondDriverServiceId");
 
+                    b.Property<string>("State");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FirstDriverId");
@@ -139,12 +141,11 @@ namespace Ferroviario.Web.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("ServiceId");
+                    b.Property<int?>("ServiceId");
 
                     b.Property<string>("UserEntityId");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -190,6 +191,8 @@ namespace Ferroviario.Web.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<int>("LoginType");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -343,7 +346,7 @@ namespace Ferroviario.Web.Migrations
                         .WithMany()
                         .HasForeignKey("FirstDriverId");
 
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "FirstDriverService")
+                    b.HasOne("Ferroviario.Web.Data.Entities.ShiftEntity", "FirstDriverService")
                         .WithMany()
                         .HasForeignKey("FirstDriverServiceId");
 
@@ -351,7 +354,7 @@ namespace Ferroviario.Web.Migrations
                         .WithMany()
                         .HasForeignKey("SecondDriverId");
 
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "SecondDriverService")
+                    b.HasOne("Ferroviario.Web.Data.Entities.ShiftEntity", "SecondDriverService")
                         .WithMany()
                         .HasForeignKey("SecondDriverServiceId");
                 });
@@ -364,7 +367,7 @@ namespace Ferroviario.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "User")
-                        .WithMany()
+                        .WithMany("Requests")
                         .HasForeignKey("UserId");
                 });
 
@@ -380,8 +383,7 @@ namespace Ferroviario.Web.Migrations
                 {
                     b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "Service")
                         .WithMany("Shifts")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ServiceId");
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity")
                         .WithMany("Services")
@@ -389,8 +391,7 @@ namespace Ferroviario.Web.Migrations
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "User")
                         .WithMany("Shifts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

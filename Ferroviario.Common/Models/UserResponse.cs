@@ -29,9 +29,11 @@ namespace Ferroviario.Common.Models
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
+        public LoginType LoginType { get; set; }
+
         public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
-        ? "https://ferroviarioweb2020.azurewebsites.net//images/noimage.png"
-        :  $"https://ferroviarioweb2020.azurewebsites.net{PicturePath.Substring(1)}";
+        ? "https://ferroviarioweb2020.azurewebsites.net/images/noimage.png"
+        : LoginType == LoginType.Ferro ? $"https://ferroviarioweb2020.azurewebsites.net{PicturePath.Substring(1)}" : PicturePath;
 
     }
 }

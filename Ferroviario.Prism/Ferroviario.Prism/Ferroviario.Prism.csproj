@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Plugin.FacebookClient" Version="2.2.1" />
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="18.1.0.54" />

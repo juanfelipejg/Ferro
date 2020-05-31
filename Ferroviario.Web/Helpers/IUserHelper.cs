@@ -1,4 +1,5 @@
 ﻿using Ferroviario.Common.Enums;
+using Ferroviario.Common.Models;
 using Ferroviario.Web.Data.Entities;
 using Ferroviario.Web.Models;
 using Microsoft.AspNetCore.Identity;
@@ -29,6 +30,8 @@ namespace Ferroviario.Web.Helpers
 
         Task<UserEntity> AddUserAsync(AddUserViewModel model, string path, UserType userType);
 
+        Task<UserEntity> AddUserAsync(FacebookProfile model);
+
         Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
 
         Task<IdentityResult> UpdateUserAsync(UserEntity user);
@@ -41,7 +44,7 @@ namespace Ferroviario.Web.Helpers
 
         Task<string> GeneratePasswordResetTokenAsync(UserEntity user);
 
-        Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password);
+        Task<IdentityResult> ResetPasswordAsync(UserEntity user, string token, string password);      
 
 
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ferroviario.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200510200947_AddShifts")]
-    partial class AddShifts
+    [Migration("20200531033326_CreateDB")]
+    partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,17 +27,25 @@ namespace Ferroviario.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FirstServiceId");
+                    b.Property<string>("FirstDriverId");
 
-                    b.Property<int?>("SecondServiceId");
+                    b.Property<int?>("FirstDriverServiceId");
+
+                    b.Property<string>("SecondDriverId");
+
+                    b.Property<int?>("SecondDriverServiceId");
 
                     b.Property<string>("State");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FirstServiceId");
+                    b.HasIndex("FirstDriverId");
 
-                    b.HasIndex("SecondServiceId");
+                    b.HasIndex("FirstDriverServiceId");
+
+                    b.HasIndex("SecondDriverId");
+
+                    b.HasIndex("SecondDriverServiceId");
 
                     b.ToTable("Changes");
                 });
@@ -124,24 +132,30 @@ namespace Ferroviario.Web.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ServiceEntity");
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.ShiftEntity", b =>
                 {
-                    b.Property<int>("Id");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<int>("ServiceId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int?>("ServiceId");
+
                     b.Property<string>("UserEntityId");
 
-                    b.HasKey("Id", "UserId", "ServiceId");
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
 
                     b.HasIndex("UserEntityId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ShiftEntity");
                 });
@@ -179,6 +193,8 @@ namespace Ferroviario.Web.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<int>("LoginType");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -328,13 +344,21 @@ namespace Ferroviario.Web.Migrations
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.ChangeEntity", b =>
                 {
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "FirstService")
+                    b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "FirstDriver")
                         .WithMany()
-                        .HasForeignKey("FirstServiceId");
+                        .HasForeignKey("FirstDriverId");
 
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "SecondService")
+                    b.HasOne("Ferroviario.Web.Data.Entities.ShiftEntity", "FirstDriverService")
                         .WithMany()
-                        .HasForeignKey("SecondServiceId");
+                        .HasForeignKey("FirstDriverServiceId");
+
+                    b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "SecondDriver")
+                        .WithMany()
+                        .HasForeignKey("SecondDriverId");
+
+                    b.HasOne("Ferroviario.Web.Data.Entities.ShiftEntity", "SecondDriverService")
+                        .WithMany()
+                        .HasForeignKey("SecondDriverServiceId");
                 });
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.RequestEntity", b =>
@@ -345,7 +369,7 @@ namespace Ferroviario.Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "User")
-                        .WithMany()
+                        .WithMany("Requests")
                         .HasForeignKey("UserId");
                 });
 
@@ -359,14 +383,17 @@ namespace Ferroviario.Web.Migrations
 
             modelBuilder.Entity("Ferroviario.Web.Data.Entities.ShiftEntity", b =>
                 {
-                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity")
-                        .WithMany("Users")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("Ferroviario.Web.Data.Entities.ServiceEntity", "Service")
+                        .WithMany("Shifts")
+                        .HasForeignKey("ServiceId");
 
                     b.HasOne("Ferroviario.Web.Data.Entities.UserEntity")
                         .WithMany("Services")
                         .HasForeignKey("UserEntityId");
+
+                    b.HasOne("Ferroviario.Web.Data.Entities.UserEntity", "User")
+                        .WithMany("Shifts")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

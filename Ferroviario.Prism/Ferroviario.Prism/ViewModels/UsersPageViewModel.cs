@@ -1,4 +1,5 @@
-﻿using Ferroviario.Common.Helpers;
+﻿using Ferroviario.Common.Enums;
+using Ferroviario.Common.Helpers;
 using Ferroviario.Common.Models;
 using Ferroviario.Common.Services;
 using Ferroviario.Prism.Helpers;
@@ -24,6 +25,7 @@ namespace Ferroviario.Prism.ViewModels
         private readonly IFilesHelper _filesHelper;
         private bool _isRunning;
         private bool _isEnabled;
+        private bool _isFerroUser;
         private ImageSource _image;
         private UserResponse _user;
         private MediaFile _file;
@@ -40,6 +42,7 @@ namespace Ferroviario.Prism.ViewModels
             Title = Languages.ModifyUser;
             IsEnabled = true;
             User = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            IsFerroUser = User.LoginType == LoginType.Ferro;
             Image = User.PictureFullPath;
         }
 
@@ -72,6 +75,13 @@ namespace Ferroviario.Prism.ViewModels
             get => _isEnabled;
             set => SetProperty(ref _isEnabled, value);
         }
+
+        public bool IsFerroUser
+        {
+            get => _isFerroUser;
+            set => SetProperty(ref _isFerroUser, value);
+        }
+
 
         private async void SaveAsync()
         {
@@ -162,6 +172,13 @@ namespace Ferroviario.Prism.ViewModels
 
         private async void ChangeImageAsync()
         {
+
+            if (!IsFerroUser)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangePhotoNoSoccerUser, Languages.Accept);
+                return;
+            }
+
             await CrossMedia.Current.Initialize();
 
             string source = await Application.Current.MainPage.DisplayActionSheet(
@@ -205,6 +222,12 @@ namespace Ferroviario.Prism.ViewModels
 
         private async void ChangePasswordAsync()
         {
+            if (!IsFerroUser)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ChangePhotoNoSoccerUser, Languages.Accept);
+                return;
+            }
+
             await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
         }
 

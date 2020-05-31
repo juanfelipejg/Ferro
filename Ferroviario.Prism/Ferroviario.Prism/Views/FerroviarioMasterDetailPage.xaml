@@ -13,7 +13,36 @@
                 <StackLayout Padding="20">
                     
                 <RelativeLayout>
-                    <RelativeLayout.GestureRecognizers>
+                    <RelativeLayout>
+                        <RelativeLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ModifyUserCommand}"/>
+                        </RelativeLayout.GestureRecognizers>
+                        <Image x:Name="Logo" HorizontalOptions="Center"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X,Factor=1,Constant=60}"
+                           HeightRequest="150"
+                           Source="ic_train"/>
+                        <ffimageloading:CachedImage x:Name="Picture" 
+                                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Logo,Property=Y,Factor=1,Constant=60}"
+                                                Aspect="AspectFill"
+                                                Source="{Binding User.PictureFullPath}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="100"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600"
+                                                WidthRequest="100">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>                        
+                        <Label RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=Picture,Property=Y,Factor=1,Constant=110}"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           Text="{Binding User.FullName}"
+                           TextColor="Black"/>
+                    </RelativeLayout>
+
+                    <!--<RelativeLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ModifyUserCommand}"/>
                     </RelativeLayout.GestureRecognizers>
                     <ffimageloading:CachedImage Grid.Column="0"
@@ -26,13 +55,13 @@
                                                         WidthRequest="100"/>
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation />
-                    </ffimageloading:CachedImage.Transformations>
+                    </ffimageloading:CachedImage.Transformations>-->
 
                 </RelativeLayout>
-                <Label FontAttributes="Bold"
+                <!--<Label FontAttributes="Bold"
                        FontSize="Large"
                        Text="{Binding User.FullName}"
-                       TextColor="Black"/>
+                       TextColor="Black"/>-->
 
                 <ListView BackgroundColor="{StaticResource ColorBackgroud}"
                           ItemsSource="{Binding Menus}"
