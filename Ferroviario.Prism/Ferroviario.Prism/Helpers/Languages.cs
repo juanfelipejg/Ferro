@@ -195,6 +195,7 @@ namespace Ferroviario.Prism.Helpers
         public static string LoginFacebook => Resource.LoginFacebook;
 
         public static string ChangePhotoNoSoccerUser => Resource.ChangePhotoNoFerroUser;
+
     }
 
 }

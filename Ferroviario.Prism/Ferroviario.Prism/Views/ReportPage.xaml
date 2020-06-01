@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"    
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Ferroviario.Prism.Views.ReportPage"
+             BackgroundColor="{StaticResource ColorBackgroud}"
+             Title="{Binding Title}">
+
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" 
+                       Grid.Column="0"
+                       Text="Address"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <StackLayout Grid.Row="0" 
+                             Grid.Column="1"
+                             Orientation="Horizontal">
+                <Entry     HorizontalOptions="FillAndExpand"                            
+                           Text="{Binding Source}"/>
+                <ImageButton Command="{Binding GetAddressCommand}"
+                             Source="ic_location_on"
+                             BackgroundColor="white"/>
+            </StackLayout> 
+            <Label Grid.Row="1" 
+                       Grid.Column="0"
+                       Text="Name"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <Entry Grid.Row="1" 
+                       Grid.Column="1"
+                       FontSize="Medium"                        
+                       Placeholder="Insert Name" 
+                       Text="{Binding ReportRequest.Name}"/>
+
+            <Label Grid.Row="2" 
+                       Grid.Column="0"
+                       Text="LastName"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <Entry Grid.Row="2" 
+                       Grid.Column="1"
+                       FontSize="Medium"                        
+                       Placeholder="Insert localization" 
+                       Text="{Binding ReportRequest.LastName}"/>
+
+            <Label Grid.Row="3" 
+                       Grid.Column="0"
+                       Text="Phone"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <Entry Grid.Row="3" 
+                       Grid.Column="1"
+                       FontSize="Medium"                       
+                       Placeholder="Insert your phone" 
+                       Text="{Binding ReportRequest.Phone}"/>
+
+            <Label Grid.Row="4" 
+                       Grid.Column="0"
+                       Text="Email"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <Entry Grid.Row="4" 
+                       Grid.Column="1"
+                       FontSize="Medium"
+                       Placeholder="Insert Email" 
+                       Text="{Binding ReportRequest.Email}"/>
+
+            <Label Grid.Row="5" 
+                       Grid.Column="0"
+                       Text="Description"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <Entry Grid.Row="5" 
+                       Grid.Column="1"
+                       FontSize="Medium"
+                       Placeholder="Insert localization" 
+                       Text="{Binding ReportRequest.Description}"/>
+
+            <Label Grid.Row="6" 
+                       Grid.Column="0"
+                       Text="Picture"
+                       FontSize="Medium"
+                       VerticalOptions="Center"/>
+            <StackLayout Grid.Row="6" Grid.Column="1">
+            <ffimageloading:CachedImage                 
+                                                Aspect="AspectFit"
+                                                Source="{Binding Image}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="150"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation />
+                </ffimageloading:CachedImage.Transformations>
+                <ffimageloading:CachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddImageCommand}"/>
+                </ffimageloading:CachedImage.GestureRecognizers>
+            </ffimageloading:CachedImage>
+            </StackLayout>
+        </Grid>
+        <maps:Map x:Name="MyMap"
+                        MapType="Street"/>
+        <Button Command="{Binding CreateReportCommand}" 
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="INGRESAR"/>
+    </StackLayout>
+
+</ContentPage>

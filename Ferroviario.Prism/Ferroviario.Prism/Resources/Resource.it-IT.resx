@@ -429,4 +429,10 @@
   <data name="ChangePhotoNoFerroUser" xml:space="preserve">
     <value>Gli utenti creati dai social network, devono modificare la foto o la password sul social network.!</value>
   </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report </value>
+  </data>
+  <data name="CreateReport" xml:space="preserve">
+    <value>Crea report</value>
+  </data>
 </root>

@@ -49,6 +49,7 @@ namespace Ferroviario.Prism
             containerRegistry.RegisterForNavigation<CreateRequestPage, CreateRequestPageViewModel>();
             containerRegistry.RegisterForNavigation<ConfirmChangePage, ConfirmChangePageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
+            containerRegistry.RegisterForNavigation<ReportPage, ReportPageViewModel>();
         }
     }
 }

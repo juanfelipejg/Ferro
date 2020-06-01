@@ -38,6 +38,8 @@ namespace Ferroviario.Common.Services
         Task<Response> EditChangeAsync(string urlBase, string servicePrefix, string controller, ConfirmChangeRequest confirmChangeRequest, string tokenType, string accessToken);
 
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, FacebookProfile request);
+
+        Task<Response> RegisterReportAsync(string urlBase, string servicePrefix, string controller, ReportRequest reportRequest);
     }
 
 }

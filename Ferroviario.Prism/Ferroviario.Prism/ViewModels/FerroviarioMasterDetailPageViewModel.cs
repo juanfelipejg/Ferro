@@ -109,8 +109,8 @@ namespace Ferroviario.Prism.ViewModels
                 new Menu
                 {
                     Icon = "user",
-                    PageName = "HomePage",
-                    Title = "Home",
+                    PageName = "ReportPage",
+                    Title = "Report",
                     IsLoginRequired = false
                 },
                 new Menu
