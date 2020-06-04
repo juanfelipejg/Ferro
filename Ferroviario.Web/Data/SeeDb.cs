@@ -29,6 +29,7 @@ namespace Ferroviario.Web.Data
             await CheckUserAsync("2040", "Camilo", "Betancur", "camilo@hotmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             await CheckUserAsync("2050", "Jose", "Acosta", "jose@hotmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             await CheckUserAsync("2060", "Manuela", "Noreña", "manuela@hotmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
+            await CheckUserAsync("2070", "Santiago", "Meneses", "santiago@hotmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             await CheckRequestTypeAsync();
             await CheckRequestAsync();
             await CheckServiceAsync();
@@ -73,6 +74,12 @@ namespace Ferroviario.Web.Data
                 });
                 _context.Shifts.Add(new ShiftEntity
                 {
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2070"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 6),
+                    Date = DateToday
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
                     User = _context.Users.FirstOrDefault(u=>u.Document =="2020"),
                     Service = _context.Services.FirstOrDefault(s=>s.Id == 1),
                     Date = DateTomorrow
@@ -99,6 +106,12 @@ namespace Ferroviario.Web.Data
                 {
                     User = _context.Users.FirstOrDefault(u => u.Document == "2060"),
                     Service = _context.Services.FirstOrDefault(s => s.Id == 5),
+                    Date = DateTomorrow
+                });
+                _context.Shifts.Add(new ShiftEntity
+                {
+                    User = _context.Users.FirstOrDefault(u => u.Document == "2070"),
+                    Service = _context.Services.FirstOrDefault(s => s.Id == 6),
                     Date = DateTomorrow
                 });
 
@@ -256,6 +269,20 @@ namespace Ferroviario.Web.Data
                         Description = "La Estrella 8:35 Tren 50 - Niquia 9:15 Tren 51 \r\n" +
                   "La Estrella 9:55 Tren 54 - Niquia 10:40 Tren 56 \r\n" +
                   "La Estrella 11:22 Tren 58 - Niquia Descanso"
+                    })
+                });
+                _context.Services.Add(new ServiceEntity
+                {
+                    Name = "934LV",
+                    InitialHour = new TimeSpan(10, 30, 0),
+                    InitialStation = "San Antonio",
+                    FinalHour = new TimeSpan(14, 30, 0),
+                    FinalStation = "San Antonio",
+                    ServiceDetail = (new ServiceDetailEntity
+                    {
+                        Description = "San Antonio 10:35 Tren 50 - Niquia 11:15 Tren 51 \r\n" +
+                  "La Estrella 11:55 Tren 54 - Niquia 12:40 Tren 56 \r\n" +
+                  "La Estrella 13:22 Tren 58 - Niquia Descanso"
                     })
                 });
 

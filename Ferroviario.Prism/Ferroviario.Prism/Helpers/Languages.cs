@@ -200,6 +200,18 @@ namespace Ferroviario.Prism.Helpers
 
         public static string Report => Resource.Report;
 
+        public static string RequestSuccessfully => Resource.RequestSuccessfully;
+
+        public static string ChangeSuccessfully => Resource.ChangeSuccessfully;
+
+        public static string ConfirmSuccessfully => Resource.ConfirmSuccessfully;
+
+        public static string CreateReport => Resource.CreateReport;
+
+        public static string NamePlaceHolder => Resource.NamePlaceHolder;
+
+        public static string ReportSuccessfully => Resource.ReportSuccessfully;
+
     }
 
 }

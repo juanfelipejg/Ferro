@@ -131,6 +131,8 @@ namespace Ferroviario.Prism.ViewModels
 
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
+            ChangeRequest.Date = DateTime.Today.AddDays(1).ToUniversalTime();
+
             ChangeRequest.FirstDriverId = new Guid(User.Id);
 
             ChangeRequest.FirstShift =  SecShift.Id;
@@ -152,7 +154,7 @@ namespace Ferroviario.Prism.ViewModels
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.ChangeSuccessfully, Languages.Accept);
                 await _navigationService.GoBackAsync();
             }
         }

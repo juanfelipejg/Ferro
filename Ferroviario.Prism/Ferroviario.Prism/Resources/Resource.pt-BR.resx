@@ -438,4 +438,19 @@
   <data name="ChangeNotAuthorized" xml:space="preserve">
     <value>Você já fez uma mudança!</value>
   </data>
+  <data name="RequestSuccessfully" xml:space="preserve">
+    <value>Sua solicitação foi enviada com sucesso.</value>
+  </data>
+  <data name="ChangeSuccessfully" xml:space="preserve">
+    <value>Mudança enviada. Você deve esperar que seu parceiro confirme.</value>
+  </data>
+  <data name="ConfirmSuccessfully" xml:space="preserve">
+    <value>Alteração confirmada. Verifique seus turnos</value>
+  </data>
+  <data name="NamePlaceHolder" xml:space="preserve">
+    <value>Insira seu nome</value>
+  </data>
+  <data name="ReportSuccessfully" xml:space="preserve">
+    <value>Seu relatório foi feito com sucesso</value>
+  </data>
 </root>

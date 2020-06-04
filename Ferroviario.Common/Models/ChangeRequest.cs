@@ -8,6 +8,9 @@ namespace Ferroviario.Common.Models
     public class ChangeRequest
     {
         [Required(ErrorMessage = "The field {0} is mandatory.")]
+        public DateTime Date { get; set; }
+
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public Guid FirstDriverId { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]

@@ -12,12 +12,12 @@ namespace Ferroviario.Web.Data.Entities
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime DateLocal => Date.ToLocalTime();
 
         [MaxLength(500, ErrorMessage = "The {0} field must have {1} characters.")]

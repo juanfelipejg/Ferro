@@ -441,4 +441,19 @@
   <data name="ChangeNotAuthorized" xml:space="preserve">
     <value>Ya has hecho un cambio</value>
   </data>
+  <data name="RequestSuccessfully" xml:space="preserve">
+    <value>Su petición se ha enviado correctamente</value>
+  </data>
+  <data name="ChangeSuccessfully" xml:space="preserve">
+    <value>Cambio enviado. Debes esperar a que tu compañero lo confirme</value>
+  </data>
+  <data name="ConfirmSuccessfully" xml:space="preserve">
+    <value>Cambio confirmado Revisa tus turnos</value>
+  </data>
+  <data name="NamePlaceHolder" xml:space="preserve">
+    <value>Escribe tu nombre</value>
+  </data>
+  <data name="ReportSuccessfully" xml:space="preserve">
+    <value>Su informe se realizó con éxito</value>
+  </data>
 </root>

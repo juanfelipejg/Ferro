@@ -44,7 +44,7 @@ namespace Ferroviario.Web.Controllers
         {
             DateTime tomorrow = DateTime.Today.AddDays(1).ToUniversalTime();
 
-            int currentHour = DateTime.Now.Hour;            
+            var currentHour = (DateTime.UtcNow.ToLocalTime().Hour)-5;           
 
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
             if (user == null)
@@ -52,10 +52,10 @@ namespace Ferroviario.Web.Controllers
                 return NotFound();
             }
 
-           /* if (currentHour > 23 || currentHour < 8)
+            if (currentHour > 19 || currentHour < 8)
             {
                 return RedirectToAction("ErrorTime", "Changes");
-            } */
+            }
 
             Task<int> count = _changeHelper.CheckChanges(user);
 

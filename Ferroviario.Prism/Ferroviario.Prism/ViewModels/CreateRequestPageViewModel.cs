@@ -20,6 +20,7 @@ namespace Ferroviario.Prism.ViewModels
         private readonly IApiService _apiService;
         private RequestRequest _request;
         private RequestTypeResponse _type;
+        private DateTime _today;
         private bool _isRunning;
         private bool _isEnabled;
         private DelegateCommand _registerRequestCommand;
@@ -30,10 +31,10 @@ namespace Ferroviario.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             IsEnabled = true;
+            Today = DateTime.Today.ToLocalTime();
             Request = new RequestRequest();
             LoadTypesAsync();
         }
-
         public DelegateCommand RegisterRequestCommand => _registerRequestCommand ?? (_registerRequestCommand = new DelegateCommand(RegisterRequestAsync));
 
         public RequestRequest Request
@@ -45,6 +46,11 @@ namespace Ferroviario.Prism.ViewModels
         {
             get => _type;
             set => SetProperty(ref _type, value);
+        }
+        public DateTime Today
+        {
+            get => _today;
+            set => SetProperty(ref _today, value);
         }
 
         public bool IsRunning
@@ -128,11 +134,9 @@ namespace Ferroviario.Prism.ViewModels
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
+                await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.RequestSuccessfully, Languages.Accept);
                 await _navigationService.GoBackAsync();
             }
-
-
         }
 
         private async void LoadTypesAsync()

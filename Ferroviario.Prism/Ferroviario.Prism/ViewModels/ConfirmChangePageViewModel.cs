@@ -88,8 +88,8 @@ namespace Ferroviario.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
-            await _navigationService.GoBackAsync();
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.ConfirmSuccessfully, Languages.Accept);
+            await _navigationService.NavigateAsync("ShiftsPage");
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)

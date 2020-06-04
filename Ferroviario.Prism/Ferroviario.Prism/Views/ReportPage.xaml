@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:i18n="clr-namespace:Ferroviario.Prism.Helpers"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"    
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
@@ -9,7 +10,6 @@
              x:Class="Ferroviario.Prism.Views.ReportPage"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
-
 
     <StackLayout>
         <Grid>
@@ -25,11 +25,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            
+            </Grid.ColumnDefinitions>            
             <Label Grid.Row="0" 
                        Grid.Column="0"
-                       Text="Address"
+                       Text="{i18n:Translate Address}"
                        FontSize="Medium"
                        VerticalOptions="Center"/>
             <StackLayout Grid.Row="0" 
@@ -43,57 +42,53 @@
             </StackLayout> 
             <Label Grid.Row="1" 
                        Grid.Column="0"
-                       Text="Name"
+                       Text="{i18n:Translate Name}"
                        FontSize="Medium"
                        VerticalOptions="Center"/>
             <Entry Grid.Row="1" 
                        Grid.Column="1"
                        FontSize="Medium"                        
-                       Placeholder="Insert Name" 
+                       Placeholder="{i18n:Translate NamePlaceHolder}"
                        Text="{Binding ReportRequest.Name}"/>
-
             <Label Grid.Row="2" 
                        Grid.Column="0"
-                       Text="LastName"
+                       Text="{i18n:Translate LastName}"
                        FontSize="Medium"
                        VerticalOptions="Center"/>
             <Entry Grid.Row="2" 
                        Grid.Column="1"
                        FontSize="Medium"                        
-                       Placeholder="Insert localization" 
+                       Placeholder="{i18n:Translate LastNamePlaceHolder}"
                        Text="{Binding ReportRequest.LastName}"/>
-
             <Label Grid.Row="3" 
                        Grid.Column="0"
-                       Text="Phone"
+                       Text="{i18n:Translate Phone}"
                        FontSize="Medium"
                        VerticalOptions="Center"/>
             <Entry Grid.Row="3" 
                        Grid.Column="1"
                        FontSize="Medium"                       
-                       Placeholder="Insert your phone" 
+                       Placeholder="{i18n:Translate PhonePlaceHolder}" 
                        Text="{Binding ReportRequest.Phone}"/>
-
             <Label Grid.Row="4" 
                        Grid.Column="0"
-                       Text="Email"
+                       Text="{i18n:Translate Email}"
                        FontSize="Medium"
                        VerticalOptions="Center"/>
             <Entry Grid.Row="4" 
                        Grid.Column="1"
                        FontSize="Medium"
-                       Placeholder="Insert Email" 
+                       Placeholder="{i18n:Translate EmailPlaceHolder}" 
                        Text="{Binding ReportRequest.Email}"/>
-
             <Label Grid.Row="5" 
                        Grid.Column="0"
-                       Text="Description"
+                       Text="{i18n:Translate Description}"
                        FontSize="Medium"
                        VerticalOptions="Center"/>
             <Entry Grid.Row="5" 
                        Grid.Column="1"
                        FontSize="Medium"
-                       Placeholder="Insert localization" 
+                       Placeholder="{i18n:Translate DescriptionPlaceHolder}"
                        Text="{Binding ReportRequest.Description}"/>
         </Grid>
         <maps:Map x:Name="MyMap"

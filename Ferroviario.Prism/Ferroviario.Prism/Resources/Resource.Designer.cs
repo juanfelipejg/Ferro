@@ -160,6 +160,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change sended. You must to wait your partner confirm it..
+        /// </summary>
+        public static string ChangeSuccessfully {
+            get {
+                return ResourceManager.GetString("ChangeSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string Confirm {
@@ -237,6 +246,15 @@ namespace Ferroviario.Prism.Resources {
         public static string ConfirmNewPasswordPlaceHolder {
             get {
                 return ResourceManager.GetString("ConfirmNewPasswordPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change confirmed. Check your shifts..
+        /// </summary>
+        public static string ConfirmSuccessfully {
+            get {
+                return ResourceManager.GetString("ConfirmSuccessfully", resourceCulture);
             }
         }
         
@@ -655,6 +673,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your name.
+        /// </summary>
+        public static string NamePlaceHolder {
+            get {
+                return ResourceManager.GetString("NamePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
         public static string NewPassword {
@@ -880,11 +907,29 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your report was done succesfully.
+        /// </summary>
+        public static string ReportSuccessfully {
+            get {
+                return ResourceManager.GetString("ReportSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request&apos;s detail.
         /// </summary>
         public static string RequestDetail {
             get {
                 return ResourceManager.GetString("RequestDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your request was done successfully.
+        /// </summary>
+        public static string RequestSuccessfully {
+            get {
+                return ResourceManager.GetString("RequestSuccessfully", resourceCulture);
             }
         }
         

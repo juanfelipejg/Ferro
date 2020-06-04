@@ -39,7 +39,7 @@ namespace Ferroviario.Prism.ViewModels
             _filesHelper = filesHelper;
             ReportRequest = new ReportRequest();
             Image = App.Current.Resources["UrlNoImage"].ToString();
-            Title = "Create Report";
+            Title = Languages.CreateReport;
             LoadSourceAsync();
         }
 
@@ -211,7 +211,7 @@ namespace Ferroviario.Prism.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, Languages.ReportSuccessfully, Languages.Accept);
             await _navigationService.GoBackAsync();
             IsRunning = false;
         }

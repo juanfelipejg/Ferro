@@ -10,7 +10,6 @@
              IconImageSource="look_change"
              BackgroundColor="{StaticResource ColorBackgroud}"
              Title="{Binding Title}">
-
     <syncfusion:SfPullToRefresh     TransitionMode="SlideOnTop"
                                     IsRefreshing="{Binding IsRunning}"
                                     RefreshCommand="{Binding Refresh}"
@@ -19,13 +18,13 @@
                                     ProgressStrokeColor = "#6E8C03"
                                     ProgressStrokeWidth="10">
         <syncfusion:SfPullToRefresh.PullableContent>
-
-            <StackLayout Padding="5">
+   <StackLayout Padding="5">
     <Grid BackgroundColor="{StaticResource ColorAccent}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -50,9 +49,13 @@
                    HorizontalTextAlignment="Start"
                    FontSize="Small"
                    Text="{i18n:Translate End}"
-                   TextColor="{StaticResource ColorBackgroud}"/>           
-        </Grid>
-
+                   TextColor="{StaticResource ColorBackgroud}"/>
+        <Label Grid.Column="4"
+                   HorizontalTextAlignment="Start"
+                   FontSize="Small"
+                   Text="{i18n:Translate Send}"
+                   TextColor="{StaticResource ColorBackgroud}"/>
+    </Grid>
         <CollectionView ItemsSource="{Binding Shifts}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>
@@ -99,7 +102,7 @@
         </CollectionView>
                 <progressBar:SfLinearProgressBar Progress="100" TrackColor="#FFFFFF" ProgressColor="#6E8C03"
                                                  TrackHeight="100" CornerRadius="10" IsVisible="{Binding IsRunning}"/>
-            </StackLayout>
+   </StackLayout>
         </syncfusion:SfPullToRefresh.PullableContent>
     </syncfusion:SfPullToRefresh>
 </ContentPage>

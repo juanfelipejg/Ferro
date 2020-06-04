@@ -88,16 +88,18 @@ namespace Ferroviario.Web.Controllers.API
 
             Task<bool> checkHours;
 
+            var currentHour = (DateTime.UtcNow.ToLocalTime().Hour) - 5;
+
             UserEntity user = await _context.Users.FindAsync(request.FirstDriverId.ToString());
 
             ShiftEntity shift = await _context.Shifts.Include(s => s.Service).FirstOrDefaultAsync(s => s.Id == request.SecondShift);
 
             checkHours = _changeHelper.CheckHours(user, shift);
 
-            /*if (request.CurrentHour > 23 || request.CurrentHour < 8)
+            if (currentHour > 19 || currentHour < 8)
             {
                 return BadRequest(Resource.HourNotAllowed);
-            } */
+            } 
 
             Task<int> count = _changeHelper.CheckChanges(user);
 
@@ -113,6 +115,7 @@ namespace Ferroviario.Web.Controllers.API
 
             ChangeEntity changeEntity = new ChangeEntity()
             {
+                Date = request.Date,
                 FirstDriver = await _context.Users.FirstOrDefaultAsync(u => u.Id == request.FirstDriverId.ToString()),
                 FirstDriverService = await _context.Shifts.FirstOrDefaultAsync(s => s.Id == request.FirstShift),
                 SecondDriver = await _context.Users.FirstOrDefaultAsync(u => u.Id == request.SecondDriverId.ToString()),
