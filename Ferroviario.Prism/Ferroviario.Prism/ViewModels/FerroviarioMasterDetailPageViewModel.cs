@@ -34,7 +34,6 @@ namespace Ferroviario.Prism.ViewModels
             get => _user;
             set => SetProperty(ref _user, value);
         }
-
         private void LoadUser()
         {
             if (Settings.IsLogin)
@@ -73,7 +72,6 @@ namespace Ferroviario.Prism.ViewModels
             LoadUser();
         }
 
-
         private void LoadMenus()
         {
             List<Menu> menus = new List<Menu>
@@ -108,9 +106,9 @@ namespace Ferroviario.Prism.ViewModels
                 },
                 new Menu
                 {
-                    Icon = "user",
+                    Icon = "ic_remove_red_eye",
                     PageName = "ReportPage",
-                    Title = "Report",
+                    Title = Languages.Report,
                     IsLoginRequired = false
                 },
                 new Menu

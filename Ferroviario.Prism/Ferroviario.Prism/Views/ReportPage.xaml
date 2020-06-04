@@ -95,29 +95,6 @@
                        FontSize="Medium"
                        Placeholder="Insert localization" 
                        Text="{Binding ReportRequest.Description}"/>
-
-            <Label Grid.Row="6" 
-                       Grid.Column="0"
-                       Text="Picture"
-                       FontSize="Medium"
-                       VerticalOptions="Center"/>
-            <StackLayout Grid.Row="6" Grid.Column="1">
-            <ffimageloading:CachedImage                 
-                                                Aspect="AspectFit"
-                                                Source="{Binding Image}" 
-                                                CacheDuration= "50"
-                                                HeightRequest="150"
-                                                Margin="5"
-                                                RetryCount= "3"
-                                                RetryDelay= "600">
-                <ffimageloading:CachedImage.Transformations>
-                    <fftransformations:CircleTransformation />
-                </ffimageloading:CachedImage.Transformations>
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddImageCommand}"/>
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
-            </StackLayout>
         </Grid>
         <maps:Map x:Name="MyMap"
                         MapType="Street"/>

@@ -61,6 +61,15 @@ namespace Ferroviario.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have already done a change.
+        /// </summary>
+        public static string ChangeNotAuthorized {
+            get {
+                return ResourceManager.GetString("ChangeNotAuthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
         public static string ConfirmEmail {
@@ -84,6 +93,24 @@ namespace Ferroviario.Web.Resources {
         public static string ConfirmEmailSubject {
             get {
                 return ResourceManager.GetString("ConfirmEmailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule to change, it is between 8:00 and 19:00.
+        /// </summary>
+        public static string HourNotAllowed {
+            get {
+                return ResourceManager.GetString("HourNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dont satisfy 10 hours of rest.
+        /// </summary>
+        public static string HoursRest {
+            get {
+                return ResourceManager.GetString("HoursRest", resourceCulture);
             }
         }
         

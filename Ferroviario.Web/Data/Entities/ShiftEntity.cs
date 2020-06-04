@@ -23,5 +23,7 @@ namespace Ferroviario.Web.Data.Entities
         [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime DateLocal => Date.ToLocalTime();
+
+        public bool Modified { get; set; }
     }
 }

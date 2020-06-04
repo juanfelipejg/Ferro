@@ -12,5 +12,7 @@ namespace Ferroviario.Web.Helpers
 
         string UploadImage(byte[] pictureArray, string folder);
 
+        string UploadImage2(byte[] pictureArray, string folder);
+
     }
 }

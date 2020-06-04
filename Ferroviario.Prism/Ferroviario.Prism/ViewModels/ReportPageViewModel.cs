@@ -79,15 +79,6 @@ namespace Ferroviario.Prism.ViewModels
             set => SetProperty(ref _image, value);
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
-
-            if (parameters.ContainsKey("source"))
-            {
-                Source = parameters.GetValue<string>("source");
-            }
-        }
 
         private async void LoadSourceAsync()
         {
@@ -208,7 +199,7 @@ namespace Ferroviario.Prism.ViewModels
                 imageArray = _filesHelper.ReadFully(_file.GetStream());
             }
 
-            ReportRequest.PictureArray = imageArray;
+            ReportRequest.Source = Source;            
 
             ReportRequest.CultureInfo = Languages.Culture;
 

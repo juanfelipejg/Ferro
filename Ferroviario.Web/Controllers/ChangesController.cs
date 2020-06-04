@@ -6,66 +6,81 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Ferroviario.Web.Controllers
 {
-
     public class ChangesController : Controller
     {
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
         private readonly IConverterHelper _converterHelper;
+        private readonly IChangeHelper _changeHelper;
 
-        public ChangesController(DataContext context, IUserHelper userHelper, IConverterHelper converterHelper)
+        public ChangesController(DataContext context, IUserHelper userHelper, IConverterHelper converterHelper,
+            IChangeHelper changeHelper)
         {
             _context = context;
             _userHelper = userHelper;
             _converterHelper = converterHelper;
+            _changeHelper = changeHelper;
         }
 
         public async Task<IActionResult> IndexAll()
         {
-            return View(await _context.Changes.Include(c=>c.FirstDriver).
-                Include(c=>c.FirstDriverService).
-                ThenInclude(s=>s.Service).
-                Include(c=>c.SecondDriver).
-                Include(c=>c.SecondDriverService).
-                ThenInclude(s=>s.Service).
+            return View(await _context.Changes.Include(c => c.FirstDriver).
+                Include(c => c.FirstDriverService).
+                ThenInclude(s => s.Service).
+                Include(c => c.SecondDriver).
+                Include(c => c.SecondDriverService).
+                ThenInclude(s => s.Service).
                 ToListAsync());
         }
 
         public async Task<IActionResult> Index()
         {
-            DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
+            DateTime tomorrow = DateTime.Today.AddDays(1).ToUniversalTime();
+
+            int currentHour = DateTime.Now.Hour;            
+
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
             if (user == null)
             {
                 return NotFound();
-            }            
+            }
 
-            return View(await _context.Shifts.
+           /* if (currentHour > 23 || currentHour < 8)
+            {
+                return RedirectToAction("ErrorTime", "Changes");
+            } */
+
+            Task<int> count = _changeHelper.CheckChanges(user);
+
+            if (count.Result > 0)
+            {
+                return RedirectToAction("UserAuthorized", "Changes");
+            }
+
+            else
+            {
+                return View(await _context.Shifts.
                 Include(s => s.User).
                 Include(s => s.Service).
-                Where(s => s.User.Id != user.Id && s.Date.Day == Tomorrow.Day).ToListAsync());
+                Where(s => s.User.Id != user.Id && s.Date.Day == tomorrow.Day && s.Modified == false).ToListAsync());
+            }
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult ErrorTime()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            return View();
+        }
 
-            ChangeEntity changeEntity = await _context.Changes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (changeEntity == null)
-            {
-                return NotFound();
-            }
-
-            return View(changeEntity);
+        public IActionResult UserAuthorized()
+        {
+            return View();
         }
 
         public IActionResult Create()
@@ -86,38 +101,45 @@ namespace Ferroviario.Web.Controllers
             return View(changeEntity);
         }
 
-        public async Task<IActionResult> CreateChange(int? idService, string idDriver)
+        public async Task<IActionResult> CreateChange(int idShift)
         {
+            Task<bool> checkHours; 
 
-            DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
+            DateTime tomorrow = DateTime.Today.AddDays(1).ToUniversalTime();
 
-            UserEntity FirstDriver = await _userHelper.GetUserAsync(User.Identity.Name);
+            UserEntity firstDriver = await _userHelper.GetUserAsync(User.Identity.Name);
 
-            ShiftEntity FirstShift = await _context.Shifts.
+            ShiftEntity firstShift = await _context.Shifts.
             Include(s => s.User).
             Include(s => s.Service).
-            Where(s => s.Date.Day == Tomorrow.Day).FirstOrDefaultAsync(s => s.User == FirstDriver);
+            Where(s => s.Date == tomorrow).FirstOrDefaultAsync(s => s.User == firstDriver);
 
-            UserEntity SecondDriver = await _context.Users.FindAsync(idDriver);
+            ShiftEntity secondShift = await _context.Shifts.Include(s => s.Service).
+            Include(s => s.User).FirstOrDefaultAsync(s => s.Id == idShift);
 
-            ShiftEntity SecondShift = await _context.Shifts.Include(s => s.Service).
-            Include(s => s.User).FirstOrDefaultAsync(s => s.Id == idService);
+            UserEntity secondDriver = secondShift.User;
 
+            checkHours = _changeHelper.CheckHours(firstDriver, secondShift);
+
+            if (!checkHours.Result)
+            {
+                TempData["msg"] = "<script>alert('Dont satisfy 10 hours of rest');</script>";
+                return RedirectToAction("Index", "Changes");
+            }
 
             ChangeViewModel model = new ChangeViewModel
             {
-                FirstDriver = FirstDriver,
-                FirstDriverId = FirstDriver.Id,
+                FirstDriver = firstDriver,
+                FirstDriverId = firstDriver.Id,
 
-                FirstDriverService = FirstShift,
-                FirstDriverServiceId= FirstShift.Id,
+                FirstDriverService = firstShift,
+                FirstDriverServiceId = firstShift.Id,
 
-                SecondDriver = SecondDriver,
-                SecondDriverId = SecondDriver.Id,
+                SecondDriver = secondDriver,
+                SecondDriverId = secondDriver.Id,
 
-                SecondDriverService = SecondShift,
-                SecondDriverServiceId=SecondShift.Id,
-                
+                SecondDriverService = secondShift,
+                SecondDriverServiceId = secondShift.Id,
             };
 
             return View(model);
@@ -149,34 +171,34 @@ namespace Ferroviario.Web.Controllers
 
             return View(await _context.Changes.
                 Include(c => c.FirstDriver).
-                Include(c => c.FirstDriverService).ThenInclude(s=>s.Service).
-                Include(c=> c.SecondDriver).
-                Include(c=>c.SecondDriverService).ThenInclude(s => s.Service).
-                Where(c=>c.SecondDriver.Id == user.Id && c.State=="Pending").ToListAsync());
+                Include(c => c.FirstDriverService).ThenInclude(s => s.Service).
+                Include(c => c.SecondDriver).
+                Include(c => c.SecondDriverService).ThenInclude(s => s.Service).
+                Where(c => c.SecondDriver.Id == user.Id && c.State == "Pending").ToListAsync());
         }
-        
+
 
         public async Task<IActionResult> ConfirmChange(int id)
         {
-            ChangeEntity changeEntity = await _context.Changes.Include(c=>c.FirstDriver).
+            ChangeEntity changeEntity = await _context.Changes.Include(c => c.FirstDriver).
                 Include(c => c.FirstDriverService).
                 ThenInclude(c => c.Service).
                 ThenInclude(s => s.ServiceDetail).
-                Include(c=>c.SecondDriver).
-                Include(c=>c.SecondDriverService).
-                ThenInclude(s=>s.Service).
-                ThenInclude(s=>s.ServiceDetail).
+                Include(c => c.SecondDriver).
+                Include(c => c.SecondDriverService).
+                ThenInclude(s => s.Service).
+                ThenInclude(s => s.ServiceDetail).
                 FirstOrDefaultAsync(c => c.Id == id);
 
             ChangeViewModel change = _converterHelper.ToChangeViewModel(changeEntity);
 
             return View(change);
- 
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmChange(ChangeViewModel model,int idShift, int idShift2, int idService, int idService2)
+        public async Task<IActionResult> ConfirmChange(ChangeViewModel model, int idShift, int idShift2, int idService, int idService2)
         {
             ChangeEntity changeEntity = await _converterHelper.ToChangeEntityAsync(model, false);
 
@@ -197,6 +219,10 @@ namespace Ferroviario.Web.Controllers
             shiftEntity2.Service = await _context.Services.Include(s => s.ServiceDetail).
             FirstOrDefaultAsync(s => s.Id == idService2);
 
+            shiftEntity.Modified = true;
+
+            shiftEntity2.Modified = true;
+
             _context.Update(shiftEntity);
             await _context.SaveChangesAsync();
 
@@ -205,7 +231,7 @@ namespace Ferroviario.Web.Controllers
 
             return RedirectToAction(nameof(SelectChanges));
         }
-        
+
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)

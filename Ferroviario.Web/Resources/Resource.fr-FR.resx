@@ -147,4 +147,13 @@
   <data name="PasswordChangedSuccess" xml:space="preserve">
     <value>Ton mot de passe a été modifié avec succès.</value>
   </data>
+  <data name="HourNotAllowed" xml:space="preserve">
+    <value>Horaire à changer, il est entre 8:00 et 19:00!</value>
+  </data>
+  <data name="ChangeNotAuthorized" xml:space="preserve">
+    <value>tu as déjà fait ça/vous l’avez déjà fait/vous avez déjà réussit </value>
+  </data>
+  <data name="HoursRest" xml:space="preserve">
+    <value>Ne satisfaisez pas 10 heures de repos!</value>
+  </data>
 </root>

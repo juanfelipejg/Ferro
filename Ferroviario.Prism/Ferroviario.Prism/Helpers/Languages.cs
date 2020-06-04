@@ -196,6 +196,10 @@ namespace Ferroviario.Prism.Helpers
 
         public static string ChangePhotoNoSoccerUser => Resource.ChangePhotoNoFerroUser;
 
+        public static string ChangeNotAuthorized => Resource.ChangeNotAuthorized;
+
+        public static string Report => Resource.Report;
+
     }
 
 }

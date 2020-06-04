@@ -28,7 +28,7 @@ namespace Ferroviario.Web.Helpers
                 InitialDate = model.InitialDate.ToUniversalTime(),
                 FinishDate = model.FinishDate.ToUniversalTime(),
                 Description = model.Description,
-                State = "Pending",
+                State = model.State,
                 Comment = model.Comment,
                 User = await _context.Users.FindAsync(model.UserId),
             };
@@ -258,6 +258,7 @@ namespace Ferroviario.Web.Helpers
             return new ChangeEntity
             {
                 Id = model.Id,
+                Date = DateTime.Today.AddDays(1).ToUniversalTime(),
                 FirstDriver = await _context.Users.FindAsync(model.FirstDriverId),
                 FirstDriverService = await _context.Shifts.FindAsync(model.FirstDriverServiceId),
                 SecondDriver = await _context.Users.FindAsync(model.SecondDriverId),

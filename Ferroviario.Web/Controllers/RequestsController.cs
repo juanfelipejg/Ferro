@@ -89,6 +89,7 @@ namespace Ferroviario.Web.Controllers
             if (ModelState.IsValid)
             {
                 RequestEntity requestEntity = await _converterHelper.ToRequestEntityAsync(model, true);
+                requestEntity.State = "Pending";
                 _context.Add(requestEntity);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

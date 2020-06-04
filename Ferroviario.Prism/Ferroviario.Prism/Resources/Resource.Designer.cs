@@ -124,6 +124,15 @@ namespace Ferroviario.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have already done a change.
+        /// </summary>
+        public static string ChangeNotAuthorized {
+            get {
+                return ResourceManager.GetString("ChangeNotAuthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change password.
         /// </summary>
         public static string ChangePassword {
@@ -246,6 +255,15 @@ namespace Ferroviario.Prism.Resources {
         public static string CreateChange {
             get {
                 return ResourceManager.GetString("CreateChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create report.
+        /// </summary>
+        public static string CreateReport {
+            get {
+                return ResourceManager.GetString("CreateReport", resourceCulture);
             }
         }
         
@@ -849,6 +867,15 @@ namespace Ferroviario.Prism.Resources {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report.
+        /// </summary>
+        public static string Report {
+            get {
+                return ResourceManager.GetString("Report", resourceCulture);
             }
         }
         

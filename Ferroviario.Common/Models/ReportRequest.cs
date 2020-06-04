@@ -26,9 +26,7 @@ namespace Ferroviario.Common.Models
         public string Email { get; set; }
 
         [Required]
-        public string Description { get; set; }
-
-        public byte[] PictureArray { get; set; }
+        public string Description { get; set; }        
 
         [Required]
         public string CultureInfo { get; set; }

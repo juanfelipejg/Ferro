@@ -35,6 +35,7 @@
     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li> -->
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
+                        <li><a asp-area="" asp-controller="Reports" asp-action="Index">Reports</a></li>
                         <li><a asp-area="" asp-controller="RequestTypes" asp-action="Index">Request Types</a></li>
                         <li><a asp-area="" asp-controller="Changes" asp-action="IndexAll">Changes</a></li>
                     }

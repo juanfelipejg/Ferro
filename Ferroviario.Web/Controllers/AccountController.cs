@@ -127,7 +127,6 @@ namespace Ferroviario.Web.Controllers
             return View(model);
         }
 
-
         public async Task<IActionResult> ChangeUser()
         {
             UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);

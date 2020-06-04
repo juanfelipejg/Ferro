@@ -10,6 +10,8 @@ namespace Ferroviario.Common.Models
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public Guid UserId { get; set; }
 
+        public int CurrentHour { get; set; }
+
         [Required]
         public string CultureInfo { get; set; }
     }

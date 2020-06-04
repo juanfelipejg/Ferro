@@ -8,6 +8,8 @@ namespace Ferroviario.Web.Helpers
 {
     public interface IChangeHelper
     {
-        ServiceEntity ToServiceEntity(ShiftEntity shiftEntity);
+        Task<bool> CheckHours(UserEntity userEntity, ShiftEntity shiftEntity);
+
+        Task<int> CheckChanges(UserEntity user);
     }
 }

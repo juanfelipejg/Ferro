@@ -72,6 +72,12 @@ namespace Ferroviario.Prism.ViewModels
 
             Response response = await _apiService.GetShiftsForChangeAsync(url, "/api", "/Shifts/GetShiftsForChange", request, "bearer", token.Token);
 
+            if (!response.IsSuccess && response.Message == Languages.ChangeNotAuthorized)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                await _navigationService.NavigateAsync("LoginPage");
+            }
+
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
@@ -79,7 +85,7 @@ namespace Ferroviario.Prism.ViewModels
 
             List<ShiftResponse> list = (List<ShiftResponse>)response.Result;
 
-            ShiftResponse CurrentShift = list.FirstOrDefault(s => s.User == user);
+            ShiftResponse CurrentShift = list.FirstOrDefault(s => s.User == user); //Obtengo servicio actual
 
             List<ShiftResponse> list2 =  list.Where(s => s.User.Id != user.Id).ToList();
 

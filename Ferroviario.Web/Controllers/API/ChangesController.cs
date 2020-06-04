@@ -23,11 +23,13 @@ namespace Ferroviario.Web.Controllers.API
     {
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
+        private readonly IChangeHelper _changeHelper;
 
-        public ChangesController(DataContext context, IConverterHelper converterHelper)
+        public ChangesController(DataContext context, IConverterHelper converterHelper, IChangeHelper changeHelper)
         {
             _context = context;
             _converterHelper = converterHelper;
+            _changeHelper = changeHelper;
         }
 
         [HttpPost]
@@ -83,6 +85,31 @@ namespace Ferroviario.Web.Controllers.API
 
             CultureInfo cultureInfo = new CultureInfo(request.CultureInfo);
             Resource.Culture = cultureInfo;
+
+            Task<bool> checkHours;
+
+            UserEntity user = await _context.Users.FindAsync(request.FirstDriverId.ToString());
+
+            ShiftEntity shift = await _context.Shifts.Include(s => s.Service).FirstOrDefaultAsync(s => s.Id == request.SecondShift);
+
+            checkHours = _changeHelper.CheckHours(user, shift);
+
+            /*if (request.CurrentHour > 23 || request.CurrentHour < 8)
+            {
+                return BadRequest(Resource.HourNotAllowed);
+            } */
+
+            Task<int> count = _changeHelper.CheckChanges(user);
+
+            if (count.Result > 0)
+            {
+                return BadRequest(Resource.ChangeNotAuthorized);
+            }
+
+            if (!checkHours.Result)
+            {
+                return BadRequest(Resource.HoursRest);
+            }
 
             ChangeEntity changeEntity = new ChangeEntity()
             {

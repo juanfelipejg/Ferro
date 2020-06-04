@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Ferroviario.Web.Data.Entities.ShiftEntity>
+@Html.Raw(TempData["msg"])
+
 
 @{
     ViewData["Title"] = "Changes";
@@ -45,38 +47,38 @@
     <tbody>
         @foreach (var item in Model.OrderBy(g => g.Date))
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateLocal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.InitialHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.InitialStation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.FinalHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service.FinalStation)
-            </td>
-            <td>
-                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                {
-                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
-                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a>
-                }
-                <a asp-action="CreateChange" asp-route-idService="@item.Id" asp-route-idDriver="@item.User.Id">Change shift<i class="glyphicon glyphicon-send"></i></a>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateLocal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.InitialHour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.InitialStation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.FinalHour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Service.FinalStation)
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i></a>
+                    }
+                    <a asp-action="CreateChange" asp-route-idShift="@item.Id">Change shift<i class="glyphicon glyphicon-send"></i></a>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

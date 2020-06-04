@@ -72,6 +72,7 @@ namespace Ferroviario.Web
 
 
             services.AddTransient<SeedDb>();
+            services.AddScoped<IChangeHelper, ChangeHelper>();
             services.AddScoped<IMailHelper, MailHelper>();
             services.AddScoped<IImageHelper, ImageHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();

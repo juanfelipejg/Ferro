@@ -29,17 +29,16 @@ namespace Ferroviario.Web.Controllers.API
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request",
+                    Result = ModelState
+                });
             }
 
             CultureInfo cultureInfo = new CultureInfo(reportRequest.CultureInfo);
             Resource.Culture = cultureInfo;
-
-            string picturePath = string.Empty;
-            if (reportRequest.PictureArray != null && reportRequest.PictureArray.Length > 0)
-            {
-                picturePath = _imageHelper.UploadImage(reportRequest.PictureArray, "Reports");
-            }
 
             ReportEntity report = new ReportEntity
             {
@@ -51,8 +50,7 @@ namespace Ferroviario.Web.Controllers.API
                 LastName = reportRequest.LastName,
                 Phone = reportRequest.Phone,
                 Email = reportRequest.Email,
-                Description = reportRequest.Description,
-                PicturePath = picturePath,
+                Description = reportRequest.Description                
             };
 
             _context.Reports.Add(report);

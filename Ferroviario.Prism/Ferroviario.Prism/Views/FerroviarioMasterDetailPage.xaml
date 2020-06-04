@@ -41,27 +41,7 @@
                            Text="{Binding User.FullName}"
                            TextColor="Black"/>
                     </RelativeLayout>
-
-                    <!--<RelativeLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ModifyUserCommand}"/>
-                    </RelativeLayout.GestureRecognizers>
-                    <ffimageloading:CachedImage Grid.Column="0"
-                                                        Aspect="AspectFit"
-                                                        Source="{Binding User.PictureFullPath}" 
-                                                        CacheDuration= "50"
-                                                        Margin="5"
-                                                        RetryCount= "3"
-                                                        RetryDelay= "600"
-                                                        WidthRequest="100"/>
-                    <ffimageloading:CachedImage.Transformations>
-                        <fftransformations:CircleTransformation />
-                    </ffimageloading:CachedImage.Transformations>-->
-
                 </RelativeLayout>
-                <!--<Label FontAttributes="Bold"
-                       FontSize="Large"
-                       Text="{Binding User.FullName}"
-                       TextColor="Black"/>-->
 
                 <ListView BackgroundColor="{StaticResource ColorBackgroud}"
                           ItemsSource="{Binding Menus}"

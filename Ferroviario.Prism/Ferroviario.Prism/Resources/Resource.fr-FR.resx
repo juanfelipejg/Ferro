@@ -438,4 +438,7 @@
   <data name="CreateReport" xml:space="preserve">
     <value>Créer un rapport</value>
   </data>
+  <data name="ChangeNotAuthorized" xml:space="preserve">
+    <value>tu as déjà fait ça/vous l’avez déjà fait/vous avez déjà réussit </value>
+  </data>
 </root>

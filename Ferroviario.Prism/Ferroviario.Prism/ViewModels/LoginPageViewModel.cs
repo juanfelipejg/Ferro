@@ -132,7 +132,7 @@ namespace Ferroviario.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await _navigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/UsersPage");
+            await _navigationService.NavigateAsync("/FerroviarioMasterDetailPage/NavigationPage/ShiftsPage");
             Password = string.Empty;
 
         }

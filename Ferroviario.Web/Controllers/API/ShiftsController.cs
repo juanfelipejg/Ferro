@@ -22,11 +22,13 @@ namespace Ferroviario.Web.Controllers.API
     {
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
+        private readonly IChangeHelper _changeHelper;
 
-        public ShiftsController(DataContext context, IConverterHelper converterHelper)
+        public ShiftsController(DataContext context, IConverterHelper converterHelper, IChangeHelper changeHelper)
         {
             _context = context;
             _converterHelper = converterHelper;
+            _changeHelper = changeHelper;
         }
 
         [HttpGet]
@@ -59,14 +61,14 @@ namespace Ferroviario.Web.Controllers.API
             {
                 return BadRequest(Resource.UserDoesntExists);
             }
-
-            DateTime Tomorrow = DateTime.Today.AddDays(1).ToLocalTime();
+                       
+            DateTime tomorrow = DateTime.Today.AddDays(1).ToUniversalTime(); 
 
             List<ShiftEntity> shifts = await _context.Shifts.
             Include(s => s.Service).
             ThenInclude(s => s.ServiceDetail).
             Include(s => s.User).
-            Where(s=>s.Date.Day == Tomorrow.Day).
+            Where(s=>s.Date == tomorrow && s.Modified == false).
             ToListAsync();
 
             List<ShiftResponse> shiftResponses = new List<ShiftResponse>();
