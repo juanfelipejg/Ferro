@@ -12,7 +12,19 @@ Ferro es un sitio web y aplicación móvil desarrollada para la gestión de turn
 - Funcionalidad con Google maps.
 
 
-### Comenzando :tw-1f680: 
+### Comenzando :tw-1f680:
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de revisión, desarrollo y pruebas.
-- Para realizar la ejecución de este proyecto debes tener instalado cualquier version de Visual Studio. 
+Nota : Para realizar la ejecución de este proyecto debes tener instalado cualquier version de Visual Studio.
+-  Debes de realizar la clonación del repositorio como muestra la siguiente imagen:
+
+ [![](https://i.imgur.com/CfukKUA.png)](https://i.imgur.com/CfukKUA.png)
+
+-  Abre tu Git Bash en tu computadora y estando en la carpeta en la cual deseas copiar el codigo escribe el siguiente comando:
+
+ ![](https://i.imgur.com/QhRjgsj.png)
+
+- En tu maquina local en la ubicación descrita en el paso anterior verás los siguientes archivos: 
+Nota: el archivo seleccionado lo ejecutaras en Visual Studio.
+
+ ![](https://i.imgur.com/QiYtvMA.png)
