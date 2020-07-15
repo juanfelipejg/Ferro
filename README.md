@@ -12,7 +12,7 @@ Ferro es un sitio web y aplicación móvil desarrollada para la gestión de turn
 - Funcionalidad con Google maps.
 
 
-### Comenzando :tw-1f680:
+### Comenzando
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de revisión, desarrollo y pruebas.
 Nota : Para realizar la ejecución de este proyecto debes tener instalado cualquier version de Visual Studio.
